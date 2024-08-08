@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="JUnit 4.13">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../../../Francesco/Progetto Betacom Finale/JUnit 4.13.2" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../../../Francesco/Progetto Betacom Finale/JUnit 4.13.2/junit-team-junit4-ecafc19/src/main/java" />
+      <root url="file://$PROJECT_DIR$/../../../../Francesco/Progetto Betacom Finale/JUnit 4.13.2/junit-team-junit4-ecafc19/src/test/java" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$/../../../../Francesco/Progetto Betacom Finale/JUnit 4.13.2" recursive="false" />
+  </library>
+</component>
