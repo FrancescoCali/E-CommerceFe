@@ -1,165 +1,59 @@
-/* ------ Reset ------ */
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+.carousel {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    perspective: 1000px; /* Questo dà l'effetto 3D */
+    margin: auto;
 }
 
-/* Image reset */
-
-.img-d-b {display: block;}
-
-/* ------ Padding ------ */
-
-.p-1 {padding: 1rem;}
-
-.p-05 {padding: 0.5rem;}
-
-.p-1-0 {padding: 1rem 0;}
-
-.p-05-1 {padding: 0.5rem 1rem;}
-
-/* Padding-top */
-
-.pt-1 {padding-top: 1rem;}
-
-.pt-05 {padding-top: 0.5rem;}
-
-.pt-100per {padding-top: 100%;}
-
-/* Padding-bottom */
-
-.pb-1_5 {padding-bottom: 1.5rem;}
-
-.pb-1 {padding-bottom: 1rem;}
-
-.pb-05 {padding-bottom: 0.5rem;}
-
-/* Padding-left */
-
-.pl-025 {padding-left: 0.5rem;}
-
-.pl-1 {padding-left: 1rem;}
-
-/* Padding-right */
-
-.pr-1 {padding-right: 1rem;}
-
-/* ------ Margin ------ */
-
-.m-center {margin: 0 auto;}
-
-.m-05-0 {margin: 0.5rem 0;}
-
-/* Margin-right */
-
-.mr-075 {margin-right: 0.75rem;}
-
-.mr-2 {margin-right: 2rem;}
-
-/* ------ Border ------ */
-
-.border-0 {border: 0;}
-
-/* ------ Dimension ------ */
-
-/* Width */
-
-.w-20per {width: 20%;}
-
-.w-30per {width: 30%;}
-
-.w-33per {width: calc(100% / 3);}
-
-.w-40per {width: 40%;}
-
-.w-50per {width: 50%;}
-
-.w-60per {width: 60%;}
-
-.w-70per {width: 70%;}
-
-.w-80per {width: 80%;}
-
-.w-100per {width: 100%;}
-
-/* Height */
-
-.h-full {height: 100vh;}
-
-/* ------ Flex ------ */
-
-.flex {display: flex;}
-
-.jc-start {justify-content: flex-start;}
-
-.jc-end {justify-content: flex-end;}
-
-.jc-center {justify-content: center;}
-
-.jc-between {justify-content: space-between;}
-
-.ai-center {align-items: center;}
-
-.fw-wrap {flex-wrap: wrap;}
-
-.fd-column {flex-direction: column;}
-
-.fd-c-reverse {flex-direction: column-reverse;}
-
-.gap-1 {gap: 1rem;}
-
-/* ------ Background ------ */
-
-.bg-black {background-color: black;}
-
-.bg-white {background-color: white;}
-
-.bg-none {background-color: rgba(0, 0, 0, 0);}
-
-/* ------ Position ------ */
-
-.fixed {position: fixed;}
-
-.relative {position: relative;}
-
-.absolute {position: absolute;}
-
-/* ------ z-Index ------ */
-
-.z-top {z-index: 99;}
-
-z-bottom {z-index: -99}
-
-/* ------ Links ------ */
-
-/* Black and underline */
-
-.a-black a{
-    color: black;
-    text-decoration: none;
+.carousel-inner {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: transform 1s ease;
 }
 
-.a-black a:hover {text-decoration: underline;}
+.carousel-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
-/* White and underline */
+.carousel-item:nth-child(1) {
+    transform: rotateY(0deg) translateZ(300px);
+}
 
-.a-white a{
+.carousel-item:nth-child(2) {
+    transform: rotateY(120deg) translateZ(300px);
+}
+
+.carousel-item:nth-child(3) {
+    transform: rotateY(240deg) translateZ(300px);
+}
+
+/* Aggiungi più stili per altri elementi se hai più di 3 item */
+
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: black;
     color: white;
-    text-decoration: none;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
 }
 
-.a-white a:hover {text-decoration: underline;}
+.carousel-button.left {
+    left: 10px;
+}
 
-/* ------ Fonts ------ */
-
-.c-white {color: white;}
-
-.ta-center {text-align: center;}
-
-/* ------ Disapper ------ */
-
-.display-none {display: none;}
-
-.display-block {display: block;}
+.carousel-button.right {
+    r
