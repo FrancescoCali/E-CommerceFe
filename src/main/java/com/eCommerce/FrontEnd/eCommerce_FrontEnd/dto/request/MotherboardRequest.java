@@ -1,18 +1,17 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request;
 
-public class MotherboardRequest {
+public class MotherboardRequest extends ProductRequest{
     private Integer id;
-    private Integer idProdotto;
+    private String errorMSG;
 
-    public Integer getIdProdotto()
-    {
-        return idProdotto;
+    public String getErrorMSG() {
+        return errorMSG;
     }
 
-    public void setIdProdotto(Integer idProdotto)
-    {
-        this.idProdotto=idProdotto;
+    public void setErrorMSG(String errorMSG) {
+        this.errorMSG = errorMSG;
     }
+
 
     public Integer getId() {
         return id;

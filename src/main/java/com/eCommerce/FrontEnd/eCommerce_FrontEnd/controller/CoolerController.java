@@ -1,10 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.controller;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.CpuRequest;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.GpuRequest;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.KeyboardRequest;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view.GpuView;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view.KeyboardView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.CoolerRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view.CoolerView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.response.ResponseObject;
@@ -23,47 +20,47 @@ import java.net.URI;
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.utilities.WebUtils.convertInObject;
 
 @Controller
-@RequestMapping("/keyboard")
+@RequestMapping("cooler")
+public class CoolerController {
 
-public class KeyboardController {
     @Value("${eCommerce.backend}")
     String backend;
 
     @Autowired
     RestTemplate rest;
 
-    public static Logger log = LoggerFactory.getLogger(KeyboardController.class);
+    public static Logger log = LoggerFactory.getLogger(CoolerController.class);
 
-    @GetMapping("/createKeyboard")
+    @GetMapping("/createCooler")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-keyboard");
-        KeyboardRequest req = new KeyboardRequest();
+        ModelAndView mav = new ModelAndView("create-cooler");
+        CoolerRequest req = new CoolerRequest();
         req.setErrorMSG(null);
-        mav.addObject("keyboard", req);
+        mav.addObject("cooler", req);
 
         return mav;
     }
 
-    @GetMapping (value = {"/listKeyboard"})
+    @GetMapping (value = {"/listCooler"})
     public  ModelAndView list() {
 
         ModelAndView mav = new ModelAndView("home");
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "keyboard/list")
+                .fromHttpUrl(backend + "cooler/list")
                 .buildAndExpand().toUri();
         log.debug("URI:" + uri);
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listKeyboard", resp);
+        mav.addObject("listCooler", resp);
 
         return mav;
     }
 
-    @PostMapping("/saveKeyboard")
-    public Object save(@ModelAttribute("keyboard") KeyboardRequest req){
+    @PostMapping("/saveCooler")
+    public Object save(@ModelAttribute("cooler") CoolerRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("keyboard/create")
+                .fromHttpUrl("cooler/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -73,42 +70,48 @@ public class KeyboardController {
         log.debug("rc:" + resp.getRc());
 
         if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("create-keyboard");
+            ModelAndView mav = new ModelAndView("create-cooler");
             req.setErrorMSG(req.getErrorMSG());
-            mav.addObject("keyboard", req);
+            mav.addObject("cooler", req);
             return mav;
         }
-        return "redirect:/keyboard/listKeyboard";
+        return "redirect:/cooler/listCooler";
     }
 
-    @GetMapping("/removeKeyboard")
+    @GetMapping("/removeCooler")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/keyboard/remove")
+                .fromHttpUrl("/cooler/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
 
-        ResponseBase resp = rest.postForEntity(uri,id,ResponseBase.class).getBody();
-        return "redirect:/keyboard/listKeyboard";
+        ResponseBase resp = rest.postForEntity(uri,id, ResponseBase.class).getBody();
+        return "redirect:/cooler/listCooler";
     }
 
-    @GetMapping("/updateKeyboard")
+    @GetMapping("/updateCooler")
     public ModelAndView update(@RequestParam Integer id) {
-        ModelAndView mav = new ModelAndView("create-update-Keyboard");
+        ModelAndView mav = new ModelAndView("create-update-cooler");
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "keyboard/getById")
+                .fromHttpUrl(backend + "cooler/getById")
                 .queryParam("id", id)
                 .buildAndExpand()
                 .toUri();
 
         @SuppressWarnings("unchecked")
-        ResponseObject<KeyboardView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        KeyboardRequest req = (KeyboardRequest) convertInObject(resp.getDati(),KeyboardRequest.class);
+        ResponseObject<CoolerView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        CoolerRequest req = (CoolerRequest) convertInObject(resp.getDati(),CoolerRequest.class);
 
-        mav.addObject("keyboard",req);
-        mav.addObject("myTitle", "Modifica keyboard");
+        mav.addObject("cooler",req);
+        mav.addObject("myTitle", "Modifica cooler");
         return mav;
     }
+
+
+
+
+
+
 }

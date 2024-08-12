@@ -3,9 +3,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view;
 public class MotherboardView extends ProductView {
 
     private Integer id;
-
     private Boolean cart ;
-
     private Boolean contained ;
 
     public Boolean getContained() {

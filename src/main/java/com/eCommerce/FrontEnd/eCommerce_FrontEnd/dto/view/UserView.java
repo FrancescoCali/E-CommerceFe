@@ -1,6 +1,6 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view;
 
-public class UserView extends ProductView {
+public class UserView {
     private Integer id;
     private String email;
     private String password;

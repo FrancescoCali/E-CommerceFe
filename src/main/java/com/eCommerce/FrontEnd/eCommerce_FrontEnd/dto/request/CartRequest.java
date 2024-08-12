@@ -2,16 +2,32 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request;
 
 public class CartRequest {
     private Integer id;
-    private Integer idProdotto;
+    private Integer idUser;
+    private Integer idProduct;
+    private String errorMSG;
 
-    public Integer getIdProdotto()
-    {
-        return idProdotto;
+    public String getErrorMSG() {
+        return errorMSG;
     }
 
-    public void setIdProdotto(Integer idProdotto)
-    {
-        this.idProdotto=idProdotto;
+    public void setErrorMSG(String errorMSG) {
+        this.errorMSG = errorMSG;
+    }
+
+    public Integer getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public Integer getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
     public Integer getId() {
@@ -21,4 +37,6 @@ public class CartRequest {
     public void setId(Integer id) {
         this.id = id;
     }
+
+
 }

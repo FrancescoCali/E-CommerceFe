@@ -1,27 +1,9 @@
-package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view;
+package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request;
 
-public class MemoryView extends ProductView {
+public class CoolerRequest extends ProductRequest{
     private Integer id;
-    private Boolean cart ;
-    private Boolean contained ;
-
-    public Boolean getContained() {
-        return contained;
-    }
-
-    public void setContained(Boolean contained) {
-        this.contained = contained;
-    }
-
-    public Boolean getCart() {
-        return cart;
-    }
-
-    public void setCart(Boolean cart) {
-        this.cart = cart;
-    }
-
-
+    private Boolean cart;
+    private Boolean contained;
 
     public Integer getId() {
         return id;
@@ -29,5 +11,18 @@ public class MemoryView extends ProductView {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getContained() {
+        return contained;
+    }
+    public void setContained(Boolean contained) {
+        this.contained = contained;
+    }
+    public Boolean getCart() {
+        return cart;
+    }
+    public void setCart(Boolean cart) {
+        this.cart = cart;
     }
 }

@@ -1,10 +1,8 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.controller;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.CpuRequest;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.GpuRequest;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.KeyboardRequest;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view.GpuView;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view.KeyboardView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.MotherboardRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.PsuRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view.PsuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.response.ResponseObject;
@@ -17,53 +15,52 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
+import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.utilities.WebUtils.convertInObject;
 
 import java.net.URI;
 
-import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.utilities.WebUtils.convertInObject;
-
 @Controller
-@RequestMapping("/keyboard")
+@RequestMapping("/psu")
+public class PsuController {
 
-public class KeyboardController {
     @Value("${eCommerce.backend}")
     String backend;
 
     @Autowired
     RestTemplate rest;
 
-    public static Logger log = LoggerFactory.getLogger(KeyboardController.class);
+    public static Logger log = LoggerFactory.getLogger(PsuController.class);
 
-    @GetMapping("/createKeyboard")
+    @GetMapping("/createPsu")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-keyboard");
-        KeyboardRequest req = new KeyboardRequest();
+        ModelAndView mav = new ModelAndView("create-psu");
+        PsuRequest req = new PsuRequest();
         req.setErrorMSG(null);
-        mav.addObject("keyboard", req);
+        mav.addObject("psu", req);
 
         return mav;
     }
 
-    @GetMapping (value = {"/listKeyboard"})
+    @GetMapping (value = {"/listPsu"})
     public  ModelAndView list() {
 
         ModelAndView mav = new ModelAndView("home");
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "keyboard/list")
+                .fromHttpUrl(backend + "psu/list")
                 .buildAndExpand().toUri();
         log.debug("URI:" + uri);
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listKeyboard", resp);
+        mav.addObject("listPsu", resp);
 
         return mav;
     }
 
-    @PostMapping("/saveKeyboard")
-    public Object save(@ModelAttribute("keyboard") KeyboardRequest req){
+    @PostMapping("/savePsu")
+    public Object save(@ModelAttribute("psu") PsuRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("keyboard/create")
+                .fromHttpUrl("psu/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -73,42 +70,41 @@ public class KeyboardController {
         log.debug("rc:" + resp.getRc());
 
         if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("create-keyboard");
+            ModelAndView mav = new ModelAndView("create-psu");
             req.setErrorMSG(req.getErrorMSG());
-            mav.addObject("keyboard", req);
+            mav.addObject("psu", req);
             return mav;
         }
-        return "redirect:/keyboard/listKeyboard";
+        return "redirect:/psu/listPsu";
     }
 
-    @GetMapping("/removeKeyboard")
+    @GetMapping("/removePsu")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/keyboard/remove")
+                .fromHttpUrl("/psu/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
 
         ResponseBase resp = rest.postForEntity(uri,id,ResponseBase.class).getBody();
-        return "redirect:/keyboard/listKeyboard";
+        return "redirect:/psu/listPsu";
     }
 
-    @GetMapping("/updateKeyboard")
+    @GetMapping("/updatePsu")
     public ModelAndView update(@RequestParam Integer id) {
-        ModelAndView mav = new ModelAndView("create-update-Keyboard");
+        ModelAndView mav = new ModelAndView("create-update-psu");
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "keyboard/getById")
+                .fromHttpUrl(backend + "psu/getById")
                 .queryParam("id", id)
                 .buildAndExpand()
                 .toUri();
 
         @SuppressWarnings("unchecked")
-        ResponseObject<KeyboardView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        KeyboardRequest req = (KeyboardRequest) convertInObject(resp.getDati(),KeyboardRequest.class);
+        ResponseObject<PsuView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        PsuRequest req = (PsuRequest) convertInObject(resp.getDati(),PsuRequest.class);
 
-        mav.addObject("keyboard",req);
-        mav.addObject("myTitle", "Modifica keyboard");
+        mav.addObject("psu",req);
         return mav;
     }
 }

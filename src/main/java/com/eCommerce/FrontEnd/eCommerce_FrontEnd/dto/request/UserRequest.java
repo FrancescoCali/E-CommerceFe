@@ -5,6 +5,15 @@ public class UserRequest {
     private String email;
     private String password;
     private String role;
+    private String errorMSG;
+
+    public String getErrorMSG() {
+        return errorMSG;
+    }
+
+    public void setErrorMSG(String errorMSG) {
+        this.errorMSG = errorMSG;
+    }
 
     public Integer getId() {
         return id;

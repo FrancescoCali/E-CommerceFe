@@ -1,8 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view;
 
 public class ProductView {
-
-
+    private Integer idProduct;
     private String model;
     private String brand;
     private Float price;
@@ -11,6 +10,14 @@ public class ProductView {
 
     public ProductView(){
 
+    }
+
+    public Integer getIdProduct() {
+        return idProduct;
+    }
+
+    public void setIdProduct(Integer idProduct) {
+        this.idProduct = idProduct;
     }
 
     public String getModel() {

@@ -1,10 +1,16 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.view;
 
-public class MemoryView extends ProductView {
+public class PsuView extends ProductView{
+    private Boolean cart;
+    private Boolean contained;
     private Integer id;
-    private Boolean cart ;
-    private Boolean contained ;
 
+    public Integer getId() {
+        return id;
+    }
+    public void setId(Integer id) {
+        this.id = id;
+    }
     public Boolean getContained() {
         return contained;
     }
@@ -21,13 +27,4 @@ public class MemoryView extends ProductView {
         this.cart = cart;
     }
 
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
 }
