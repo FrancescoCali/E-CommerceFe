@@ -26,18 +26,9 @@ public class InMemorySecurityConfig {
     @Autowired
     CustomUserDetailsService customUserDetailsService;
 
-    /**
-     * Provides an {@link InMemoryUserDetailsManager} bean configured with user details from
-     * {@link CustomUserDetailsService}.
-     * <p>
-     * This method creates and returns an {@link InMemoryUserDetailsManager} instance
-     * that is populated with user details loaded from the custom user details service.
-     * </p>
-     *
-     * @return An instance of {@link InMemoryUserDetailsManager} configured with user details.
-     */
+
     @Bean
-    public InMemoryUserDetailsManager inMemoryUserDetailsManager(){
+    public InMemoryUserDetailsManager inMemory(){
         return customUserDetailsService.loadUser();
     }
 }

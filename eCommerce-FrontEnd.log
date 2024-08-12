@@ -1,68 +1,27 @@
-2024-08-09T15:51:18.226+02:00  INFO 12604 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 12604 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T15:51:18.229+02:00 DEBUG 12604 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T15:51:18.230+02:00  INFO 12604 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T15:51:18.346+02:00  INFO 12604 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T15:51:18.352+02:00  INFO 12604 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T15:51:19.195+02:00  WARN 12604 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'inMemorySecurityConfig' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=inMemorySecurityConfig; factoryMethodName=inMemorySecurityConfig; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]] for bean 'inMemorySecurityConfig' since there is already [Generic bean: class [com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig]; scope=singleton; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodNames=null; destroyMethodNames=null; defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\InMemorySecurityConfig.class]] bound.
-2024-08-09T15:51:19.211+02:00  INFO 12604 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
+2024-08-13T00:02:09.776+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 19560 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
+2024-08-13T00:02:09.789+02:00 DEBUG 19560 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
+2024-08-13T00:02:09.791+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T00:02:09.877+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-13T00:02:09.877+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-13T00:02:11.211+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-13T00:02:11.232+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T00:02:11.233+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T00:02:11.282+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T00:02:11.282+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1404 ms
+2024-08-13T00:02:11.412+02:00 DEBUG 19560 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
+2024-08-13T00:02:11.743+02:00 DEBUG 19560 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : loadUser... ciccio@gmil.com
+2024-08-13T00:02:12.182+02:00  WARN 19560 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through method 'setFilterChains' parameter 0: Error creating bean with name 'securityFilterChain' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/WebSecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: defaultTarget must start with '/' or with 'http(s)'
+2024-08-13T00:02:12.185+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-08-13T00:02:12.212+02:00  INFO 19560 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
 
 Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T15:51:19.245+02:00 ERROR 12604 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
+2024-08-13T00:02:12.241+02:00 ERROR 19560 --- [eCommerce-FrontEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
 
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-The bean 'inMemorySecurityConfig', defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class], could not be registered. A bean with that name has already been defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\InMemorySecurityConfig.class] and overriding is disabled.
-
-Action:
-
-Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
-
-2024-08-09T15:51:20.377+02:00  INFO 13308 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 13308 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T15:51:20.382+02:00 DEBUG 13308 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T15:51:20.383+02:00  INFO 13308 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T15:51:20.469+02:00  INFO 13308 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T15:51:20.470+02:00  INFO 13308 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T15:51:21.050+02:00  WARN 13308 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.support.BeanDefinitionOverrideException: Invalid bean definition with name 'inMemorySecurityConfig' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Cannot register bean definition [Root bean: class [null]; scope=; abstract=false; lazyInit=null; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=inMemorySecurityConfig; factoryMethodName=inMemorySecurityConfig; initMethodNames=null; destroyMethodNames=[(inferred)]; defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]] for bean 'inMemorySecurityConfig' since there is already [Generic bean: class [com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig]; scope=singleton; abstract=false; lazyInit=null; autowireMode=0; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=null; factoryMethodName=null; initMethodNames=null; destroyMethodNames=null; defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\InMemorySecurityConfig.class]] bound.
-2024-08-09T15:51:21.065+02:00  INFO 13308 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T15:51:21.096+02:00 ERROR 13308 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-The bean 'inMemorySecurityConfig', defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class], could not be registered. A bean with that name has already been defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\InMemorySecurityConfig.class] and overriding is disabled.
-
-Action:
-
-Consider renaming one of the beans or enabling overriding by setting spring.main.allow-bean-definition-overriding=true
-
-2024-08-09T15:53:52.948+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 17928 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T15:53:52.951+02:00 DEBUG 17928 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T15:53:52.952+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T15:53:53.037+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T15:53:53.038+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T15:53:54.436+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-08-09T15:53:54.453+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-09T15:53:54.454+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-09T15:53:54.552+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-09T15:53:54.553+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1508 ms
-2024-08-09T15:53:54.677+02:00  WARN 17928 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'customUserDetailsService': Injection of autowired dependencies failed
-2024-08-09T15:53:54.683+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-09T15:53:54.717+02:00  INFO 17928 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T15:53:54.775+02:00 ERROR 17928 --- [eCommerce-FrontEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'customUserDetailsService': Injection of autowired dependencies failed
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514) ~[spring-beans-6.1.11.jar:6.1.11]
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration': Unsatisfied dependency expressed through method 'setFilterChains' parameter 0: Error creating bean with name 'securityFilterChain' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/WebSecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: defaultTarget must start with '/' or with 'http(s)'
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:895) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.inject(AutowiredAnnotationBeanPostProcessor.java:848) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
@@ -85,124 +44,9 @@ org.springframework.beans.factory.BeanCreationException: Error creating bean wit
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
 	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.8.jar:3.2.8]
-Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'jpa.backend' in value "${jpa.backend}"
-	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:964) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 22 common frames omitted
-
-2024-08-09T15:55:13.769+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 12516 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T15:55:13.774+02:00 DEBUG 12516 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T15:55:13.776+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T15:55:13.872+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T15:55:13.873+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T15:55:15.339+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-08-09T15:55:15.355+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-09T15:55:15.356+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-09T15:55:15.436+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-09T15:55:15.437+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1564 ms
-2024-08-09T15:55:15.530+02:00  WARN 12516 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'customUserDetailsService': Injection of autowired dependencies failed
-2024-08-09T15:55:15.534+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-09T15:55:15.556+02:00  INFO 12516 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T15:55:15.579+02:00 ERROR 12516 --- [eCommerce-FrontEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'customUserDetailsService': Injection of autowired dependencies failed
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:514) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1439) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:599) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.8.jar:3.2.8]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.ECommerceFrontEndApplication.main(ECommerceFrontEndApplication.java:12) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.8.jar:3.2.8]
-Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'jpa.backend' in value "${jpa.backend}"
-	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:180) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:126) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:239) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:210) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:200) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:964) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1374) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.resolveFieldValue(AutowiredAnnotationBeanPostProcessor.java:784) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:767) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:145) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessProperties(AutowiredAnnotationBeanPostProcessor.java:508) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 22 common frames omitted
-
-2024-08-09T15:56:17.464+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 10916 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T15:56:17.469+02:00 DEBUG 10916 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T15:56:17.472+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T15:56:17.571+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T15:56:17.571+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T15:56:19.244+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-08-09T15:56:19.263+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-09T15:56:19.264+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-09T15:56:19.345+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-09T15:56:19.346+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1774 ms
-2024-08-09T15:56:19.541+02:00 DEBUG 10916 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
-2024-08-09T15:56:19.647+02:00  WARN 10916 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-2024-08-09T15:56:19.650+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-09T15:56:19.666+02:00  INFO 10916 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T15:56:19.697+02:00 ERROR 10916 --- [eCommerce-FrontEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.8.jar:3.2.8]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.ECommerceFrontEndApplication.main(ECommerceFrontEndApplication.java:12) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.8.jar:3.2.8]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'securityFilterChain' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/WebSecurityConfig.class]: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: defaultTarget must start with '/' or with 'http(s)'
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:636) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
@@ -212,371 +56,92 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.addCandidateEntry(DefaultListableBeanFactory.java:1689) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.findAutowireCandidates(DefaultListableBeanFactory.java:1653) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeanCollection(DefaultListableBeanFactory.java:1543) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveMultipleBeans(DefaultListableBeanFactory.java:1511) ~[spring-beans-6.1.11.jar:6.1.11]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1392) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 24 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredMethodElement.resolveMethodArguments(AutowiredAnnotationBeanPostProcessor.java:887) ~[spring-beans-6.1.11.jar:6.1.11]
+	... 25 common frames omitted
+Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.web.SecurityFilterChain]: Factory method 'securityFilterChain' threw exception with message: defaultTarget must start with '/' or with 'http(s)'
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.11.jar:6.1.11]
 	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 38 common frames omitted
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:830) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.getForEntity(RestTemplate.java:447) ~[spring-web-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.CustomUserDetailsService.loadUser(CustomUserDetailsService.java:77) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig.inMemoryUserDetailsManager(InMemorySecurityConfig.java:41) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.CGLIB$inMemoryUserDetailsManager$0(<generated>) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
+	... 42 common frames omitted
+Caused by: java.lang.IllegalArgumentException: defaultTarget must start with '/' or with 'http(s)'
+	at org.springframework.util.Assert.isTrue(Assert.java:111) ~[spring-core-6.1.11.jar:6.1.11]
+	at org.springframework.security.web.authentication.AbstractAuthenticationTargetUrlRequestHandler.setDefaultTargetUrl(AbstractAuthenticationTargetUrlRequestHandler.java:162) ~[spring-security-web-6.2.5.jar:6.2.5]
+	at org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer.defaultSuccessUrl(AbstractAuthenticationFilterConfigurer.java:131) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at org.springframework.security.config.annotation.web.configurers.AbstractAuthenticationFilterConfigurer.defaultSuccessUrl(AbstractAuthenticationFilterConfigurer.java:116) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.WebSecurityConfig.lambda$securityFilterChain$1(WebSecurityConfig.java:60) ~[classes/:na]
+	at org.springframework.security.config.annotation.web.builders.HttpSecurity.formLogin(HttpSecurity.java:2195) ~[spring-security-config-6.2.5.jar:6.2.5]
+	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.WebSecurityConfig.securityFilterChain(WebSecurityConfig.java:58) ~[classes/:na]
+	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.WebSecurityConfig$$SpringCGLIB$$0.CGLIB$securityFilterChain$0(<generated>) ~[classes/:na]
+	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.WebSecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
 	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.11.jar:6.1.11]
 	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.inMemoryUserDetailsManager(<generated>) ~[classes/:na]
+	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.WebSecurityConfig$$SpringCGLIB$$0.securityFilterChain(<generated>) ~[classes/:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
 	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 39 common frames omitted
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
-	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:534) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:639) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:282) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:387) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:409) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1309) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1242) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1128) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1057) ~[na:na]
-	at org.springframework.http.client.SimpleClientHttpRequest.executeInternal(SimpleClientHttpRequest.java:79) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889) ~[spring-web-6.1.11.jar:6.1.11]
-	... 53 common frames omitted
+	... 43 common frames omitted
 
-2024-08-09T18:12:12.581+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 14788 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T18:12:12.586+02:00 DEBUG 14788 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T18:12:12.587+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T18:12:12.676+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T18:12:12.677+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T18:12:14.544+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-08-09T18:12:14.556+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-09T18:12:14.557+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-09T18:12:14.623+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-09T18:12:14.624+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1946 ms
-2024-08-09T18:12:14.784+02:00 DEBUG 14788 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
-2024-08-09T18:12:14.890+02:00  WARN 14788 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-2024-08-09T18:12:14.892+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-09T18:12:14.904+02:00  INFO 14788 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T18:12:14.929+02:00 ERROR 14788 --- [eCommerce-FrontEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.8.jar:3.2.8]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.ECommerceFrontEndApplication.main(ECommerceFrontEndApplication.java:12) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.8.jar:3.2.8]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 24 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 38 common frames omitted
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:830) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.getForEntity(RestTemplate.java:447) ~[spring-web-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.CustomUserDetailsService.loadUser(CustomUserDetailsService.java:77) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig.inMemoryUserDetailsManager(InMemorySecurityConfig.java:41) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.CGLIB$inMemoryUserDetailsManager$0(<generated>) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.inMemoryUserDetailsManager(<generated>) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 39 common frames omitted
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
-	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:534) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:639) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:282) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:387) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:409) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1309) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1242) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1128) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1057) ~[na:na]
-	at org.springframework.http.client.SimpleClientHttpRequest.executeInternal(SimpleClientHttpRequest.java:79) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889) ~[spring-web-6.1.11.jar:6.1.11]
-	... 53 common frames omitted
-
-2024-08-09T18:42:36.037+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 7192 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T18:42:36.045+02:00 DEBUG 7192 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T18:42:36.047+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T18:42:36.154+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T18:42:36.155+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T18:42:38.109+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-08-09T18:42:38.126+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-09T18:42:38.127+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-09T18:42:38.199+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-09T18:42:38.200+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2043 ms
-2024-08-09T18:42:38.404+02:00 DEBUG 7192 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
-2024-08-09T18:42:38.493+02:00  WARN 7192 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-2024-08-09T18:42:38.496+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-09T18:42:38.507+02:00  INFO 7192 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T18:42:38.536+02:00 ERROR 7192 --- [eCommerce-FrontEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.8.jar:3.2.8]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.ECommerceFrontEndApplication.main(ECommerceFrontEndApplication.java:12) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.8.jar:3.2.8]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 24 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 38 common frames omitted
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:830) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.getForEntity(RestTemplate.java:447) ~[spring-web-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.CustomUserDetailsService.loadUser(CustomUserDetailsService.java:77) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig.inMemoryUserDetailsManager(InMemorySecurityConfig.java:41) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.CGLIB$inMemoryUserDetailsManager$0(<generated>) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.inMemoryUserDetailsManager(<generated>) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 39 common frames omitted
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
-	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:534) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:639) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:282) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:387) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:409) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1309) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1242) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1128) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1057) ~[na:na]
-	at org.springframework.http.client.SimpleClientHttpRequest.executeInternal(SimpleClientHttpRequest.java:79) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889) ~[spring-web-6.1.11.jar:6.1.11]
-	... 53 common frames omitted
-
-2024-08-09T18:47:22.571+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 10368 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
-2024-08-09T18:47:22.576+02:00 DEBUG 10368 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
-2024-08-09T18:47:22.577+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
-2024-08-09T18:47:22.663+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2024-08-09T18:47:22.664+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2024-08-09T18:47:24.719+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
-2024-08-09T18:47:24.742+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-08-09T18:47:24.742+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
-2024-08-09T18:47:24.856+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-08-09T18:47:24.858+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2191 ms
-2024-08-09T18:47:25.019+02:00 DEBUG 10368 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
-2024-08-09T18:47:25.135+02:00  WARN 10368 --- [eCommerce-FrontEnd] [restartedMain] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-2024-08-09T18:47:25.140+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2024-08-09T18:47:25.161+02:00  INFO 10368 --- [eCommerce-FrontEnd] [restartedMain] .s.b.a.l.ConditionEvaluationReportLogger : 
-
-Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
-2024-08-09T18:47:25.197+02:00 ERROR 10368 --- [eCommerce-FrontEnd] [restartedMain] o.s.boot.SpringApplication               : Application run failed
-
-org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'userService' defined in file [C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes\com\eCommerce\FrontEnd\eCommerce_FrontEnd\Configuration\UserService.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:795) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:237) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1375) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1212) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:975) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:971) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:625) ~[spring-context-6.1.11.jar:6.1.11]
-	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:754) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:456) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:335) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1363) ~[spring-boot-3.2.8.jar:3.2.8]
-	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1352) ~[spring-boot-3.2.8.jar:3.2.8]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.ECommerceFrontEndApplication.main(ECommerceFrontEndApplication.java:12) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50) ~[spring-boot-devtools-3.2.8.jar:3.2.8]
-Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'inMemoryUserDetailsManager' defined in class path resource [com/eCommerce/FrontEnd/eCommerce_FrontEnd/Configuration/InMemorySecurityConfig.class]: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:648) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiateUsingFactoryMethod(ConstructorResolver.java:485) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.instantiateUsingFactoryMethod(AbstractAutowireCapableBeanFactory.java:1355) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1185) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:562) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:522) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:337) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:234) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:335) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:200) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1443) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1353) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:904) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:782) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 24 common frames omitted
-Caused by: org.springframework.beans.BeanInstantiationException: Failed to instantiate [org.springframework.security.provisioning.InMemoryUserDetailsManager]: Factory method 'inMemoryUserDetailsManager' threw exception with message: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:178) ~[spring-beans-6.1.11.jar:6.1.11]
-	at org.springframework.beans.factory.support.ConstructorResolver.instantiate(ConstructorResolver.java:644) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 38 common frames omitted
-Caused by: org.springframework.web.client.ResourceAccessException: I/O error on GET request for "http://localhost:9090/rest/user/list": Connection refused: connect
-	at org.springframework.web.client.RestTemplate.createResourceAccessException(RestTemplate.java:915) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:895) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:830) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.getForEntity(RestTemplate.java:447) ~[spring-web-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.CustomUserDetailsService.loadUser(CustomUserDetailsService.java:77) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig.inMemoryUserDetailsManager(InMemorySecurityConfig.java:41) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.CGLIB$inMemoryUserDetailsManager$0(<generated>) ~[classes/:na]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$FastClass$$1.invoke(<generated>) ~[classes/:na]
-	at org.springframework.cglib.proxy.MethodProxy.invokeSuper(MethodProxy.java:258) ~[spring-core-6.1.11.jar:6.1.11]
-	at org.springframework.context.annotation.ConfigurationClassEnhancer$BeanMethodInterceptor.intercept(ConfigurationClassEnhancer.java:348) ~[spring-context-6.1.11.jar:6.1.11]
-	at com.eCommerce.FrontEnd.eCommerce_FrontEnd.Configuration.InMemorySecurityConfig$$SpringCGLIB$$0.inMemoryUserDetailsManager(<generated>) ~[classes/:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
-	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
-	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
-	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
-	at org.springframework.beans.factory.support.SimpleInstantiationStrategy.instantiate(SimpleInstantiationStrategy.java:146) ~[spring-beans-6.1.11.jar:6.1.11]
-	... 39 common frames omitted
-Caused by: java.net.ConnectException: Connection refused: connect
-	at java.base/sun.nio.ch.Net.connect0(Native Method) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:579) ~[na:na]
-	at java.base/sun.nio.ch.Net.connect(Net.java:568) ~[na:na]
-	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:593) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
-	at java.base/java.net.Socket.connect(Socket.java:583) ~[na:na]
-	at java.base/sun.net.NetworkClient.doConnect(NetworkClient.java:183) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:534) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.openServer(HttpClient.java:639) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.<init>(HttpClient.java:282) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:387) ~[na:na]
-	at java.base/sun.net.www.http.HttpClient.New(HttpClient.java:409) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.getNewHttpClient(HttpURLConnection.java:1309) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect0(HttpURLConnection.java:1242) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.plainConnect(HttpURLConnection.java:1128) ~[na:na]
-	at java.base/sun.net.www.protocol.http.HttpURLConnection.connect(HttpURLConnection.java:1057) ~[na:na]
-	at org.springframework.http.client.SimpleClientHttpRequest.executeInternal(SimpleClientHttpRequest.java:79) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractStreamingClientHttpRequest.executeInternal(AbstractStreamingClientHttpRequest.java:70) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.http.client.AbstractClientHttpRequest.execute(AbstractClientHttpRequest.java:66) ~[spring-web-6.1.11.jar:6.1.11]
-	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:889) ~[spring-web-6.1.11.jar:6.1.11]
-	... 53 common frames omitted
-
+2024-08-13T00:04:18.998+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 6044 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
+2024-08-13T00:04:19.002+02:00 DEBUG 6044 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
+2024-08-13T00:04:19.003+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T00:04:19.086+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-13T00:04:19.086+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-13T00:04:20.463+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-13T00:04:20.482+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T00:04:20.483+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T00:04:20.562+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T00:04:20.564+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1476 ms
+2024-08-13T00:04:20.790+02:00 DEBUG 6044 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
+2024-08-13T00:04:20.922+02:00 DEBUG 6044 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : loadUser... ciccio@gmil.com
+2024-08-13T00:04:21.401+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5e2be551, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1422ed75, org.springframework.security.web.context.SecurityContextHolderFilter@ee44a86, org.springframework.security.web.header.HeaderWriterFilter@389d13e8, org.springframework.web.filter.CorsFilter@484c27c4, org.springframework.security.web.csrf.CsrfFilter@33827b5f, org.springframework.security.web.authentication.logout.LogoutFilter@13088efe, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@782482cf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17148b0f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e4c36ae, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74ff794, org.springframework.security.web.access.ExceptionTranslationFilter@43207ee6, org.springframework.security.web.access.intercept.AuthorizationFilter@58025831]
+2024-08-13T00:04:21.593+02:00  WARN 6044 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-08-13T00:04:21.640+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-13T00:04:21.656+02:00  INFO 6044 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Started ECommerceFrontEndApplication in 3.171 seconds (process running for 3.683)
+2024-08-13T00:04:35.894+02:00  INFO 6044 --- [eCommerce-FrontEnd] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-13T00:04:35.895+02:00  INFO 6044 --- [eCommerce-FrontEnd] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-13T00:04:35.896+02:00  INFO 6044 --- [eCommerce-FrontEnd] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-13T00:06:17.378+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 15504 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
+2024-08-13T00:06:17.384+02:00 DEBUG 15504 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
+2024-08-13T00:06:17.385+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T00:06:17.465+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-13T00:06:17.466+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-13T00:06:19.194+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-13T00:06:19.207+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T00:06:19.208+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T00:06:19.258+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T00:06:19.259+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1792 ms
+2024-08-13T00:06:19.421+02:00 DEBUG 15504 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
+2024-08-13T00:06:19.593+02:00 DEBUG 15504 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : loadUser... ciccio@gmil.com
+2024-08-13T00:06:20.167+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@776e2401, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3d8bb259, org.springframework.security.web.context.SecurityContextHolderFilter@577ae23, org.springframework.security.web.header.HeaderWriterFilter@58a43d6d, org.springframework.web.filter.CorsFilter@70487475, org.springframework.security.web.csrf.CsrfFilter@45736adf, org.springframework.security.web.authentication.logout.LogoutFilter@1c3cb504, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6bb51520, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5d1fa30c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@283bb47d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4d99ad75, org.springframework.security.web.access.ExceptionTranslationFilter@5a599202, org.springframework.security.web.access.intercept.AuthorizationFilter@5a64bb5d]
+2024-08-13T00:06:20.359+02:00  WARN 15504 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-08-13T00:06:20.413+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-13T00:06:20.428+02:00  INFO 15504 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Started ECommerceFrontEndApplication in 3.531 seconds (process running for 3.984)
+2024-08-13T00:06:26.249+02:00  INFO 15504 --- [eCommerce-FrontEnd] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-13T00:06:26.251+02:00  INFO 15504 --- [eCommerce-FrontEnd] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-13T00:06:26.252+02:00  INFO 15504 --- [eCommerce-FrontEnd] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-08-13T00:07:15.650+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Starting ECommerceFrontEndApplication using Java 17.0.11 with PID 11532 (C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd\target\classes started by HP in C:\Francesco\Progetto Betacom Finale\eCommerce-FrontEnd)
+2024-08-13T00:07:15.653+02:00 DEBUG 11532 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Running with Spring Boot v3.2.8, Spring v6.1.11
+2024-08-13T00:07:15.654+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : No active profile set, falling back to 1 default profile: "default"
+2024-08-13T00:07:15.743+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2024-08-13T00:07:15.744+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2024-08-13T00:07:17.246+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-08-13T00:07:17.263+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-08-13T00:07:17.264+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-13T00:07:17.324+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-08-13T00:07:17.324+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1577 ms
+2024-08-13T00:07:17.477+02:00 DEBUG 11532 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : User load
+2024-08-13T00:07:17.608+02:00 DEBUG 11532 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.C.CustomUserDetailsService       : loadUser... ciccio@gmil.com
+2024-08-13T00:07:18.117+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@1bd07330, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7181fc64, org.springframework.security.web.context.SecurityContextHolderFilter@1914d643, org.springframework.security.web.header.HeaderWriterFilter@26397171, org.springframework.web.filter.CorsFilter@7c4e487, org.springframework.security.web.csrf.CsrfFilter@122c3758, org.springframework.security.web.authentication.logout.LogoutFilter@53932782, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@753f3af2, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@14375309, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@6ed13226, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@315a1f22, org.springframework.security.web.access.ExceptionTranslationFilter@749cc115, org.springframework.security.web.access.intercept.AuthorizationFilter@24c4bdb6]
+2024-08-13T00:07:18.321+02:00  WARN 11532 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : Unable to start LiveReload server
+2024-08-13T00:07:18.356+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-08-13T00:07:18.369+02:00  INFO 11532 --- [eCommerce-FrontEnd] [restartedMain] c.e.F.e.ECommerceFrontEndApplication     : Started ECommerceFrontEndApplication in 3.235 seconds (process running for 3.785)
+2024-08-13T00:07:18.519+02:00  INFO 11532 --- [eCommerce-FrontEnd] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-13T00:07:18.520+02:00  INFO 11532 --- [eCommerce-FrontEnd] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-08-13T00:07:18.521+02:00  INFO 11532 --- [eCommerce-FrontEnd] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms

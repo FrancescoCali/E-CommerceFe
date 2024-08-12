@@ -74,15 +74,18 @@ public class CustomUserDetailsService {
                 .buildAndExpand()
                 .toUri();
 
-        Response<HashMap<String, Objects>> resp = rest.getForEntity(uri, Response.class).getBody();
+        Response<HashMap<String, Object>> resp = rest.getForEntity(uri, Response.class).getBody();
 
-        for (HashMap<String, Objects> ut : resp.getDati()) {
+        for (HashMap<String, Object> ut : resp.getDati()) {
+            log.debug("loadUser... " + ut.get("email"));
+
             userDetailsList.add(
                     User.withUsername(ut.get("email").toString())
                             .password(getPasswordEncoder.encode(ut.get("password").toString()))
                             .roles(ut.get("role").toString())
                             .build()
             );
+            System.out.println(resp.getDati());
         }
         return new InMemoryUserDetailsManager(userDetailsList);
     }
