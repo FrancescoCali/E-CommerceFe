@@ -62,7 +62,7 @@ public class MonitorController {
     public Object save(@ModelAttribute("monitor") MonitorRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("monitor/create")
+                .fromHttpUrl(backend + "monitor/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -83,7 +83,7 @@ public class MonitorController {
     @GetMapping("/removeMonitor")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/monitor/remove")
+                .fromHttpUrl(backend + "/monitor/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();

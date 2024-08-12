@@ -61,7 +61,7 @@ public class GpuController {
     public Object save(@ModelAttribute("gpu") GpuRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("gpu/create")
+                .fromHttpUrl(backend + "gpu/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -82,7 +82,7 @@ public class GpuController {
     @GetMapping("/removeGpu")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/cpu/remove")
+                .fromHttpUrl(backend + "/gpu/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();

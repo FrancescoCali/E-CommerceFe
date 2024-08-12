@@ -20,7 +20,7 @@ import java.net.URI;
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.utilities.WebUtils.convertInObject;
 
 @Controller
-@RequestMapping("ram")
+@RequestMapping("/ram")
 public class RamController {
     @Value("${eCommerce.backend}")
     String backend;
@@ -58,7 +58,7 @@ public class RamController {
     public Object save(@ModelAttribute("ram") RamRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("ram/create")
+                .fromHttpUrl(backend + "ram/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -103,7 +103,7 @@ public class RamController {
         RamRequest req = (RamRequest) convertInObject(resp.getDati(),RamRequest.class);
 
         mav.addObject("ram",req);
-        mav.addObject("myTitle", "Modifica ram");
+//        mav.addObject("myTitle", "Modifica ram");
         return mav;
     }
 }

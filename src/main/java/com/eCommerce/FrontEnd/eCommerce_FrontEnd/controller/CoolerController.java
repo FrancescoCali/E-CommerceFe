@@ -20,7 +20,7 @@ import java.net.URI;
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.utilities.WebUtils.convertInObject;
 
 @Controller
-@RequestMapping("cooler")
+@RequestMapping("/cooler")
 public class CoolerController {
 
     @Value("${eCommerce.backend}")
@@ -60,7 +60,7 @@ public class CoolerController {
     public Object save(@ModelAttribute("cooler") CoolerRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("cooler/create")
+                .fromHttpUrl(backend + "cooler/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -81,7 +81,7 @@ public class CoolerController {
     @GetMapping("/removeCooler")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/cooler/remove")
+                .fromHttpUrl(backend + "/cooler/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
@@ -108,10 +108,4 @@ public class CoolerController {
         mav.addObject("myTitle", "Modifica cooler");
         return mav;
     }
-
-
-
-
-
-
 }

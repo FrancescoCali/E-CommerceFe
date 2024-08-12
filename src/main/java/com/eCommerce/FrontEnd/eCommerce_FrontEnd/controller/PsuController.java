@@ -60,7 +60,7 @@ public class PsuController {
     public Object save(@ModelAttribute("psu") PsuRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("psu/create")
+                .fromHttpUrl(backend + "psu/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -81,7 +81,7 @@ public class PsuController {
     @GetMapping("/removePsu")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/psu/remove")
+                .fromHttpUrl(backend + "/psu/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();

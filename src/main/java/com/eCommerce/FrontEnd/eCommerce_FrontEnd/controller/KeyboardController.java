@@ -63,7 +63,7 @@ public class KeyboardController {
     public Object save(@ModelAttribute("keyboard") KeyboardRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("keyboard/create")
+                .fromHttpUrl(backend + "keyboard/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -84,7 +84,7 @@ public class KeyboardController {
     @GetMapping("/removeKeyboard")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/keyboard/remove")
+                .fromHttpUrl(backend + "/keyboard/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();

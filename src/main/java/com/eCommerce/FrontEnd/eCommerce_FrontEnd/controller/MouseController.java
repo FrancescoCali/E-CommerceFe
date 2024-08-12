@@ -20,7 +20,7 @@ import java.net.URI;
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.utilities.WebUtils.convertInObject;
 
 @Controller
-@RequestMapping("mouse")
+@RequestMapping("/mouse")
 public class MouseController {
     @Value("${eCommerce.backend}")
     String backend;
@@ -58,7 +58,7 @@ public class MouseController {
     public Object save(@ModelAttribute("mouse") MouseRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("mouse/create")
+                .fromHttpUrl(backend + "mouse/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -79,7 +79,7 @@ public class MouseController {
     @GetMapping("/removeMouse")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/mouse/remove")
+                .fromHttpUrl(backend + "/mouse/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();

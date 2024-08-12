@@ -64,7 +64,7 @@ public class MemoryController {
     public Object save(@ModelAttribute("memory") MemoryRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("memory/create")
+                .fromHttpUrl(backend + "memory/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -85,7 +85,7 @@ public class MemoryController {
     @GetMapping("/removeMemory")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/memory/remove")
+                .fromHttpUrl(backend + "/memory/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();

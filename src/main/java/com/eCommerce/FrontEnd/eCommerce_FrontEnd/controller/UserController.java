@@ -1,6 +1,5 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.controller;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.GpuRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.dto.request.UserRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

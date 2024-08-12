@@ -60,7 +60,7 @@ public class MotherboardController {
     public Object save(@ModelAttribute("motherboard") MotherboardRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("motherboard/create")
+                .fromHttpUrl(backend + "motherboard/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -81,7 +81,7 @@ public class MotherboardController {
     @GetMapping("/removeMotherboard")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/motherboard/remove")
+                .fromHttpUrl(backend + "/motherboard/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();

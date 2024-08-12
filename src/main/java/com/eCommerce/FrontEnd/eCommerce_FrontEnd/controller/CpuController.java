@@ -58,7 +58,7 @@ public class CpuController {
     public Object save(@ModelAttribute("cpu") CpuRequest req){
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("cpu/create")
+                .fromHttpUrl(backend + "cpu/create")
                 .buildAndExpand()
                 .toUri();
         log.debug("uri: "+uri);
@@ -79,7 +79,7 @@ public class CpuController {
     @GetMapping("/removeCpu")
     public Object remove(@RequestParam Integer id){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl("/cpu/remove")
+                .fromHttpUrl(backend + "/cpu/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
