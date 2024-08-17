@@ -14,7 +14,6 @@ public class ECommerceFrontEndApplication {
 
 	@Bean
 	public RestTemplate rest(){
-		RestTemplate t = new RestTemplate();
-		return t;
+		return new RestTemplate();
 	}
 }

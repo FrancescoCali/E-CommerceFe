@@ -1,0 +1,81 @@
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>eCommerce</title>
+
+</head>
+<body>
+
+    <nav th:insert= "~{fragments/navigation}"></nav>
+
+<div class="slider" align="center">
+    <input type="radio" name="testimonial" id="t-1">
+    <input type="radio" name="testimonial" id="t-2">
+    <input type="radio" name="testimonial" id="t-3" checked>
+    <input type="radio" name="testimonial" id="t-4">
+    <input type="radio" name="testimonial" id="t-5">
+    <input type="radio" name="testimonial" id="t-6">
+    <div class="testimonials">
+        <label class="item" for="t-1">
+            <a th:href="@{/listLaptop(role=${role})}" >
+                <img th:src="@{/images/computer.jpg}" alt="laptop">
+            </a>
+        </label>
+        <label class="item" for="t-2">
+            <a th:href="@{/listPc}" >
+                <img th:src="@{/images/pc.jpg}" alt="pc">
+            </a>
+        </label>
+        <label class="item" for="t-3">
+            <a th:href="@{/listMonitor}" >
+                <img th:src="@{/images/monitor.jpg}" alt="monitor">
+            </a>
+        </label>
+        <label class="item" for="t-4">
+            <a th:href="@{/listMouse}" >
+                <img th:src="@{/images/mouse.jpg}" alt="mouse">
+            </a>
+        </label>
+        <label class="item" for="t-5">
+            <a th:href="@{/listKeyboard}" >
+                <img th:src="@{/images/keyboard.jpg}" alt="keyboard">
+            </a>
+        </label>
+        <label class="item" for="t-6">
+            <a th:href="@{/listComponents}" >
+                <img th:src="@{/images/components.jpg}" alt="components">
+            </a>
+        </label>
+    </div>
+    <br/>
+    <div class="dots">
+        <label for="t-1"></label>
+        <label for="t-2"></label>
+        <label for="t-3"></label>
+        <label for="t-4"></label>
+        <label for="t-5"></label>
+        <label for="t-6"></label>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const radios = document.querySelectorAll('.slider input[type="radio"]');
+        const labels = document.querySelectorAll('.testimonials label.item');
+
+        let currentIndex = 0;
+
+        function changeImage() {
+            radios[currentIndex].checked = false;
+
+            currentIndex = (currentIndex + 1) % radios.length;
+
+            radios[currentIndex].checked = true;
+        }
+        setInterval(changeImage, 15000);
+    });
+</script>
+
+</body>
+</html>

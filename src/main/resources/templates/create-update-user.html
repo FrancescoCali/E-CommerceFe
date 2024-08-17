@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>Project JPA</title>
+</head>
+<body>
+<nav th:insert="~{fragments/navigation :: block-navigation(${myTitle})}"></nav>
+
+<div class="container">
+    <h3 class="description">Inserire i dati relativi alla macchina</h3>
+    <form class="form_content" th:action="@{/saveUser}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <table class="User">
+
+            <!-- Numero Ruote -->
+            <tr>
+                <td><label for="email">Email:</label></td>
+                <td><input type="text" id="email" th:field="*{email}" placeholder="email" required></td>
+            </tr>
+
+            <!-- Numero Posti -->
+            <tr>
+                <td><label for="password">Password:</label></td>
+                <td><input type="password" id="password" th:field="*{password}" placeholder="password" required></td>
+            </tr>
+
+            <!-- Alimentazione -->
+            <tr>
+                <td><label for="address">Address:</label></td>
+                <td><input type="text" id="address" th:field="*{address}" placeholder="Address" required></td>
+            </tr>
+
+        </table>
+
+
+        <button class="buttonlike" type="submit">Registra Utente</button>
+
+        <!-- Visualizzazione degli errori -->
+        <div class="container-error" th:if="${errorMSG} != null">
+            <span th:text="${errorMSG}" style="color: red">***</span>
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

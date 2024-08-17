@@ -1,0 +1,356 @@
+body {
+  margin: 0;
+  background: #282d34;
+  color: white;
+  font-family: sans-serif;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  background-image: url('../resources/static/images/Sfondo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.background-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  background-size: cover;
+  background-position: center;
+}
+
+a.logout {
+  object-position: right;
+}
+
+/* Aggiungi questa regola per posizionare il menu in alto */
+nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Imposta uno sfondo semi-trasparente */
+  padding-top: 10px; /* Aggiungi un po' di spazio verticale */
+  padding-bottom: 33px;
+  z-index: 10; /* Mantieni il menu al di sopra di altri elementi */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.navbar a.logout {
+  margin-left: auto; /* Spinge "Logout" a destra */
+}
+
+.navbar a.logout i {
+  font-size: 18px; /* Regola la dimensione dell'icona */
+  color: #ffffff; /* Colore dell'icona */
+  transition: color 0.3s ease; /* Aggiungi una transizione */
+}
+
+.navbar a.logout i:hover {
+  color: #d80404; /* Cambia il colore dell'icona al passaggio del mouse */
+}
+
+
+
+/* Aggiungi questa regola per modificare l'aspetto del testo nel menu */
+.navbar a {
+  padding: 0px 0px; /* Spaziatura intorno agli elementi del menu */
+  text-decoration: none; /* Rimuovi la sottolineatura */
+  font-size: 18px; /* Aumenta leggermente la dimensione del testo */
+  transition: background-color 0.3s ease; /* Aggiungi un effetto di transizione */
+  background-color: #282d34;
+  color: #ffffff;
+}
+
+/* Cambia il colore di sfondo al passaggio del mouse */
+.navbar a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.active {
+  background-color: #04AA6D;
+}
+
+.description {
+	font-weight: 200;
+}
+
+a:link, a:visited {
+  background-color: #282d34;
+  color: #ffffff;
+  padding: 11px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+
+a:hover {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+input:not([type="checkbox"]),
+select {
+  min-width: 15vh;
+  padding: 0.5vh;
+  border-radius: 10px;
+  border: 1px solid #4d4d4d;
+  outline: none;
+  font-weight: 200;
+  font-size: 1em;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 10vh;
+  width: 100%;
+}
+
+.form_content {
+  display: flex;
+  flex-direction: row;
+  gap: 3vh;
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: 2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: black;
+  letter-spacing: 2vh;
+}
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+table {
+  border-collapse: collapse;
+  border: 2px solid #8a8a8a;
+}
+
+th {
+  background-color: #cecece;
+  padding: 3vh;
+}
+
+.tr_alternative {
+  background-color: #e0e0e0;
+}
+
+td {
+  text-align: center;
+  padding: 1vh;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+}
+button {
+  margin-top: 3vh;
+  padding: 1vh;
+  background-color: #0094d4;
+  color: #ffffff;
+  border: none;
+  outline: none;
+  border-radius: 50px;
+  width: 20vh;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonlike {
+  margin-top: 3vh;
+  padding: 1.5vh;
+  background-color: #0094d4;
+  color: #ffffff;  border: none;
+  outline: none;
+  border-radius: 50px;
+  width: 20vh;
+  font-size: 0.7em;
+  transition: all 0.3s ease-in-out;
+}
+
+main {
+    margin:150px 200px;
+}
+
+.container-error{
+	margin-top: 10px;
+	width:100%;
+	height:30px;
+	display:flex;
+	align-items:center;
+	background-color: rgba(255, 0, 0, 0.2);
+	justify-content: center;
+	border-radius: 10px;
+
+}
+
+.testimonials .item:hover img {
+  transform: scale(1.1);
+  transition: transform 0.5s ease;
+}
+.slider{
+  margin-top: 18px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+}
+.slider input{display: none;}
+.testimonials{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-height: 600px;
+  perspective: 1080px;
+  overflow: hidden;
+}
+.testimonials .item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  margin:0;
+}
+
+.testimonials .item{
+  height:450px;
+  width: 450px;
+  padding: 30px;
+  border-radius: 2%;
+  background: none;
+  position: absolute;
+  /*border: 0px solid none;*/
+  text-align: center;
+  transition: transform 0.4s, opacity 0.4s; /* Aggiunto il controllo dell'opacità */
+  filter : drop-shadow(2px 2px 30px white);
+  user-select: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+.testimonials .item h1{font-size: 114px; color: white;}
+.dots{display: flex; justify-content: center;align-items: center;}
+.dots label{
+  height: 5px;
+  width: 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: #413B52;
+  margin: 7px;
+  transition-duration: 0.2s;
+}
+
+#t-1:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-4"],
+#t-5:checked ~ .dots label[for="t-5"],
+#t-6:checked ~ .dots label[for="t-6"] {
+  transform: scale(2);
+  background-color: #fff;
+  box-shadow: 0px 0px 0px 3px #dddddd24;
+}
+
+#t-1:checked ~ .dots label[for="t-2"],
+#t-2:checked ~ .dots label[for="t-1"],
+#t-2:checked ~ .dots label[for="t-3"],
+#t-3:checked ~ .dots label[for="t-2"],
+#t-3:checked ~ .dots label[for="t-4"],
+#t-4:checked ~ .dots label[for="t-3"],
+#t-4:checked ~ .dots label[for="t-5"],
+#t-5:checked ~ .dots label[for="t-4"],
+#t-5:checked ~ .dots label[for="t-6"],
+#t-6:checked ~ .dots label[for="t-5"] {
+  transform: scale(1.5);
+}
+
+/* Nascondi completamente il label che si trova in fondo */
+#t-1:checked ~ .testimonials label[for="t-4"],
+#t-2:checked ~ .testimonials label[for="t-5"],
+#t-3:checked ~ .testimonials label[for="t-6"],
+#t-4:checked ~ .testimonials label[for="t-1"],
+#t-5:checked ~ .testimonials label[for="t-2"],
+#t-6:checked ~ .testimonials label[for="t-3"] {
+  opacity: 0; /* Nascondi */
+  pointer-events: none; /* Disabilita interazioni */
+  transform: translate3d(0, 0, -500px); /* Portalo indietro nella scena */
+}
+
+/* Posizionamento e visibilità dei label laterali */
+#t-1:checked ~ .testimonials label[for="t-3"],
+#t-2:checked ~ .testimonials label[for="t-4"],
+#t-3:checked ~ .testimonials label[for="t-5"],
+#t-4:checked ~ .testimonials label[for="t-6"],
+#t-5:checked ~ .testimonials label[for="t-1"],
+#t-6:checked ~ .testimonials label[for="t-2"] {
+  transform: translate3d(500px, 0, -350px) rotateY(45deg);
+  z-index: 2;
+  opacity: 0.5;
+}
+
+#t-1:checked ~ .testimonials label[for="t-2"],
+#t-2:checked ~ .testimonials label[for="t-3"],
+#t-3:checked ~ .testimonials label[for="t-4"],
+#t-4:checked ~ .testimonials label[for="t-5"],
+#t-5:checked ~ .testimonials label[for="t-6"],
+#t-6:checked ~ .testimonials label[for="t-1"] {
+  transform: translate3d(320px, 0, -160px) rotateY(35deg);
+  z-index: 3;
+  opacity: 0.7;
+}
+
+#t-2:checked ~ .testimonials label[for="t-1"],
+#t-3:checked ~ .testimonials label[for="t-2"],
+#t-4:checked ~ .testimonials label[for="t-3"],
+#t-5:checked ~ .testimonials label[for="t-4"],
+#t-6:checked ~ .testimonials label[for="t-5"],
+#t-1:checked ~ .testimonials label[for="t-6"] {
+  transform: translate3d(-320px, 0, -160px) rotateY(-35deg);
+  z-index: 3;
+  opacity: 0.7;
+}
+
+#t-3:checked ~ .testimonials label[for="t-1"],
+#t-4:checked ~ .testimonials label[for="t-2"],
+#t-5:checked ~ .testimonials label[for="t-3"],
+#t-6:checked ~ .testimonials label[for="t-4"],
+#t-2:checked ~ .testimonials label[for="t-6"],
+#t-1:checked ~ .testimonials label[for="t-5"] {
+  transform: translate3d(-500px, 0, -350px) rotateY(-45deg);
+  z-index: 2;
+  opacity: 0.5;
+}
+
+/* Il label attivo viene visualizzato */
+#t-1:checked ~ .testimonials label[for="t-1"],
+#t-2:checked ~ .testimonials label[for="t-2"],
+#t-3:checked ~ .testimonials label[for="t-3"],
+#t-4:checked ~ .testimonials label[for="t-4"],
+#t-5:checked ~ .testimonials label[for="t-5"],
+#t-6:checked ~ .testimonials label[for="t-6"] {
+  z-index: 4;
+  opacity: 1; /* Rendi visibile solo l'elemento selezionato */
+  transform: translate3d(0, 0, 0) rotateY(0deg); /* Posizionalo in primo piano */
+}

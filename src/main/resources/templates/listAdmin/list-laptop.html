@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="page-wrapper">
+    <br>
+    <nav th:insert="~{fragments/navigation :: block-navigation('Elenco Laptop')}"></nav>
+    <br>
+    <br>
+    <div align="center" class="content">
+        <table class="colorful-table">
+            <thead class="table-head">
+            <tr>
+                <th>id</th>
+                <th>Ram</th>
+                <th>Cpu</th>
+                <th>Gpu</th>
+                <th>Memory</th>
+                <th>Motherboard</th>
+                <th>Colour</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Marca</th>
+                <th>Model</th>
+                <th>idProduct</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="laptop: ${listLaptop.dati}">
+                <td th:text="${laptop.id}"></td>
+                <td th:text="${laptop.description}"></td>
+                <td th:text="${laptop.brand}"></td>
+                <td th:text="${laptop.model}"></td>
+                <td th:text="${laptop.colour}"></td>
+                <td th:text="${laptop.cpu}"></td>
+                <td th:text="${laptop.gpu}"></td>
+                <td th:text="${laptop.ram}"></td>
+                <td th:text="${laptop.memory}"></td>
+                <td th:text="${laptop.motherboard}"></td>
+                <td th:text="${laptop.price}"></td>
+                <td th:text="${laptop.idProduct}"></td>
+                <td class="edit"><a th:href="@{/updateLaptop(id=${pc.id})}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td class="delete"><a th:href="@{/removeLaptop(id=${pc.id})}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <a th:href="@{/createLaptop" class="buttonlike">Crea Laptop</a>
+        <div style="height: 50px;"></div>
+    </div>
+</div>
+</body>
+</html>
