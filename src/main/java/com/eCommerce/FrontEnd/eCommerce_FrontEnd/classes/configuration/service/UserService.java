@@ -1,5 +1,6 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.service;
 
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.securityConfig.InMemorySecurityConfig;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
@@ -27,6 +28,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements iUserService {
 
+
     /**
      * Password encoder used to encode user passwords.
      */
@@ -37,14 +39,15 @@ public class UserService implements iUserService {
      * In-memory user details manager used to manage user details.
      */
     private final InMemoryUserDetailsManager inMemoryUserDetailsManager;
-
+    private final  InMemorySecurityConfig inMemorySecurityConfig ;
     /**
      * Constructs a {@link UserService} with the given {@link InMemoryUserDetailsManager}.
      *
      * @param inMemoryUserDetailsManager The in-memory user details manager used to manage user details.
      */
     @Autowired
-    public UserService(InMemoryUserDetailsManager inMemoryUserDetailsManager) {
+    public UserService(InMemoryUserDetailsManager inMemoryUserDetailsManager,InMemorySecurityConfig inMemorySecurityConfig ) {
+        this.inMemorySecurityConfig = inMemorySecurityConfig;
         this.inMemoryUserDetailsManager = inMemoryUserDetailsManager;
     }
 
@@ -63,6 +66,7 @@ public class UserService implements iUserService {
      *
      * @param req The {@link UserRequest} containing the details of the user to be created.
      */
+    @Override
     public void createUser(UserRequest req) {
         if (!inMemoryUserDetailsManager.userExists(req.getUsername())) {
             log.debug(req.getUsername() + " does not exist, creating new user");
@@ -71,8 +75,9 @@ public class UserService implements iUserService {
                     .password(getPasswordEncoder.encode(req.getPassword().toString()))
                     .roles(req.getRole())
                     .build();
+
             inMemoryUserDetailsManager.createUser(createUser);
-            log.debug(req.getUsername() + " created");
+            inMemorySecurityConfig.inMemory();
         } else {
             log.debug(req.getUsername() + " already exists");
         }
@@ -87,6 +92,7 @@ public class UserService implements iUserService {
      *
      * @param req The {@link UserRequest} containing the user details to be updated.
      */
+    @Override
     public void updateUser(UserRequest req) {
         if (inMemoryUserDetailsManager.userExists(req.getUsername())) {
             log.debug(req.getUsername() + " exists");
@@ -96,6 +102,7 @@ public class UserService implements iUserService {
                     .roles(req.getRole())
                     .build();
             inMemoryUserDetailsManager.updateUser(updatedUser);
+            inMemorySecurityConfig.inMemory();
             log.debug(req.getUsername() + " updated");
         } else
             log.warn(req.getUsername() + " does not exist and cannot be updated");
@@ -111,6 +118,7 @@ public class UserService implements iUserService {
      *
      * @param req The {@link UserRequest} containing the details of the user to be removed.
      */
+    @Override
     public void removeUser(UserRequest req) {
         if (inMemoryUserDetailsManager.userExists(req.getUsername())) {
             log.debug(req.getUsername() + " exists");
@@ -119,8 +127,9 @@ public class UserService implements iUserService {
                     .password(getPasswordEncoder.encode(req.getPassword().toString()))
                     .roles(req.getRole())
                     .build();
-            inMemoryUserDetailsManager.deleteUser(deleteUser.getUsername());
 
+            inMemoryUserDetailsManager.deleteUser(deleteUser.getUsername());
+            inMemorySecurityConfig.inMemory();
             log.debug(req.getUsername() + " delete");
         } else {
             log.warn(req.getUsername() + " does not exist and cannot be removed");

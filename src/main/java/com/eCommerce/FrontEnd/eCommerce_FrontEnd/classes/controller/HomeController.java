@@ -50,47 +50,9 @@ public class HomeController {
 
         return mav;
     }
-//    @Controller
-//    public class HomeController {
-//
-//        @Value("${eCommerce.backend}")
-//        String backend;
-//
-//        @Autowired
-//        RestTemplate rest;
-//
-//        @GetMapping("/home")
-//        public ModelAndView homepage(@RequestParam(required=false) String username) {
-//            URI uri;
-//            UserRequest req = null;
-//            ModelAndView mav;
-//
-//            if (username != null) {
-//                uri = UriComponentsBuilder
-//                        .fromHttpUrl(backend + "user/getByUsername")
-//                        .queryParam("username", username)
-//                        .buildAndExpand().toUri();
-//
-//                ResponseEntity<ResponseObject<UserRequest>> responseEntity = rest.exchange(
-//                        uri,
-//                        HttpMethod.GET,
-//                        null,
-//                        new ParameterizedTypeReference<ResponseObject<UserRequest>>() {}
-//                );
-//
-//                ResponseObject<UserRequest> resp = responseEntity.getBody();
-//                req = resp.getDati();
-//
-//                if (req.getRole().equalsIgnoreCase("ADMIN"))
-//                    mav = new ModelAndView("home-admin");
-//                else
-//                    mav = new ModelAndView("home-user");
-//
-//                mav.addObject("role", req.getRole());
-//            } else {
-//                mav = new ModelAndView("home-user");
-//            }
-//
-//            return mav;
-//        }
+    @GetMapping("/returnHome")
+    public ModelAndView homepage() {
+        return new ModelAndView("return-home");
+    }
+
 }

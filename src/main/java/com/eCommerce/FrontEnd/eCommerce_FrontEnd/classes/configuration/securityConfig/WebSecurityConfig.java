@@ -1,12 +1,10 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.securityConfig;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.service.CustomUserDetailsService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,7 +12,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 
 import java.io.IOException;
 
@@ -33,12 +33,6 @@ import java.io.IOException;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-
-    /**
-     * Custom user details service used to load user details for authentication.
-     */
-    @Autowired
-    CustomUserDetailsService customUserDetailsService;
 
     /**
      * Logger for the class.
@@ -60,18 +54,22 @@ public class WebSecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests((request) -> request
-                        // Permetti l'accesso pubblico alle risorse statiche
-                        .requestMatchers("/css/**", "/js/**", "/images/**").permitAll()
-                        // Accesso pubblico alla home page e ad altre risorse pubbliche
-                        .requestMatchers("/", "/home", "/public/**","/listLaptop").permitAll()
-                        .requestMatchers("/admin","/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user","/user/**").hasRole("USER")
+                        .requestMatchers("/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/user/createUser","/user/saveUser").permitAll()
+                        .requestMatchers("/user/**").hasRole("USER")
+                        .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
                 ).formLogin((form) -> form
                         .loginPage("/login")
                         .successHandler(authenticationSuccessHandler())
                         .permitAll()
-                ).logout((logout) -> logout.permitAll());
+                ).logout((logout) -> logout
+                .logoutUrl("/logout")
+                .invalidateHttpSession(true)
+                .deleteCookies("JSESSIONID")
+                .logoutSuccessUrl("/returnHome")
+                .permitAll()
+        );
         return http.build();
     }
     @Bean
@@ -85,6 +83,7 @@ public class WebSecurityConfig {
             }
         };
     }
+
 }
 
 

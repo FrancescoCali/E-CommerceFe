@@ -50,7 +50,7 @@ public class AdminController {
     @GetMapping ("/listUser")
     public  ModelAndView list() {
 
-        ModelAndView mav = new ModelAndView("home");
+        ModelAndView mav = new ModelAndView("list-user");
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/list")
                 .buildAndExpand().toUri();

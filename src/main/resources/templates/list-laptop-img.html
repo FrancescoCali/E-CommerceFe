@@ -1,48 +1,11 @@
 <!DOCTYPE html>
-<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
     <meta charset="UTF-8">
     <title>Laptop</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        .car-list {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .car-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            width: 80%;
-            background-color: #f9f9f9;
-        }
-        .car-item img {
-            max-width: 350px;
-            max-height: 250px;
-            margin-right: 50px;
-        }
-        .car-info {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            padding : 100px;
-        }
-        .car-actions {
-            display: flex;
-            align-items: center;
-            margin-left: auto;
-        }
-        .car-actions a {
-            margin-left: 10px;
-            text-decoration: none;
-            color: #000;
-        }
-    </style>
 </head>
 <body>
 <br>
@@ -56,17 +19,35 @@
             <span><strong>Model:</strong> <span th:text="${laptop.model}"></span></span>
             <span><strong>Brand:</strong> <span th:text="${laptop.brand}"></span></span>
             <span><strong>Colour:</strong> <span th:text="${laptop.colour}"></span></span>
-            <span><strong>CPU:</strong> <span th:text="${laptop.cpu}"></span></span>
-            <span><strong>GPU:</strong> <span th:text="${laptop.gpu}"></span></span>
+            <span><strong>CPU:</strong> <span th:text="${laptop.CPU}"></span></span>
+            <span><strong>GPU:</strong> <span th:text="${laptop.GPU}"></span></span>
             <span><strong>Memory:</strong> <span th:text="${laptop.memory}"></span></span>
-            <span><strong>Ram:</strong> <span th:text="${laptop.ram}"></span></span>
+            <span><strong>Ram:</strong> <span th:text="${laptop.RAM}"></span></span>
             <span><strong>Motherboard:</strong> <span th:text="${laptop.motherboard}"></span></span>
-            <span><strong>Psu:</strong> <span th:text="${laptop.psu}"></span></span>
+            <span><strong>Psu:</strong> <span th:text="${laptop.PSU}"></span></span>
             <span><strong>Cooler:</strong> <span th:text="${laptop.cooler}"></span></span>
         </div>
     </div>
     <br>
     <div style="height: 50px;"></div> <!-- Spazio aggiuntivo sotto il pulsante -->
 </div>
+
+<!-- Include the Sidebar code here -->
+<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="userSidebarLabel">User Sidebar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <h2>Sidebar</h2>
+        <ul>
+            <li><a href="#">Link 1</a></li>
+            <li><a href="#">Link 2</a></li>
+            <li><a href="#">Link 3</a></li>
+        </ul>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -27,7 +27,6 @@ public class InMemorySecurityConfig {
     @Autowired
     CustomUserDetailsService customUserDetailsService;
 
-
     @Bean
     public InMemoryUserDetailsManager inMemory(){
         return customUserDetailsService.loadUser();

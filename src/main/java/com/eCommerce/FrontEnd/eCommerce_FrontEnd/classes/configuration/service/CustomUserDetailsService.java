@@ -1,5 +1,6 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.service;
 
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.securityConfig.MyConfig;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,24 +38,20 @@ public class CustomUserDetailsService {
      */
     @Value("${eCommerce.backend}")
     String backend;
-
     /**
      * RestTemplate for making HTTP calls.
      */
     @Autowired
     RestTemplate rest;
-
     /**
      * Encoder for user passwords.
      */
     @Autowired
     private PasswordEncoder getPasswordEncoder;
-
     /**
      * Logger for the class.
      */
     public static Logger log = LoggerFactory.getLogger(CustomUserDetailsService.class);
-
     /**
      * Loads users from an external source and returns them as an {@link InMemoryUserDetailsManager}.
      * <p>
@@ -65,21 +62,35 @@ public class CustomUserDetailsService {
      * @return An instance of {@link InMemoryUserDetailsManager} containing the user details.
      */
     public InMemoryUserDetailsManager loadUser(){
-        log.debug("User load");
+        log.debug("/*************************" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "User load" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "\n" +
+                "/*************************");
         List<UserDetails> userDetailsList = new ArrayList<>();
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/list")
                 .buildAndExpand()
                 .toUri();
-
         Response<HashMap<String, Object>> resp = rest.getForEntity(uri, Response.class).getBody();
 
         for (HashMap<String, Object> ut : resp.getDati()) {
-            log.debug("loadUser... " + ut.get("email"));
+            log.debug("loadUser... " + ut.get("username"));
 
             userDetailsList.add(
-                    User.withUsername(ut.get("email").toString())
+                    User.withUsername(ut.get("username").toString())
                             .password(getPasswordEncoder.encode(ut.get("password").toString()))
                             .roles(ut.get("role").toString())
                             .build()
@@ -88,6 +99,4 @@ public class CustomUserDetailsService {
         }
         return new InMemoryUserDetailsManager(userDetailsList);
     }
-
-
 }

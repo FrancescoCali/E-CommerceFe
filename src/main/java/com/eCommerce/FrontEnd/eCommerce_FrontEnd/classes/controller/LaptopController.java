@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -41,25 +42,23 @@ public class LaptopController {
         return mav;
     }
 
-    @GetMapping(value = {"/listLaptop"})
+    @GetMapping("/listLaptop")
     public ModelAndView list(@RequestParam(required = false) String role) {
 
-        log.info("listLaptop controller method called with role: {}", role);
-
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN")) {
+        if (role.equalsIgnoreCase("ADMIN"))
             mav = new ModelAndView("list-laptop");
-        } else
+        else
             mav = new ModelAndView("list-laptop-img");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "laptop/list")
                 .buildAndExpand().toUri();
+
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listLaptop", resp);
         return mav;
     }
-
 
     @PostMapping("/saveLaptop")
     public Object save(@ModelAttribute("laptop") LaptopRequest req){

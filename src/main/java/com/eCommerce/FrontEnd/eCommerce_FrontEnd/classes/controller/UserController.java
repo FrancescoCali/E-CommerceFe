@@ -35,12 +35,11 @@ public class UserController {
 
     @GetMapping("/createUser")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-user");
+        ModelAndView mav = new ModelAndView("create-update-user");
         UserRequest req = new UserRequest();
         req.setErrorMSG(null);
         req.setRole("USER");
         mav.addObject("user", req);
-        userService.createUser(req);
         return mav;
     }
 
@@ -64,13 +63,13 @@ public class UserController {
         log.debug("rc:" + resp.getRc());
 
         if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("create-user");
+            ModelAndView mav = new ModelAndView("create-update-user");
             req.setErrorMSG(req.getErrorMSG());
             mav.addObject("user", req);
             return mav;
         }
-        return "redirect:/user/home";
-
+        userService.createUser(req);
+        return "redirect:/home";
     }
 
     @GetMapping("/removeUser")

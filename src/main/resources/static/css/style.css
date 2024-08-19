@@ -35,8 +35,6 @@ nav {
   top: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.5); /* Imposta uno sfondo semi-trasparente */
-  padding-top: 10px; /* Aggiungi un po' di spazio verticale */
-  padding-bottom: 33px;
   z-index: 10; /* Mantieni il menu al di sopra di altri elementi */
 }
 
@@ -78,12 +76,59 @@ nav {
 }
 
 
+.offcanvas {
+  background-color: #101214 !important; /* Imposta sfondo nero */
+  color: #fff !important; /* Imposta testo bianco */
+}
+.btn-primary {
+  background-color: #282d34 !important; /* Imposta il bottone su un grigio scuro */
+  border-color: #282d34 !important;
+}
+.offcanvas-header, .offcanvas-body {
+  background-color: #101214 !important; /* Sfondo nero per la sidebar */
+}
+.offcanvas-title, .btn-close {
+  background-color: #141414 !important; /* Sfondo nero per la sidebar */
+  color: #fff !important; /* Imposta i link e testi sulla sidebar in bianco */
+}
+
+.content {
+  flex: 1;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f4f4f4;
+  /*border-left: 2px solid #ccc;*/
+}
+
+.sidebar h2 {
+  margin-top: 0;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+}
+
+.sidebar ul li a:hover {
+  color: #007BFF;
+}
+
 .active {
   background-color: #04AA6D;
 }
 
 .description {
-	font-weight: 200;
+  font-weight: 200;
 }
 
 a:link, a:visited {
@@ -135,18 +180,18 @@ select {
   letter-spacing: 2vh;
 }
 form {
-    max-width: 400px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
 label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
 }
 table {
   border-collapse: collapse;
@@ -193,18 +238,18 @@ button {
 }
 
 main {
-    margin:150px 200px;
+  margin:150px 200px;
 }
 
 .container-error{
-	margin-top: 10px;
-	width:100%;
-	height:30px;
-	display:flex;
-	align-items:center;
-	background-color: rgba(255, 0, 0, 0.2);
-	justify-content: center;
-	border-radius: 10px;
+  margin-top: 10px;
+  width:100%;
+  height:30px;
+  display:flex;
+  align-items:center;
+  background-color: rgba(255, 0, 0, 0.2);
+  justify-content: center;
+  border-radius: 10px;
 
 }
 
@@ -212,27 +257,42 @@ main {
   transform: scale(1.1);
   transition: transform 0.5s ease;
 }
-.slider{
-  margin-top: 18px;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
+.slider-sidebar {
+  margin-top: 0; /* Elimina eventuali margini in cima */
+  padding-top: 0; /* Elimina eventuali padding in cima */
+  width: 100%; /* Assicura che il carosello si estenda a tutta la larghezza */
+  background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
+  position: relative; /* Assicura che il posizionamento sia relativo al contesto */
+  top: 0; /* Assicura che il carosello sia fissato sotto la nav */
 }
-.slider input{display: none;}
+
+/* Nascondi solo gli input radio sopra il carosello */
+.slider-sidebar input[type="radio"] {
+  display: none; /* Nasconde gli input radio sopra */
+}
 .testimonials{
+  padding: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
+  background: none;
   min-height: 600px;
   perspective: 1080px;
-  overflow: hidden;
+  overflow: visible;
 }
+
+
 .testimonials .item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
   margin:0;
+  padding: 10px;
+  background: none;
+  filter : drop-shadow(2px 2px 30px white);
+  overflow: visible;
 }
 
 .testimonials .item{
@@ -245,7 +305,6 @@ main {
   /*border: 0px solid none;*/
   text-align: center;
   transition: transform 0.4s, opacity 0.4s; /* Aggiunto il controllo dell'opacità */
-  filter : drop-shadow(2px 2px 30px white);
   user-select: none;
   cursor: pointer;
   overflow: hidden;
@@ -353,4 +412,64 @@ main {
   z-index: 4;
   opacity: 1; /* Rendi visibile solo l'elemento selezionato */
   transform: translate3d(0, 0, 0) rotateY(0deg); /* Posizionalo in primo piano */
+}
+
+.slider-sidebar .testimonials .item {
+  border: none;
+  background: none;
+  padding: 10px;
+  margin: 0;
+  overflow: visible;
+}
+
+.slider-sidebar .testimonials .item a{
+  border: none;
+  background: none;
+  padding: 10px;
+  margin: 0;
+  overflow: visible;
+}
+
+.slider-sidebar .testimonials .item img {
+  border: none;
+  padding: 10px;
+  background: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  overflow: visible;
+}
+
+.slider-sidebar .testimonials label {
+  border: none;
+  padding: 10px;
+  background: none;
+  margin: 0;
+  overflow: visible;
+}
+
+.slider-sidebar .testimonials {
+  overflow: visible;
+}
+
+/* Assicurati che i pallini sotto siano visibili e abbiano le dimensioni corrette */
+.slider-sidebar .dots {
+  text-align: center; /* Allinea i pallini al centro */
+}
+
+.slider-sidebar .dots label {
+  display: inline-block; /* Mantiene i pallini sotto visibili */
+  background-color: #413B52; /* Colore dei pallini */
+  height: 10px; /* Dimensione dei pallini */
+  width: 10px; /* Dimensione dei pallini */
+  border-radius: 50%;
+  margin: 5px; /* Margine tra i pallini */
+  transition-duration: 0.2s;
+}
+
+.slider-sidebar .dots label.active {
+  background-color: #fff; /* Colore dei pallini attivi */
+  transform: scale(1.5); /* Dimensione dei pallini attivi */
+  box-shadow: 0px 0px 0px 3px #dddddd24;
 }
