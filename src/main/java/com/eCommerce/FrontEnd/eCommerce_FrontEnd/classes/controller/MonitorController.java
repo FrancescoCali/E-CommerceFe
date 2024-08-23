@@ -41,9 +41,14 @@ public class MonitorController {
     }
 
     @GetMapping (value = {"/listMonitor"})
-    public  ModelAndView list() {
+    public  ModelAndView list(@RequestParam(required = false) String role) {
 
-        ModelAndView mav = new ModelAndView("home");
+        ModelAndView mav;
+        if (role.equalsIgnoreCase("ADMIN"))
+            mav = new ModelAndView("list-monitor");
+        else
+            mav = new ModelAndView("list-monitor-img");
+
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "monitor/list")
                 .buildAndExpand().toUri();
@@ -51,7 +56,6 @@ public class MonitorController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMonitor", resp);
-
         return mav;
     }
 

@@ -40,9 +40,13 @@ public class PcController {
     }
 
     @GetMapping (value = {"/listPc"})
-    public  ModelAndView list() {
+    public  ModelAndView list(@RequestParam(required = false) String role) {
 
-        ModelAndView mav = new ModelAndView("home");
+        ModelAndView mav;
+        if (role.equalsIgnoreCase("ADMIN"))
+            mav = new ModelAndView("list-pc");
+        else
+            mav = new ModelAndView("list-pc-img");
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "pc/list")
                 .buildAndExpand().toUri();

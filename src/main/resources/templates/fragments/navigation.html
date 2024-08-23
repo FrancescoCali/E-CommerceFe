@@ -11,7 +11,7 @@
 <div th:fragment="block-navigation(myTitle)">
 	<h1 align="center">BetaCommerce</h1>
 	<div class="navbar">
-		<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{#}">Crea Admin</a>
+		<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/createUser}">Crea Admin</a>
 
 		<!-- User Icon for Offcanvas Trigger -->
 		<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar">
@@ -22,15 +22,14 @@
 	<!-- Offcanvas Sidebar -->
 	<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
 		<div class="offcanvas-header">
-			<h5 class="offcanvas-title" id="userSidebarLabel">User Sidebar</h5>
+			<h2>Menu</h2>
 			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 		</div>
 		<div class="offcanvas-body">
-			<h2>Sidebar</h2>
 			<ul>
 				<!-- Mostra 'Log in' e 'Sign in' solo se l'utente non è autenticato -->
 				<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Log in</a></li>
-				<li sec:authorize="!isAuthenticated()"><a th:href="@{/user/createUser}">Sign in</a></li>
+				<li sec:authorize="!isAuthenticated()" ><a th:href="@{/user/createUser}">Sign in</a></li>
 
 				<!-- Mostra 'Mio profilo' solo se l'utente è autenticato -->
 				<li sec:authorize="isAuthenticated()"><a th:href="@{/user/profile}">Mio profilo</a></li>

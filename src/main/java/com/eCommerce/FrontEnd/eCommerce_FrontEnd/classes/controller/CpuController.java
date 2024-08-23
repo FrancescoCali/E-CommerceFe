@@ -30,20 +30,6 @@ public class CpuController {
     public static Logger log = LoggerFactory.getLogger(CpuController.class);
 
 
-    @GetMapping (value = {"/listCpu"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "cpu/list")
-                .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listCpu", resp);
-
-        return mav;
-    }
 
     @GetMapping("/createCpu")
     public ModelAndView create(){
@@ -73,7 +59,7 @@ public class CpuController {
             mav.addObject("cpu", req);
             return mav;
         }
-        return "redirect:/cpu/listCpu";
+        return "redirect:/components/listCpu";
     }
 
     @GetMapping("/removeCpu")
@@ -85,7 +71,7 @@ public class CpuController {
                 .toUri();
 
         ResponseBase resp = rest.postForEntity(uri,id,ResponseBase.class).getBody();
-        return "redirect:/cpu/listCpu";
+        return "redirect:/components/listCpu";
     }
 
     @GetMapping("/updateCpu")

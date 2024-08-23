@@ -41,21 +41,6 @@ public class GpuController {
         return mav;
     }
 
-    @GetMapping (value = {"/listGpu"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "gpu/list")
-                .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listGpu", resp);
-
-        return mav;
-    }
-
     @PostMapping("/saveGpu")
     public Object save(@ModelAttribute("gpu") GpuRequest req){
 
@@ -75,7 +60,7 @@ public class GpuController {
             mav.addObject("gpu", req);
             return mav;
         }
-        return "redirect:/gpu/listGpu";
+        return "redirect:/components/listGpu";
     }
 
     @GetMapping("/removeGpu")
@@ -87,7 +72,7 @@ public class GpuController {
                 .toUri();
 
         ResponseBase resp = rest.postForEntity(uri,id,ResponseBase.class).getBody();
-        return "redirect:/listGpu";
+        return "redirect:/components/listGpu";
     }
 
     @GetMapping("/updateGpu")

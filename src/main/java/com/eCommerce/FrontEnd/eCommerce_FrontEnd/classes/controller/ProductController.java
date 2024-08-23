@@ -47,7 +47,6 @@ public class ProductController {
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "product/list")
                 .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listProduct", resp);

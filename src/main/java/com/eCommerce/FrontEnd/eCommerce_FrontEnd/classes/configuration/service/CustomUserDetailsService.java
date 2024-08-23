@@ -61,42 +61,47 @@ public class CustomUserDetailsService {
      *
      * @return An instance of {@link InMemoryUserDetailsManager} containing the user details.
      */
-    public InMemoryUserDetailsManager loadUser(){
-        log.debug("/*************************" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "User load" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "/*************************");
-        List<UserDetails> userDetailsList = new ArrayList<>();
+//    public InMemoryUserDetailsManager loadUser(){
+//
+//        List<UserDetails> userDetailsList = new ArrayList<>();
+//
+//        URI uri = UriComponentsBuilder
+//                .fromHttpUrl(backend + "user/list")
+//                .buildAndExpand()
+//                .toUri();
+//
+//        Response<HashMap<String, Object>> resp = rest.getForEntity(uri, Response.class).getBody();
+//
+//        for (HashMap<String, Object> ut : resp.getDati()) {
+//            log.debug("loadUser... " + ut.get("username"));
+//
+//            userDetailsList.add(
+//                    User.withUsername(ut.get("username").toString())
+//                            .password(getPasswordEncoder.encode(ut.get("password").toString()))
+//                            .roles(ut.get("role").toString())
+//                            .build()
+//            );
+//            System.out.println(resp.getDati());
+//        }
+//        return new InMemoryUserDetailsManager(userDetailsList);
+//    }
 
+    public InMemoryUserDetailsManager loadUser(Integer id){
+
+        List<UserDetails> userDetailsList = new ArrayList<>();
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "user/list")
+                .fromHttpUrl(backend + "user/getById")
+                .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
         Response<HashMap<String, Object>> resp = rest.getForEntity(uri, Response.class).getBody();
-
         for (HashMap<String, Object> ut : resp.getDati()) {
-            log.debug("loadUser... " + ut.get("username"));
-
             userDetailsList.add(
                     User.withUsername(ut.get("username").toString())
                             .password(getPasswordEncoder.encode(ut.get("password").toString()))
                             .roles(ut.get("role").toString())
                             .build()
-            );
-            System.out.println(resp.getDati());
-        }
+            ); }
         return new InMemoryUserDetailsManager(userDetailsList);
     }
 }

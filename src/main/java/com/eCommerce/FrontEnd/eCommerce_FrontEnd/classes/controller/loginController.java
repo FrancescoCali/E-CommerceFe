@@ -11,5 +11,4 @@ public class loginController {
     public ModelAndView login (){
         return new ModelAndView("login");
     }
-
 }

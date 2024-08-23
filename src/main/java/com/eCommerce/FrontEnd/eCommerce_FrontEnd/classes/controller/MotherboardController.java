@@ -39,21 +39,6 @@ public class MotherboardController {
         return mav;
     }
 
-    @GetMapping (value = {"/listMotherboard"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "motherboard/list")
-                .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listMotherboard", resp);
-
-        return mav;
-    }
-
     @PostMapping("/saveMotherboard")
     public Object save(@ModelAttribute("motherboard") MotherboardRequest req){
 
@@ -73,7 +58,7 @@ public class MotherboardController {
             mav.addObject("motherboard", req);
             return mav;
         }
-        return "redirect:/motherboard/listMotherboard";
+        return "redirect:/components/listMotherboard";
     }
 
     @GetMapping("/removeMotherboard")
@@ -85,7 +70,7 @@ public class MotherboardController {
                 .toUri();
 
         ResponseBase resp = rest.postForEntity(uri,id,ResponseBase.class).getBody();
-        return "redirect:/motherboard/listMotherboard";
+        return "redirect:/components/listMotherboard";
     }
 
     @GetMapping("/updateMotherboard")

@@ -40,20 +40,6 @@ public class RamController {
         return mav;
     }
 
-    @GetMapping (value = {"/listRam"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "ram/list")
-                .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listRam", resp);
-
-        return mav;
-    }
     @PostMapping("/saveRam")
     public Object save(@ModelAttribute("ram") RamRequest req){
         URI uri ;

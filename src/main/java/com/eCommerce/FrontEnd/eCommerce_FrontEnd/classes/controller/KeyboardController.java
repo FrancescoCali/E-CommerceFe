@@ -42,9 +42,12 @@ public class KeyboardController {
     }
 
     @GetMapping (value = {"/listKeyboard"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
+    public  ModelAndView list(@RequestParam(required = false) String role) {
+        ModelAndView mav;
+        if (role.equalsIgnoreCase("ADMIN"))
+            mav = new ModelAndView("list-keyboard");
+        else
+            mav = new ModelAndView("list-keyboard-img");
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "keyboard/list")
                 .buildAndExpand().toUri();

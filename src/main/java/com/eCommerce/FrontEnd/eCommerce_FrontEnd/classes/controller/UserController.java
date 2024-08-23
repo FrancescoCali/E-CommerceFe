@@ -97,7 +97,7 @@ public class UserController {
 
         ResponseBase respB = rest.postForEntity(uri,id,ResponseBase.class).getBody();
 
-        return "redirect:/user/listUser";
+        return "redirect:/home";
     }
 
     @GetMapping("/updateUser")

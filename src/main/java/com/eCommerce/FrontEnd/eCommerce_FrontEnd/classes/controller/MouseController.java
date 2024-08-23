@@ -41,9 +41,13 @@ public class MouseController {
     }
 
     @GetMapping (value = {"/listMouse"})
-    public  ModelAndView list() {
+    public  ModelAndView list(@RequestParam(required = false) String role) {
+        ModelAndView mav;
+        if (role.equalsIgnoreCase("ADMIN"))
+            mav = new ModelAndView("list-mouse");
+        else
+            mav = new ModelAndView("list-mouse-img");
 
-        ModelAndView mav = new ModelAndView("home");
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "mouse/list")
                 .buildAndExpand().toUri();

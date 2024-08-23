@@ -40,21 +40,6 @@ public class PsuController {
         return mav;
     }
 
-    @GetMapping (value = {"/listPsu"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "psu/list")
-                .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listPsu", resp);
-
-        return mav;
-    }
-
     @PostMapping("/savePsu")
     public Object save(@ModelAttribute("psu") PsuRequest req){
 

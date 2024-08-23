@@ -9,9 +9,9 @@
 </head>
 <body>
 
-<!-- Barra di navigazione -->
-<nav th:insert="~{fragments/navigation :: block-navigation('Create User')}"></nav>
-
+<div th:if="${user.role == 'USER'}">
+    <nav th:insert="~{fragments/navigation :: block-navigation('create' + (user.role == 'ADMIN' ? 'admin' : 'user'))}"></nav>
+</div>
 <div class="container">
     <h3 class="description">Inserire i dati</h3>
     <form class="form_content" th:action="@{/user/saveUser}" th:object="${user}" method="post">
@@ -26,7 +26,7 @@
                 <td><label for="password">Password:</label></td>
                 <td><input type="password" id="password" th:field="*{password}" placeholder="password" required></td>
             </tr>
-            <tr>
+            <tr th:if="${user.role} == 'USER'">
                 <td><label for="address">Address:</label></td>
                 <td><input type="text" id="address" th:field="*{address}" placeholder="Address" required></td>
             </tr>

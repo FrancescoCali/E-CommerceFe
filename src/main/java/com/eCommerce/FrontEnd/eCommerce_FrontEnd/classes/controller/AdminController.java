@@ -37,28 +37,31 @@ public class AdminController {
 
     @GetMapping("/createUser")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-user");
+        ModelAndView mav = new ModelAndView("create-update-user");
         UserRequest req = new UserRequest();
         req.setErrorMSG(null);
         req.setRole("ADMIN"); //--> Accesso solo admin
-        mav.addObject("user", req);
 
-        userService.createUser(req);
+        mav.addObject("user", req);
         return mav;
     }
 
     @GetMapping ("/listUser")
-    public  ModelAndView list() {
+    public  ModelAndView list(@RequestParam String req) {
 
         ModelAndView mav = new ModelAndView("list-user");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "user/list")
+        URI uri = null ;
+        if(req.equalsIgnoreCase("ADMIN"))
+            uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "user/listAdmin")
                 .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
+        else
+            uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "user/listUser")
+                .buildAndExpand().toUri();
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listUser", resp);
-
         return mav;
     }
 
@@ -76,10 +79,7 @@ public class AdminController {
                     .buildAndExpand()
                     .toUri();
 
-        log.debug("uri: "+uri);
-
         ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
-        log.debug("rc:" + resp.getRc());
 
         if(!resp.getRc()){
             ModelAndView mav = new ModelAndView("create-user");
@@ -87,7 +87,8 @@ public class AdminController {
             mav.addObject("user", req);
             return mav;
         }
-        return "redirect:/user/listUser";
+        userService.createUser(req);
+        return "redirect:/admin/listUser";
     }
 
     @GetMapping("/removeUser")
@@ -114,7 +115,6 @@ public class AdminController {
                 .toUri();
 
         ResponseBase respB = rest.postForEntity(uri,id,ResponseBase.class).getBody();
-
         return "redirect:/admin/listUser";
     }
 

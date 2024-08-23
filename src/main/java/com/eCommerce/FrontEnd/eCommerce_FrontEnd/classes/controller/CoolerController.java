@@ -41,21 +41,6 @@ public class CoolerController {
         return mav;
     }
 
-    @GetMapping (value = {"/listCooler"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "cooler/list")
-                .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listCooler", resp);
-
-        return mav;
-    }
-
     @PostMapping("/saveCooler")
     public Object save(@ModelAttribute("cooler") CoolerRequest req){
 
@@ -75,7 +60,7 @@ public class CoolerController {
             mav.addObject("cooler", req);
             return mav;
         }
-        return "redirect:/cooler/listCooler";
+        return "redirect:/components/listCooler";
     }
 
     @GetMapping("/removeCooler")
@@ -87,7 +72,7 @@ public class CoolerController {
                 .toUri();
 
         ResponseBase resp = rest.postForEntity(uri,id, ResponseBase.class).getBody();
-        return "redirect:/cooler/listCooler";
+        return "redirect:/components/listCooler";
     }
 
     @GetMapping("/updateCooler")

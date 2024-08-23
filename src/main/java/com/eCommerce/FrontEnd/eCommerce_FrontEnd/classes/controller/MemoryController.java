@@ -41,21 +41,6 @@ public class MemoryController {
         return mav;
     }
 
-    @GetMapping (value = {"/listMemory"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "memory/list")
-                .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listMemory", resp);
-
-        return mav;
-    }
-
     @PostMapping("/saveMemory")
     public Object save(@ModelAttribute("memory") MemoryRequest req){
 

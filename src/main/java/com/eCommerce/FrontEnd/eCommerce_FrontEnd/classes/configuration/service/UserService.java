@@ -70,7 +70,6 @@ public class UserService implements iUserService {
     public void createUser(UserRequest req) {
         if (!inMemoryUserDetailsManager.userExists(req.getUsername())) {
             log.debug(req.getUsername() + " does not exist, creating new user");
-
             UserDetails createUser = User.withUsername(req.getUsername())
                     .password(getPasswordEncoder.encode(req.getPassword().toString()))
                     .roles(req.getRole())

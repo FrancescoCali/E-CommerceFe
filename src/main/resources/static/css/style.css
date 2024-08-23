@@ -40,9 +40,28 @@ nav {
 
 .navbar {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end; /* Allinea gli elementi alla fine (destra) */
+  align-items: center;
   background-color: rgba(255, 255, 255, 0.05);
+  padding: 10px; /* Aggiunge spaziatura interna */
 }
+
+.navbar .btn {
+  margin-left: auto; /* Spinge il pulsante verso destra */
+}
+
+/* Pulsante che apre la sidebar */
+.navbar .btn-primary {
+  background-color: #282d34 !important;
+  border-color: #282d34 !important;
+  color: #ffffff;
+}
+
+.navbar .btn-primary i {
+  font-size: 18px;
+  color: #ffffff;
+}
+
 
 .navbar a.logout {
   margin-left: auto; /* Spinge "Logout" a destra */
@@ -52,10 +71,6 @@ nav {
   font-size: 18px; /* Regola la dimensione dell'icona */
   color: #ffffff; /* Colore dell'icona */
   transition: color 0.3s ease; /* Aggiungi una transizione */
-}
-
-.navbar a.logout i:hover {
-  color: #d80404; /* Cambia il colore dell'icona al passaggio del mouse */
 }
 
 
@@ -80,16 +95,23 @@ nav {
   background-color: #101214 !important; /* Imposta sfondo nero */
   color: #fff !important; /* Imposta testo bianco */
 }
+
 .btn-primary {
   background-color: #282d34 !important; /* Imposta il bottone su un grigio scuro */
   border-color: #282d34 !important;
 }
 .offcanvas-header, .offcanvas-body {
-  background-color: #101214 !important; /* Sfondo nero per la sidebar */
+  background-color: #101010 !important; /* Sfondo nero per la sidebar */
 }
-.offcanvas-title, .btn-close {
+.offcanvas-title {
   background-color: #141414 !important; /* Sfondo nero per la sidebar */
   color: #fff !important; /* Imposta i link e testi sulla sidebar in bianco */
+}
+
+.btn-close {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 50px;
+  margin-left: auto;
 }
 
 .content {
@@ -111,7 +133,7 @@ nav {
   padding: 0;
 }
 
-.sidebar ul li {
+.sdebar ul li {
 }
 
 .sidebar ul li a {
@@ -214,7 +236,7 @@ td {
   padding-bottom: 1vh;
 }
 button {
-  margin-top: 3vh;
+  margin-top: vh;
   padding: 1vh;
   background-color: #0094d4;
   color: #ffffff;
@@ -224,16 +246,35 @@ button {
   width: 20vh;
   transition: all 0.3s ease-in-out;
 }
+button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
 
 .buttonlike {
   margin-top: 3vh;
   padding: 1.5vh;
+  border: 2px solid #0094d4;
   background-color: #0094d4;
-  color: #ffffff;  border: none;
+  color: #ffffff;
   outline: none;
   border-radius: 50px;
   width: 20vh;
-  font-size: 0.7em;
+  font-size: 1em;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonlike:hover {
+  margin-top: 3vh;
+  padding: 1.5vh;
+  border: 2px solid #0094d4;
+  background-color: #282d34;
+  color: #0094d4;
+  outline: none;
+  border-radius: 50px;
+  width: 20vh;
+  font-size: 1em;
   transition: all 0.3s ease-in-out;
 }
 
@@ -327,9 +368,9 @@ main {
 #t-4:checked ~ .dots label[for="t-4"],
 #t-5:checked ~ .dots label[for="t-5"],
 #t-6:checked ~ .dots label[for="t-6"] {
-  transform: scale(2);
+  transform: scale(1.5);
   background-color: #fff;
-  box-shadow: 0px 0px 0px 3px #dddddd24;
+  box-shadow: 0px 0px 0px 2px #dddddd24;
 }
 
 #t-1:checked ~ .dots label[for="t-2"],
@@ -342,7 +383,7 @@ main {
 #t-5:checked ~ .dots label[for="t-4"],
 #t-5:checked ~ .dots label[for="t-6"],
 #t-6:checked ~ .dots label[for="t-5"] {
-  transform: scale(1.5);
+  transform: scale(1.2);
 }
 
 /* Nascondi completamente il label che si trova in fondo */
@@ -473,3 +514,41 @@ main {
   transform: scale(1.5); /* Dimensione dei pallini attivi */
   box-shadow: 0px 0px 0px 3px #dddddd24;
 }
+
+.offcanvas-header h2 {
+  display: block; /* Rende i link come blocchi per occupare tutta la larghezza */
+  width: 100%; /* Assicura che il link occupi tutta la larghezza */
+  text-align: center; /* Allinea il testo al centro */
+  color: #ffffff; /* Colore del testo */
+}
+
+.offcanvas-body ul {
+  list-style-type: none;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+}
+
+.offcanvas-body ul li {
+  padding: 2px 0;
+  width: 100%;
+}
+
+.offcanvas-body ul li a {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  background-color: #282d34;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  min-height: 30px;
+  line-height: 20px;
+}
+
+.offcanvas-body ul li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
