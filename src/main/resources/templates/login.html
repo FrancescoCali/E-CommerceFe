@@ -12,14 +12,12 @@
 </head>
 <body>
 
-<!-- Barra di navigazione -->
-<nav th:insert="~{fragments/navigation :: block-navigation('Login')}"></nav>
+
 
 <div class="container">
     <h3 class="description">Login</h3>
 
     <div class="container-error" th:if="${param.error}">
-        Invalid username and password.
     </div>
     <div class="container-error" th:if="${param.logout}">
         You have been logged out.

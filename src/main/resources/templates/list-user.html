@@ -8,7 +8,7 @@
 <body>
 <div class="page-wrapper">
     <br>
-    <nav th:insert="~{fragments/navigation :: block-navigation('Elenco User')}"></nav>
+    <nav th:insert="~{fragments/navigation :: block-navigation ( username=${username}, role=${role} ) }"></nav>
     <br>
     <br>
     <div align="center" class="content">
@@ -27,13 +27,13 @@
                 <td th:text="${user.username}"></td>
                 <td th:text="${user.password}"></td>
 
-                <td class="edit"><a th:href="@{/updateUser(id=${user.id})}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                <td class="delete"><a th:href="@{/removeUser(id=${user.id})}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                <td class="edit"><a th:href="@{/admin/updateUser(id=${user.id})}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td class="delete"><a th:href="@{/admin/removeUser(id=${user.id})}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
             </tr>
             </tbody>
         </table>
         <br>
-        <a th:href="@{/createUser}" class="buttonlike">Crea User</a>
+        <a th:href="@{/admin/createUser}" class="buttonlike">Crea Admin</a>
         <div style="height: 50px;"></div>
     </div>
 </div>

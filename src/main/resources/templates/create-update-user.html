@@ -9,9 +9,8 @@
 </head>
 <body>
 
-<div th:if="${user.role == 'USER'}">
-    <nav th:insert="~{fragments/navigation :: block-navigation('create' + (user.role == 'ADMIN' ? 'admin' : 'user'))}"></nav>
-</div>
+    <nav th:insert="~{fragments/navigation :: block-navigation(username=${username}, role=${role})}"></nav>
+
 <div class="container">
     <h3 class="description">Inserire i dati</h3>
     <form class="form_content" th:action="@{/user/saveUser}" th:object="${user}" method="post">

@@ -1,6 +1,5 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.service;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.configuration.securityConfig.InMemorySecurityConfig;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
@@ -28,59 +27,30 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService implements iUserService {
 
-
-    /**
-     * Password encoder used to encode user passwords.
-     */
     @Autowired
     private PasswordEncoder getPasswordEncoder;
 
-    /**
-     * In-memory user details manager used to manage user details.
-     */
     private final InMemoryUserDetailsManager inMemoryUserDetailsManager;
-    private final  InMemorySecurityConfig inMemorySecurityConfig ;
-    /**
-     * Constructs a {@link UserService} with the given {@link InMemoryUserDetailsManager}.
-     *
-     * @param inMemoryUserDetailsManager The in-memory user details manager used to manage user details.
-     */
+
     @Autowired
-    public UserService(InMemoryUserDetailsManager inMemoryUserDetailsManager,InMemorySecurityConfig inMemorySecurityConfig ) {
-        this.inMemorySecurityConfig = inMemorySecurityConfig;
+    public UserService(InMemoryUserDetailsManager inMemoryUserDetailsManager) {
         this.inMemoryUserDetailsManager = inMemoryUserDetailsManager;
     }
 
-    /**
-     * Logger for the class.
-     */
     private static Logger log = LoggerFactory.getLogger(UserService.class);
 
-    /**
-     * Creates a new user.
-     * <p>
-     * This method checks if the user already exists in the {@link InMemoryUserDetailsManager}. If the user does
-     * not exist, it creates a new user with the details provided in the {@link UserRequest}. If the user already
-     * exists, it logs a debug message indicating the user's existence.
-     * </p>
-     *
-     * @param req The {@link UserRequest} containing the details of the user to be created.
-     */
     @Override
     public void createUser(UserRequest req) {
         if (!inMemoryUserDetailsManager.userExists(req.getUsername())) {
-            log.debug(req.getUsername() + " does not exist, creating new user");
             UserDetails createUser = User.withUsername(req.getUsername())
                     .password(getPasswordEncoder.encode(req.getPassword().toString()))
                     .roles(req.getRole())
                     .build();
-
             inMemoryUserDetailsManager.createUser(createUser);
-            inMemorySecurityConfig.inMemory();
-        } else {
+        } else
             log.debug(req.getUsername() + " already exists");
-        }
     }
+
     /**
      * Updates the details of an existing user.
      * <p>
@@ -94,19 +64,15 @@ public class UserService implements iUserService {
     @Override
     public void updateUser(UserRequest req) {
         if (inMemoryUserDetailsManager.userExists(req.getUsername())) {
-            log.debug(req.getUsername() + " exists");
-
             UserDetails updatedUser = User.withUsername(req.getUsername())
                     .password(getPasswordEncoder.encode(req.getPassword().toString()))
                     .roles(req.getRole())
                     .build();
             inMemoryUserDetailsManager.updateUser(updatedUser);
-            inMemorySecurityConfig.inMemory();
-            log.debug(req.getUsername() + " updated");
         } else
             log.warn(req.getUsername() + " does not exist and cannot be updated");
-
     }
+
     /**
      * Removes an existing user.
      * <p>
@@ -120,19 +86,12 @@ public class UserService implements iUserService {
     @Override
     public void removeUser(UserRequest req) {
         if (inMemoryUserDetailsManager.userExists(req.getUsername())) {
-            log.debug(req.getUsername() + " exists");
-
             UserDetails deleteUser = User.withUsername(req.getUsername())
                     .password(getPasswordEncoder.encode(req.getPassword().toString()))
                     .roles(req.getRole())
                     .build();
-
             inMemoryUserDetailsManager.deleteUser(deleteUser.getUsername());
-            inMemorySecurityConfig.inMemory();
-            log.debug(req.getUsername() + " delete");
-        } else {
+        } else
             log.warn(req.getUsername() + " does not exist and cannot be removed");
-        }
     }
-
 }

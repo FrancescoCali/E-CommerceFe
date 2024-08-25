@@ -40,22 +40,19 @@ public class UserController {
         req.setErrorMSG(null);
         req.setRole("USER");
         mav.addObject("user", req);
+        mav.addObject("username", req.getUsername());
+        mav.addObject("role", req.getRole());
+
         return mav;
     }
 
     @PostMapping("/saveUser")
     public Object save(@ModelAttribute("user") UserRequest req){
-        URI uri ;
-        if(req.getId()==null)
-            uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "user/create")
-                .buildAndExpand()
-                .toUri();
-        else
-            uri = UriComponentsBuilder
-                    .fromHttpUrl(backend + "user/update")
-                    .buildAndExpand()
-                    .toUri();
+
+        URI uri = (req.getId() == null) ?
+                UriComponentsBuilder.fromHttpUrl(backend + "user/create").buildAndExpand().toUri() :
+                UriComponentsBuilder.fromHttpUrl(backend + "user/update").buildAndExpand().toUri();
+
 
         log.debug("uri: "+uri);
 
@@ -68,7 +65,11 @@ public class UserController {
             mav.addObject("user", req);
             return mav;
         }
-        userService.createUser(req);
+        if(req.getId()==null)
+            userService.createUser(req);
+        else
+            userService.updateUser(req);
+
         return "redirect:/home";
     }
 
@@ -100,24 +101,98 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @GetMapping("/updateUser")
-    public ModelAndView update(@RequestParam Integer id) {
-        ModelAndView mav = new ModelAndView("create-update-user");
+//    @GetMapping("/updateUser")
+//    public ModelAndView update(@RequestParam String username) {
+//        ModelAndView mav = new ModelAndView("create-update-user");
+//
+//        URI uri = UriComponentsBuilder
+//                .fromHttpUrl(backend + "user/getByUsername")
+//                .queryParam("username", username)
+//                .buildAndExpand()
+//                .toUri();
+//
+//        @SuppressWarnings("unchecked")
+//        ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+//
+//
+//        UserRequest req2 = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
+//        if(req2==null){
+//            log.debug("QUEL PORCO DI DIO IN CROCE");
+//        }else{
+//            log.debug("dio cane bastardo figlio di puttana");
+//        }
+//        mav.addObject("user",req2);
+//
+//        log.debug(req2.getUsername());
+//        log.debug(req2.getAddress());
+//        log.debug(req2.getPassword());
+//        log.debug(req2.getRole());
+//
+//        System.out.println("\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "STAMPA"+
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" +
+//                "\n" );
+//        return mav;
+//    }
+@GetMapping("/updateUser")
+public ModelAndView update(@RequestParam String username) {
+    ModelAndView mav = new ModelAndView("create-update-user");
+    URI uri = UriComponentsBuilder
+            .fromHttpUrl(backend + "user/getByUsername")
+            .queryParam("username", username)
+            .buildAndExpand()
+            .toUri();
 
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "user/getById")
-                .queryParam("id", id)
-                .buildAndExpand()
-                .toUri();
+    ResponseObject<UserView> resp;
+    try {
+        resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+    } catch (Exception e) {
+        log.error("Errore durante la chiamata al servizio: " + e.getMessage(), e);
+        mav.addObject("errorMSG", "Errore durante il recupero dei dati utente.");
+        return mav;
+    }
 
-        @SuppressWarnings("unchecked")
-        ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+    if (resp == null || resp.getDati() == null) {
+        log.error("La risposta del servizio è nulla o i dati sono nulli.");
+        mav.addObject("errorMSG", "Nessun dato trovato per l'utente.");
+        return mav;
+    }
 
-        UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
-        mav.addObject("user",req);
+    UserRequest req2 = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
+    if (req2 == null) {
+        log.error("Errore nella conversione dell'oggetto.");
+        mav.addObject("errorMSG", "Errore nella conversione dei dati utente.");
+        return mav;
+    }
 
-        userService.updateUser(req);
+    mav.addObject("user", req2);
+    log.debug("Username: " + req2.getUsername());
+    log.debug("Address: " + req2.getAddress());
+    log.debug("Password: " + req2.getPassword());
+    log.debug("Role: " + req2.getRole());
 
+    return mav;
+}
+    @GetMapping("/accountUser")
+    public ModelAndView profile( @RequestParam String username,@RequestParam  String role){
+        ModelAndView mav = new ModelAndView("profile");
+        mav.addObject("username",username);
+        mav.addObject("role",role);
         return mav;
     }
 }

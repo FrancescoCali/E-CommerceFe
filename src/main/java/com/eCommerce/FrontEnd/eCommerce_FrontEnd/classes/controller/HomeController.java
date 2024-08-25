@@ -32,18 +32,19 @@ public class HomeController {
     RestTemplate rest;
 
     @GetMapping("/home")
-    public ModelAndView homepage(@RequestParam(required=false) String req) {
+    public ModelAndView homepage(@RequestParam(required=false) String username,@RequestParam(required=false) String role) {
         ModelAndView mav;
-        if(req != null) {
-            if (req.equalsIgnoreCase("ADMIN"))
+        if(role != null) {
+            if (role.equalsIgnoreCase("ADMIN"))
                 mav = new ModelAndView("home-admin");
             else
                 mav = new ModelAndView("home-user");
-
-            mav.addObject("role", req);
         }
         else
             mav = new ModelAndView("home-user");
+
+        mav.addObject("role", role);
+        mav.addObject("username",username);
 
         return mav;
     }

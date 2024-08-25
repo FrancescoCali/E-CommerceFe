@@ -13,11 +13,13 @@
                 }
             }
         };
+
     </script>
+
 </head>
 <body>
 
-<nav th:insert= "~{fragments/navigation}"></nav>
+<nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
 
 <div class="slider-sidebar" align="center">
     <input type="radio" name="testimonial" id="t-1">
@@ -29,7 +31,7 @@
     <div class="testimonials">
         <label class="item" for="t-1">
             <a th:href="@{/laptop/listLaptop(role=${role})}">
-                <img th:src="@{/images/computer.png}" alt="laptop">
+                <img th:src="@{/images/computer.jpg}" alt="laptop">
             </a>
         </label>
         <label class="item" for="t-2">
@@ -38,18 +40,18 @@
             </a>
         </label>
         <label class="item" for="t-3">
-            <a th:href="@{/monitor/listMonitor(role=${role})}">
-                <img th:src="@{/images/monitor/Hp-monitor.png}" alt="monitor">
+            <a th:href="@{/listMonitor}">
+                <img th:src="@{/images/monitor.jpg}" alt="monitor">
             </a>
         </label>
         <label class="item" for="t-4">
-            <a th:href="@{/mouse/listMouse(role=${role})}">
-                <img th:src="@{/images/mouse/mouse-corsair.png}" alt="mouse">
+            <a th:href="@{/listMouse}">
+                <img th:src="@{/images/mouse.jpg}" alt="mouse">
             </a>
         </label>
         <label class="item" for="t-5">
-            <a th:href="@{/keyboard/listKeyboard(role=${role})}">
-                <img th:src="@{/images/keyboard/keyboard-DREVO.png}" alt="keyboard">
+            <a th:href="@{/listKeyboard}">
+                <img th:src="@{/images/keyboard.jpg}" alt="keyboard">
             </a>
         </label>
         <label class="item" for="t-6">
@@ -85,6 +87,7 @@
     });
 
 </script>
+
 
 </body>
 </html>

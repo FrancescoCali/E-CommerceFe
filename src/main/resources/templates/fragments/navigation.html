@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
-	<meta charset="UTF-8">
-	<title>eCommerce</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
+    <meta charset="UTF-8">
+    <title>eCommerce</title>
 </head>
+
+
 <body>
-<div th:fragment="block-navigation(myTitle)">
-	<h1 align="center">BetaCommerce</h1>
-	<div class="navbar">
-		<a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/admin/createUser}">Crea Admin</a>
 
-		<!-- User Icon for Offcanvas Trigger -->
-		<button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar">
-			<i class="fas fa-user"></i>
-		</button>
-	</div>
+<div th:fragment="block-navigation(username,role)">
+    <h1 align="center">BetaCommerce</h1>
+    <div class="navbar">
+        <a class="btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{#}">Crea Admin</a>
+        <div class="dropdown">
+            <a class="dropbtn" sec:authorize="hasRole('ROLE_ADMIN')">Liste</a>
+            <ul class="dropdown-content">
+                <li><a th:href="@{/admin/listUser(req='USER')}">Utenti</a></li>
+                <li><a th:href="@{/admin/listUser(req='ADMIN')}">Admin</a></li>
+            </ul>
+        </div>
 
-	<!-- Offcanvas Sidebar -->
-	<div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
-		<div class="offcanvas-header">
-			<h2>Menu</h2>
-			<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-		</div>
-		<div class="offcanvas-body">
-			<ul>
-				<!-- Mostra 'Log in' e 'Sign in' solo se l'utente non è autenticato -->
-				<li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Log in</a></li>
-				<li sec:authorize="!isAuthenticated()" ><a th:href="@{/user/createUser}">Sign in</a></li>
+        <!-- Bottone "Home" -->
+        <button class="btn btn-primary" type="button" onclick="location.href='/home'">
+            <i class="fas fa-home"></i>
+        </button>
 
-				<!-- Mostra 'Mio profilo' solo se l'utente è autenticato -->
-				<li sec:authorize="isAuthenticated()"><a th:href="@{/user/profile}">Mio profilo</a></li>
-				<li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
-				<li><a href="#">Contact us</a></li>
-			</ul>
-		</div>
-	</div>
+        <!-- User Icon for Offcanvas Trigger -->
+        <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar">
+            <i class="fas fa-user"></i>
+        </button>
+    </div>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
+        <div class="offcanvas-header">
+            <h2>Menu</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul>
+                <!-- Mostra 'Log in' e 'Sign in' solo se l'utente non è autenticato -->
+                <li sec:authorize="!isAuthenticated()"><a th:href="@{/login}">Log in</a></li>
+                <li sec:authorize="!isAuthenticated()"><a th:href="@{/user/createUser}">Sign in</a></li>
+
+                <!-- Mostra 'Mio profilo' solo se l'utente è autenticato -->
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/accountUser(username=${username},role=${role})}">Mio profilo</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
+                <li><a href="#">Contact us</a></li>
+            </ul>
+        </div>
+    </div>
 
 </div>
 

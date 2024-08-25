@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>eCommerce</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            if (performance.navigation.type === 2) {
+                // L'utente sta tornando indietro nella cronologia
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.pathname);
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+
+<!-- Include the navigation fragment and pass username and role -->
+<nav th:insert="~{fragments/navigation :: block-navigation(username=${username}, role=${role})}"></nav>
+
+
+    <a th:href="@{/user/updateUser(username=${username})}">Aggiorna Utente</a>
+
+</body>
+</html>

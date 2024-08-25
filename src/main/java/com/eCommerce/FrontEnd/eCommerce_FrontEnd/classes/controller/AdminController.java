@@ -48,7 +48,6 @@ public class AdminController {
 
     @GetMapping ("/listUser")
     public  ModelAndView list(@RequestParam String req) {
-
         ModelAndView mav = new ModelAndView("list-user");
         URI uri = null ;
         if(req.equalsIgnoreCase("ADMIN"))
