@@ -20,7 +20,7 @@ import java.net.URI;
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/admin/product")
 public class ProductController {
     @Value("${eCommerce.backend}")
     String backend;
@@ -31,12 +31,11 @@ public class ProductController {
     public static Logger log = LoggerFactory.getLogger(ProductController.class);
 
     @GetMapping("/createProduct")
-    public ModelAndView create(){
+    public ModelAndView create( ){
         ModelAndView mav = new ModelAndView("create-product");
         ProductRequest req = new ProductRequest();
         req.setErrorMSG(null);
         mav.addObject("product", req);
-
         return mav;
     }
 
@@ -70,11 +69,7 @@ public class ProductController {
                     .buildAndExpand()
                     .toUri();
 
-        log.debug("uri: "+uri);
-
         ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
-
-        log.debug("rc:" + resp.getRc());
 
         if(!resp.getRc()){
             ModelAndView mav = new ModelAndView("create-product");
@@ -82,7 +77,7 @@ public class ProductController {
             mav.addObject("product", req);
             return mav;
         }
-        return "redirect:/product/listProduct";
+        return "redirect:/admin/product/listProduct";
     }
 
     @GetMapping("/removeProduct")
@@ -94,7 +89,7 @@ public class ProductController {
                 .toUri();
 
         ResponseBase resp = rest.postForEntity(uri,id, ResponseBase.class).getBody();
-        return "redirect:/product/listProduct";
+        return "redirect:/admin/product/listProduct";
     }
 
     @GetMapping("/updateProduct")

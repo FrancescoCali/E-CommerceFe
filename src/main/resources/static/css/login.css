@@ -1,0 +1,116 @@
+/* Resetting some default styles */
+.bodyContainer, h1, form {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Full-height background color and centering */
+.bodyContainer {
+    background-image: url('/images/unnamed.jpeg'); /* Immagine di sfondo */
+    background-size: cover; /* Immagine copre l'intera area */
+    background-position: center; /* Centra l'immagine */
+    background-repeat: no-repeat; /* Impedisce la ripetizione dell'immagine */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Container for the login form */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Width of the container */
+    max-width: 400px; /* Ridotto per fare il contenitore più stretto */
+    padding: 20px; /* Spazio interno */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+    min-height: 350px; /* Altezza minima per allungare il contenitore */
+    align-items: center; /* Centro il contenuto orizzontalmente */
+    justify-content: center; /* Centro il contenuto verticalmente */
+}
+
+/* Heading styles */
+.login-container h1 {
+    margin-bottom: 30px;
+    color: #000000;
+}
+
+/* Form group styles */
+.input-group {
+    background: transparent; /* Rimuove il background bianco */
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+    max-width: 600px; /* Aumenta la larghezza massima delle text box */
+    border-radius: 5px;
+    margin-bottom: 20px; /* Spazio tra i gruppi */
+    display: flex;
+    align-items: center;
+    position: relative; /* Necessario per posizionare l'icona */
+}
+
+/* Stili per gli input */
+.input-group input {
+    width: 100%; /* Occupa tutta la larghezza disponibile del contenitore */
+    padding: 10px;
+    border: 1px solid #ccc; /* Aggiunge un bordo per visibilità */
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+    text-align: center;
+    outline: none;
+    color: #555;
+}
+
+/* Stili per le icone della password */
+.input-group img {
+    width: 20px;
+    cursor: pointer;
+    position: absolute; /* Posiziona l'icona all'interno del campo */
+    right: 10px; /* Distanza dal bordo destro */
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Password field styles */
+.password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%; /* Occupa tutta la larghezza disponibile */
+}
+
+/* Rimuove il padding-right se non necessario, poiché ora gestito dall'icona */
+.password-wrapper input {
+    padding-right: 40px; /* Spazio per l'icona */
+}
+
+/* Stili per l'icona dell'occhio */
+.toggle-password {
+    display: none; /* Non necessario ora, l'icona è posizionata dentro l'input */
+}
+
+/* Stili per il pulsante */
+.styleButton {
+    width: calc(100% - 20px); /* Larghezza completa del contenitore meno il padding */
+    max-width: 250px; /* Larghezza massima del pulsante */
+    padding: 12px; /* Maggiore padding per il pulsante */
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    box-sizing: border-box;
+    align-self: center; /* Centro il pulsante orizzontalmente */
+}
+
+.styleButton:hover {
+    background-color: #0056b3;
+}

@@ -37,29 +37,22 @@ public class CoolerController {
         CoolerRequest req = new CoolerRequest();
         req.setErrorMSG(null);
         mav.addObject("cooler", req);
-
         return mav;
     }
 
     @PostMapping("/saveCooler")
     public Object save(@ModelAttribute("cooler") CoolerRequest req){
-
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "cooler/create")
-                .buildAndExpand()
-                .toUri();
-        log.debug("uri: "+uri);
-
-        ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
-
-        log.debug("rc:" + resp.getRc());
-
-        if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("create-cooler");
-            req.setErrorMSG(req.getErrorMSG());
-            mav.addObject("cooler", req);
-            return mav;
-        }
+            URI uri = UriComponentsBuilder
+                    .fromHttpUrl(backend + "cooler/create")
+                    .buildAndExpand()
+                    .toUri();
+            ResponseBase resp = rest.postForEntity(uri, req, ResponseBase.class).getBody();
+            if (!resp.getRc()) {
+                ModelAndView mav = new ModelAndView("create-cooler");
+                req.setErrorMSG(req.getErrorMSG());
+                mav.addObject("cooler", req);
+                return mav;
+            }
         return "redirect:/components/listCooler";
     }
 
@@ -70,7 +63,6 @@ public class CoolerController {
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
-
         ResponseBase resp = rest.postForEntity(uri,id, ResponseBase.class).getBody();
         return "redirect:/components/listCooler";
     }
