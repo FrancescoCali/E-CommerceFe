@@ -43,7 +43,7 @@ public class LaptopController {
     }
 
     @GetMapping("/listLaptop")
-    public ModelAndView list(@RequestParam(required = false) String role) {
+    public ModelAndView list(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -57,6 +57,8 @@ public class LaptopController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listLaptop", resp);
+        mav.addObject("role", role);
+        mav.addObject("username",username);
         return mav;
     }
 

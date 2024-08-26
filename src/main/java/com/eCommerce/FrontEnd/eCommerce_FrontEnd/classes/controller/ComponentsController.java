@@ -23,8 +23,13 @@ public class ComponentsController {
     @Autowired
     RestTemplate rest;
 
+    @GetMapping(value = {"/listComponents"})
+    public ModelAndView listComponents(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+         return new ModelAndView("list-components-img");
+    }
+
     @GetMapping(value = {"/listCpu"})
-    public ModelAndView listCpu(@RequestParam(required = false) String role) {
+    public ModelAndView listCpu(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -38,12 +43,13 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listCpu", resp);
-
+        mav.addObject("role", role);
+        mav.addObject("username",username);
         return mav;
     }
 
     @GetMapping (value = {"/listGpu"})
-    public  ModelAndView listGpu(@RequestParam(required = false) String role) {
+    public  ModelAndView listGpu(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -57,13 +63,15 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listGpu", resp);
+        mav.addObject("role", role);
+        mav.addObject("username",username);
 
         return mav;
     }
 
 
     @GetMapping (value = {"/listCooler"})
-    public  ModelAndView listCooler(@RequestParam(required = false) String role) {
+    public  ModelAndView listCooler(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
             mav = new ModelAndView("list-cooler");
@@ -76,12 +84,13 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listCooler", resp);
-
+        mav.addObject("role", role);
+        mav.addObject("username",username);
         return mav;
     }
 
     @GetMapping (value = {"/listMemory"})
-    public  ModelAndView listMemory(@RequestParam(required = false) String role) {
+    public  ModelAndView listMemory(@RequestParam(required=false) String username, @RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -95,12 +104,15 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMemory", resp);
+        mav.addObject("role", role);
+        mav.addObject("username",username);
+
 
         return mav;
     }
 
     @GetMapping (value = {"/listMotherboard"})
-    public  ModelAndView listMotherboard(@RequestParam(required = false) String role) {
+    public  ModelAndView listMotherboard(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -114,12 +126,15 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMotherboard", resp);
+        mav.addObject("role", role);
+        mav.addObject("username",username);
+
 
         return mav;
     }
 
     @GetMapping (value = {"/listPsu"})
-    public  ModelAndView listPsu(@RequestParam(required = false) String role) {
+    public  ModelAndView listPsu(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -132,12 +147,15 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listPsu", resp);
+        mav.addObject("role", role);
+        mav.addObject("username",username);
+
 
         return mav;
     }
 
     @GetMapping (value = {"/listRam"})
-    public  ModelAndView listRam(@RequestParam(required = false) String role) {
+    public  ModelAndView listRam(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -151,6 +169,9 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listRam", resp);
+        mav.addObject("role", role);
+        mav.addObject("username",username);
+
 
         return mav;
     }

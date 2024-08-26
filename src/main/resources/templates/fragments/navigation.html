@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
     <meta charset="UTF-8">
-    <title>eCommerce</title>
+    <title>BetaCommerce</title>
 </head>
 
 
@@ -13,20 +13,28 @@
 
 <div th:fragment="block-navigation(username,role)">
     <h1 align="center">BetaCommerce</h1>
+
     <div class="navbar">
-        <a class="btn-secondary" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{#}">Crea Admin</a>
+        <!-- Bottone "Home" -->
+        <a class="btn btn-secondary" th:href="@{/home(username=${username},role=${role})}">
+            <i class="fas fa-home"></i>
+        </a>
+
         <div class="dropdown">
-            <a class="dropbtn" sec:authorize="hasRole('ROLE_ADMIN')">Liste</a>
+            <a class="dropbtn" sec:authorize="hasRole('ROLE_ADMIN')">Nuovo<i class="fas fa-user-plus" style="margin-left: auto; padding: 3px 7px"></i></a>
+            <ul class="dropdown-content">
+                <li><a th:href="@{/admin/createUser(req='USER')}">Utente</a></li>
+                <li><a th:href="@{/admin/createUser(req='ADMIN')}">Admin</a></li>
+            </ul>
+        </div>
+
+        <div class="dropdown">
+            <a class="dropbtn" sec:authorize="hasRole('ROLE_ADMIN')">Liste<i class="fas fa-bars" style="margin-left: auto; padding: 3px 7px"></i></a>
             <ul class="dropdown-content">
                 <li><a th:href="@{/admin/listUser(req='USER')}">Utenti</a></li>
                 <li><a th:href="@{/admin/listUser(req='ADMIN')}">Admin</a></li>
             </ul>
         </div>
-
-        <!-- Bottone "Home" -->
-        <button class="btn btn-primary" type="button" onclick="location.href='/home'">
-            <i class="fas fa-home"></i>
-        </button>
 
         <!-- User Icon for Offcanvas Trigger -->
         <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar">
@@ -34,7 +42,7 @@
         </button>
     </div>
 
-    <!-- Offcanvas Sidebar -->
+
     <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
         <div class="offcanvas-header">
             <h2>Menu</h2>
@@ -48,6 +56,7 @@
 
                 <!-- Mostra 'Mio profilo' solo se l'utente è autenticato -->
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/user/accountUser(username=${username},role=${role})}">Mio profilo</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/updateUser(username=${username})}">Aggiorna Utente</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                 <li><a href="#">Contact us</a></li>
             </ul>

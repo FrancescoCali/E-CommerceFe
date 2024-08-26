@@ -41,7 +41,7 @@ public class ProductController {
     }
 
     @GetMapping (value = {"/listProduct"})
-    public  ModelAndView list() {
+    public  ModelAndView list(@RequestParam(required = false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav = new ModelAndView("home");
         URI uri = UriComponentsBuilder
@@ -50,7 +50,8 @@ public class ProductController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listProduct", resp);
-
+        mav.addObject("role", role);
+        mav.addObject("username",username);
         return mav;
     }
 

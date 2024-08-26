@@ -21,7 +21,7 @@ import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUti
 
 @Controller
 @RequestMapping("/pc")
-public class PcController {
+public class  PcController {
     @Value("${eCommerce.backend}")
     String backend;
 
@@ -40,7 +40,7 @@ public class PcController {
     }
 
     @GetMapping (value = {"/listPc"})
-    public  ModelAndView list(@RequestParam(required = false) String role) {
+    public  ModelAndView list(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -54,7 +54,8 @@ public class PcController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listPc", resp);
-
+        mav.addObject("role", role);
+        mav.addObject("username",username);
         return mav;
     }
 

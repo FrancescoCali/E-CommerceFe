@@ -41,7 +41,7 @@ public class MonitorController {
     }
 
     @GetMapping (value = {"/listMonitor"})
-    public  ModelAndView list(@RequestParam(required = false) String role) {
+    public  ModelAndView list(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
@@ -56,6 +56,8 @@ public class MonitorController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMonitor", resp);
+        mav.addObject("role", role);
+        mav.addObject("username",username);
         return mav;
     }
 

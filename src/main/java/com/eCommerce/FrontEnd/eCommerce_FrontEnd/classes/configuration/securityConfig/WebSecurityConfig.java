@@ -7,6 +7,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
@@ -109,6 +111,63 @@ import java.nio.charset.StandardCharsets;
 //    }
 //}
 
+//@Configuration
+//@EnableWebSecurity
+//public class WebSecurityConfig {
+//
+//    @Autowired
+//    private CustomUserDetailsService customUserDetailsService;
+//
+//    @Bean
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
+//                .authorizeHttpRequests((request) -> request
+//                        .requestMatchers("/admin/**").hasRole("ADMIN")
+//                        .requestMatchers("/user/createUser", "/user/saveUser").permitAll()
+//                        .requestMatchers("/user/**").hasRole("USER")
+//                        .requestMatchers("/**").permitAll()
+//                        .anyRequest().authenticated()
+//                )
+//                .formLogin((form) -> form
+//                        .loginPage("/login")
+//                        .successHandler(authenticationSuccessHandler())
+//                        .permitAll()
+//                )
+//                .logout(logout -> logout
+//                        .logoutUrl("/logout")
+//                        .invalidateHttpSession(true)
+//                        .deleteCookies("JSESSIONID")
+//                        .permitAll()
+//                )
+//                .userDetailsService(customUserDetailsService);
+//
+//        return http.build();
+//    }
+//
+//    @Bean
+//    public AuthenticationSuccessHandler authenticationSuccessHandler() {
+//        return new AuthenticationSuccessHandler() {
+//            @Override
+//            public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+//                                                Authentication authentication) throws IOException, ServletException {
+//
+//                // Estrai il ruolo senza le parentesi
+//                String role = authentication.getAuthorities().iterator().next().getAuthority();
+//                // Codifica l'URL
+//                role = URLEncoder.encode(role, StandardCharsets.UTF_8.toString());
+//                // Estrai lo username senza le parentesi
+//                String username = authentication.getName();
+//
+//                // Codifica l'URL
+//                username = URLEncoder.encode(username, StandardCharsets.UTF_8.toString());
+//
+//                // Reindirizza a /home con il parametro codificato
+//                response.sendRedirect("/home?username=" + username +"&role="+role );
+//            }
+//        };
+//    }
+// }
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -149,46 +208,16 @@ public class WebSecurityConfig {
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                                 Authentication authentication) throws IOException, ServletException {
 
-                // Estrai il ruolo senza le parentesi
                 String role = authentication.getAuthorities().iterator().next().getAuthority();
-                // Codifica l'URL
                 role = URLEncoder.encode(role, StandardCharsets.UTF_8.toString());
-                // Estrai lo username senza le parentesi
                 String username = authentication.getName();
-
-                // Codifica l'URL
                 username = URLEncoder.encode(username, StandardCharsets.UTF_8.toString());
 
-                // Reindirizza a /home con il parametro codificato
-                response.sendRedirect("/home?username=" + username +"&role="+role );
+                response.sendRedirect("/home?username=" + username + "&role=" + role);
             }
         };
     }
-//    @Override
-//    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
-//                                        Authentication authentication) throws IOException, ServletException {
-//
-//        // Esegui la logica di autenticazione
-//        String role = authentication.getAuthorities().iterator().next().getAuthority();
-//        String username = authentication.getName();
-//
-//        // Qui puoi decidere di utilizzare un dispatcher interno per ottenere un ModelAndView
-//        try {
-//            // Chiama un metodo che restituisce un ModelAndView
-//            ModelAndView modelAndView = getHomeModelAndView(role, username);
-//            // Usa il dispatcher per inoltrare la richiesta
-//            request.getRequestDispatcher("/WEB-INF/views/home.jsp").forward(request, response);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    private ModelAndView getHomeModelAndView(String role, String username) {
-//        ModelAndView modelAndView = new ModelAndView("home");
-//        modelAndView.addObject("role", role);
-//        modelAndView.addObject("username", username);
-//        return modelAndView;
-//    }
+
 }
 
 

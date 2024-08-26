@@ -107,10 +107,10 @@ import java.util.Map;
 public class CustomUserDetailsService implements UserDetailsService {
 
     @Value("${eCommerce.backend}")
-    String backend;
+    private String backend;
 
     @Autowired
-    RestTemplate rest;
+    private RestTemplate rest;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -121,8 +121,8 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/getByUsername")
-                .queryParam("username", username )
-                .buildAndExpand()
+                .queryParam("username", username)
+                .build()
                 .toUri();
 
         ResponseObject<Map<String, Object>> response = rest.getForEntity(uri, ResponseObject.class).getBody();

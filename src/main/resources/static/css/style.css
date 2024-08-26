@@ -13,6 +13,21 @@ body {
   background-repeat: no-repeat;
 }
 
+.image img{
+    max-width : 500px;
+}
+
+.image {
+    margin-top: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid #fff;
+}
+
+.image img span{
+    align-items: center;
+}
+
 .background-img {
   position: absolute;
   top: 0;
@@ -23,10 +38,6 @@ body {
   z-index: -1;
   background-size: cover;
   background-position: center;
-}
-
-a.logout {
-  object-position: right;
 }
 
 /* Aggiungi questa regola per posizionare il menu in alto */
@@ -46,19 +57,23 @@ nav {
   padding: 10px; /* Aggiunge spaziatura interna */
 }
 
-.navbar .btn-secondary {
-  margin-right: auto;
+.navbar .btn.btn-secondary {
+    margin-left: 0;
+    margin-right: auto;
 }
 
 .navbar .btn {
-    margin-left: 10px; /* Aggiungi spazio tra i pulsanti */
+    margin-left: 5px; /* Aggiungi spazio tra i pulsanti */
+    margin-right: 5px;
 }
 
-.navbar .btn .btn-primary {
-  margin-left: auto; /* Spinge il pulsante verso destra */
+.navbar .btn.btn-primary {
+    margin-left: auto; /* Spinge il pulsante verso destra */
+    margin-right: 0;
 }
 
 /* Pulsante che apre la sidebar */
+.navbar .btn-secondary,
 .navbar .btn-primary {
   width: 50px;
   height: 40px;
@@ -68,20 +83,17 @@ nav {
 }
 
 /* Pulsante che apre la sidebar */
+.navbar .btn-secondary:hover,
 .navbar .btn-primary:hover {
   background-color: rgba(255, 255, 255, 0.2) !important;
   border: 2px solid rgba(255, 255, 255, 0.5) !important;
   color: #ffffff;
 }
 
+.navbar .btn-secondary i,
 .navbar .btn-primary i {
   font-size: 18px;
   color: #ffffff;
-}
-
-
-.navbar a.logout {
-  margin-left: auto; /* Spinge "Logout" a destra */
 }
 
 .navbar a.logout i {
@@ -127,6 +139,7 @@ nav {
   color: #fff !important; /* Imposta testo bianco */
 }
 
+.btn-secondary,
 .btn-primary {
   background-color: #282d34 !important; /* Imposta il bottone su un grigio scuro */
   border-color: #282d34 !important;
@@ -366,7 +379,7 @@ main {
   position: absolute;
   /*border: 0px solid none;*/
   text-align: center;
-  transition: transform 0.4s, opacity 0.4s; /* Aggiunto il controllo dell'opacità */
+  transition: transform 0.4s, opacity 0.4s; /* Aggiunto il controllo dell'opacitÃ  */
   user-select: none;
   cursor: pointer;
   overflow: hidden;
@@ -419,7 +432,7 @@ main {
   transform: translate3d(0, 0, -500px); /* Portalo indietro nella scena */
 }
 
-/* Posizionamento e visibilità dei label laterali */
+/* Posizionamento e visibilitÃ  dei label laterali */
 #t-1:checked ~ .testimonials label[for="t-3"],
 #t-2:checked ~ .testimonials label[for="t-4"],
 #t-3:checked ~ .testimonials label[for="t-5"],
@@ -605,6 +618,8 @@ main {
 
 .dropbtn {
   text-decoration: none;
+  margin-right: 10px;
+  width: 100px;
 }
 
 /* Show dropdown on hover */
@@ -617,4 +632,56 @@ main {
     background-color: #575757;
 }
 
+table{
+  margin: auto;
+  margin-top: 22%;
+}
 
+table.colorful-table {
+  font-family: Arial, Helvetica, sans-serif;
+  width: 350px;
+  height: 100px;
+  text-align: center;
+  border-collapse: collapse;
+}
+table.colorful-table td, table.colorful-table th {
+  border: 1px solid #FFFFFF;
+  padding: 3px 2px;
+}
+table.colorful-table tbody td {
+  font-size: 13px;
+}
+table.colorful-table tr:nth-child(even) {
+}
+table.colorful-table thead {
+  background: #64B464;
+  border-bottom: 0px solid #FFFFFF;
+}
+table.colorful-table thead th {
+  font-size: 17px;
+  font-weight: bold;
+  color: #FFFFFF;
+  text-align: center;
+  border-left: 0px solid #FFFFFF;
+}
+table.colorful-table thead th:first-child {
+  border-left: none;
+}
+
+table.colorful-table tfoot {
+  font-size: 14px;
+  font-weight: normal;
+  color: #FFFFFF;
+  background: #007BFF;
+}
+table.colorful-table tfoot td {
+  font-size: 14px;
+}
+table.colorful-table tfoot td a{
+  background: transparent;
+  color: #fff;
+}
+table.colorful-table tfoot td a:hover{
+  color: #005599;
+  transition: color 0.3 ease-in-out;
+}

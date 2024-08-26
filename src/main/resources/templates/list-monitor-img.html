@@ -9,11 +9,12 @@
 </head>
 <body>
 <br>
-<nav th:insert="~{fragments/navigation :: block-navigation('Elenco Monitor')}"></nav>
+<nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
-<div >
+
+<div class = "image" >
     <div th:each="monitor : ${listMonitor.dati}">
-        <img th:src="@{/images/monitor.jpg)}" alt="Foto psu">
+        <img th:src="@{/images/monitor/monitor-dell.png}" alt="Foto psu">
         <div >
             <span><strong>Description:</strong> <span th:text="${monitor.description}"></span></span>
             <span><strong>Model:</strong> <span th:text="${monitor.model}"></span></span>

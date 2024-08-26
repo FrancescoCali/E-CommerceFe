@@ -3,7 +3,7 @@
 <head>
     <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
-    <title>eCommerce</title>
+    <title>eCommerce - home</title>
     <script type="text/javascript">
         window.onload = function() {
             if (performance.navigation.type === 2) {
@@ -13,9 +13,7 @@
                 }
             }
         };
-
     </script>
-
 </head>
 <body>
 
@@ -30,33 +28,33 @@
     <input type="radio" name="testimonial" id="t-6">
     <div class="testimonials">
         <label class="item" for="t-1">
-            <a th:href="@{/laptop/listLaptop(role=${role})}">
-                <img th:src="@{/images/computer.jpg}" alt="laptop">
+            <a th:href="@{/laptop/listLaptop(username=${username},role=${role})}">
+                <img th:src="@{/images/laptop/acer-predator-helios.png}" alt="laptop">
             </a>
         </label>
         <label class="item" for="t-2">
-            <a th:href="@{/listPc}">
-                <img th:src="@{/images/pc.jpg}" alt="pc">
+            <a th:href="@{/pc/listPc(username=${username},role=${role})}">
+                <img th:src="@{/images/pc/pc-fisso.png}" alt="pc">
             </a>
         </label>
         <label class="item" for="t-3">
-            <a th:href="@{/listMonitor}">
-                <img th:src="@{/images/monitor.jpg}" alt="monitor">
+            <a th:href="@{/monitor/listMonitor(username=${username},role=${role})}">
+                <img th:src="@{/images/monitor/Hp-monitor.png}" alt="monitor">
             </a>
         </label>
         <label class="item" for="t-4">
-            <a th:href="@{/listMouse}">
-                <img th:src="@{/images/mouse.jpg}" alt="mouse">
+            <a th:href="@{/mouse/listMouse(username=${username},role=${role})}">
+                <img th:src="@{/images/mouse/mouse-trust-nero.png}" alt="mouse">
             </a>
         </label>
         <label class="item" for="t-5">
-            <a th:href="@{/listKeyboard}">
-                <img th:src="@{/images/keyboard.jpg}" alt="keyboard">
+            <a th:href="@{/keyboard/listKeyboard(username=${username},role=${role})}">
+                <img th:src="@{/images/keyboard/keyboard-blademaster-black.png}" alt="keyboard">
             </a>
         </label>
         <label class="item" for="t-6">
-            <a th:href="@{/listComponents}">
-                <img th:src="@{/images/components.jpg}" alt="components">
+            <a th:href="@{/components/listComponents(username=${username},role=${role})}">
+                <img th:src="@{/images/file.png}" alt="components">
             </a>
         </label>
     </div>
@@ -81,7 +79,6 @@
             currentIndex = (currentIndex + 1) % radios.length;
             radios[currentIndex].checked = true;
         }
-
         setInterval(changeImage, 15000);
 
     });

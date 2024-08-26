@@ -42,7 +42,7 @@ public class KeyboardController {
     }
 
     @GetMapping (value = {"/listKeyboard"})
-    public  ModelAndView list(@RequestParam(required = false) String role) {
+    public  ModelAndView list(@RequestParam(required = false) String username,@RequestParam(required = false) String role) {
         ModelAndView mav;
         if (role.equalsIgnoreCase("ADMIN"))
             mav = new ModelAndView("list-keyboard");
@@ -55,7 +55,8 @@ public class KeyboardController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listKeyboard", resp);
-
+        mav.addObject("role", role);
+        mav.addObject("username",username);
         return mav;
     }
 

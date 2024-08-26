@@ -29,8 +29,6 @@ public class CpuController {
 
     public static Logger log = LoggerFactory.getLogger(CpuController.class);
 
-
-
     @GetMapping("/createCpu")
     public ModelAndView create(){
         ModelAndView mav = new ModelAndView("create-cpu");

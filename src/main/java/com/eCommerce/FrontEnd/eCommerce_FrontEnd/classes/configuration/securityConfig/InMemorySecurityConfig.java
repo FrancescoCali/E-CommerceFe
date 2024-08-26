@@ -45,5 +45,4 @@ public class InMemorySecurityConfig {
     public InMemoryUserDetailsManager inMemoryUserDetailsManager() {
         return new InMemoryUserDetailsManager();
     }
-
 }

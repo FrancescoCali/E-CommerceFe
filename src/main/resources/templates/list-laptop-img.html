@@ -9,7 +9,7 @@
 </head>
 <body>
 <br>
-<nav th:insert="~{fragments/navigation :: block-navigation('Elenco Laptop')}"></nav>
+<nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
 <div class="car-list">
     <div th:each="laptop : ${listLaptop.dati}">
