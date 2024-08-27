@@ -4,6 +4,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,15 +32,25 @@ import org.springframework.stereotype.Service;
 public class UserService implements iUserService {
 
     @Autowired
-    private HttpServletRequest request;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
     private InMemoryUserDetailsManager inMemoryUserDetailsManager;
 
     private static Logger log = LoggerFactory.getLogger(UserService.class);
+
+    @Autowired
+    private HttpServletRequest request;
+
+    public String getUsername() {
+        HttpSession session = request.getSession();
+        return (String) session.getAttribute("username");
+    }
+
+    public String getRole() {
+        HttpSession session = request.getSession();
+        return (String) session.getAttribute("role");
+    }
 
     @Override
     public void createUser(UserRequest req) {

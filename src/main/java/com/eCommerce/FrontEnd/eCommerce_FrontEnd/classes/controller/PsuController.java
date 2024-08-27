@@ -5,6 +5,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.PsuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class PsuController {
 
     @Autowired
     RestTemplate rest;
+
+    @Autowired
+    iUserService user ;
 
     public static Logger log = LoggerFactory.getLogger(PsuController.class);
 
@@ -55,11 +59,7 @@ public class PsuController {
                     .buildAndExpand()
                     .toUri();
 
-        log.debug("uri: "+uri);
-
         ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
-
-        log.debug("rc:" + resp.getRc());
 
         if(!resp.getRc()){
             ModelAndView mav = new ModelAndView("create-psu");

@@ -213,11 +213,13 @@ public class WebSecurityConfig {
                 String username = authentication.getName();
                 username = URLEncoder.encode(username, StandardCharsets.UTF_8.toString());
 
-                response.sendRedirect("/home?username=" + username + "&role=" + role);
+                request.getSession().setAttribute("username",username);
+                request.getSession().setAttribute("role",role);
+
+                response.sendRedirect("/home");
             }
         };
     }
-
 }
 
 

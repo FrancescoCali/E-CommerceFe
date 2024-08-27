@@ -26,7 +26,7 @@ public class UserController {
     String backend;
 
     @Autowired
-    iUserService userService;
+    iUserService user;
 
     @Autowired
     RestTemplate rest;
@@ -59,10 +59,10 @@ public class UserController {
             return mav;
         }
         if(req.getId()==null) {
-            userService.createUser(req);
+            user.createUser(req);
         }
         else
-            userService.updateUser(req);
+            user.updateUser(req);
         return "redirect:/home?username="+req.getUsername()+"&role="+req.getRole();
     }
 
@@ -81,7 +81,7 @@ public class UserController {
         ResponseObject<UserRequest> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
 
-        userService.removeUser(req);    /*** lo rimuovo dalla memoria ***/
+        user.removeUser(req);    /*** lo rimuovo dalla memoria ***/
 
         /**************** lo rimuovo dal db ****************/
         uri = UriComponentsBuilder
@@ -96,11 +96,11 @@ public class UserController {
     }
 
 @GetMapping("/updateUser")
-public ModelAndView update(@RequestParam String username) {
+public ModelAndView update() {
     ModelAndView mav = new ModelAndView("create-update-user");
     URI uri = UriComponentsBuilder
             .fromHttpUrl(backend + "user/getByUsername")
-            .queryParam("username", username)
+            .queryParam("username", user.getUsername())
             .buildAndExpand()
             .toUri();
     ResponseObject<UserView> resp;
@@ -129,11 +129,11 @@ public ModelAndView update(@RequestParam String username) {
 }
 
     @GetMapping("/accountUser")
-    public ModelAndView profile( @RequestParam String username,@RequestParam  String role){
+    public ModelAndView profile(){
         ModelAndView mav = new ModelAndView("profile");
         URI uri=UriComponentsBuilder
                 .fromHttpUrl(backend + "user/getByUsername")
-                .queryParam("username", username)
+                .queryParam("username", user.getUsername())
                 .buildAndExpand()
                 .toUri();
 
@@ -142,8 +142,8 @@ public ModelAndView update(@RequestParam String username) {
         UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
 
         mav.addObject("user", req);
-        mav.addObject("username",username);
-        mav.addObject("role",role);
+        mav.addObject("username",user.getUsername());
+        mav.addObject("role",user.getRole());
         return mav;
     }
 }

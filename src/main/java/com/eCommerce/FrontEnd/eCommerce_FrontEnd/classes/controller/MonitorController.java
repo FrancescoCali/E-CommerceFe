@@ -5,6 +5,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MonitorView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class MonitorController {
     String backend;
 
     @Autowired
+    iUserService user;
+
+
+    @Autowired
     RestTemplate rest;
 
     public static Logger log = LoggerFactory.getLogger(MonitorController.class);
@@ -41,23 +46,23 @@ public class MonitorController {
     }
 
     @GetMapping (value = {"/listMonitor"})
-    public  ModelAndView list(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    public  ModelAndView list() {
 
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-monitor");
-        else
+
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-monitor-img");
+        else
+            mav = new ModelAndView("list-monitor");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "monitor/list")
                 .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMonitor", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
 

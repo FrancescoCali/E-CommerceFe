@@ -48,6 +48,11 @@ body {
     z-index: 1;
 }
 
+.form-container.sign-in form h1,
+.form-container.sign-up form h1{
+  color: #543eae;
+}
+
 .container.active .sign-in {
     transform: translateX(100%);
 }
@@ -172,7 +177,24 @@ body {
 .password-wrapper {
     position: relative;
     width: 100%;
+    display: inline-block;
 }
+
+ #login-password {
+     padding-right: 40px; /* Spazio per l'immagine */
+     width: 100%;
+     box-sizing: border-box;
+ }
+
+ #eyeicon {
+     position: absolute;
+     right: 10px;
+     top: 50%;
+     width: 30px;
+     transform: translateY(-50%);
+     cursor: pointer;
+ }
+
 
 .password-wrapper input {
     width: 100%;

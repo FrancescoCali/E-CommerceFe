@@ -5,6 +5,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.KeyboardView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class KeyboardController {
     String backend;
 
     @Autowired
+    iUserService user ;
+
+    @Autowired
     RestTemplate rest;
 
     public static Logger log = LoggerFactory.getLogger(KeyboardController.class);
@@ -44,10 +48,10 @@ public class KeyboardController {
     @GetMapping (value = {"/listKeyboard"})
     public  ModelAndView list(@RequestParam(required = false) String username,@RequestParam(required = false) String role) {
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-keyboard");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-keyboard-img");
+        else
+            mav = new ModelAndView("list-keyboard");
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "keyboard/list")
                 .buildAndExpand().toUri();
@@ -55,8 +59,8 @@ public class KeyboardController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listKeyboard", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
 

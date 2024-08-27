@@ -5,6 +5,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CpuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,8 @@ import java.net.URI;
 public class CpuController {
     @Value("${eCommerce.backend}")
     String backend;
-
+    @Autowired
+    iUserService user ;
     @Autowired
     RestTemplate rest;
 

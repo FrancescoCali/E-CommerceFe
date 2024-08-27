@@ -1,6 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class ComponentsController {
     String backend;
 
     @Autowired
+    iUserService user ;
+
+    @Autowired
     RestTemplate rest;
 
     @GetMapping(value = {"/listComponents"})
@@ -28,34 +32,36 @@ public class ComponentsController {
          return new ModelAndView("list-components-img");
     }
 
-    @GetMapping(value = {"/listCpu"})
-    public ModelAndView listCpu(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
-        ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-cpu");
-        else
+    @GetMapping ("/listCpu")
+    public  ModelAndView list( ) {
+        ModelAndView mav ;
+
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-cpu-img");
+        else
+            mav = new ModelAndView("list-cpu");
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "cpu/list")
+                .fromHttpUrl(backend + "pc/list")
                 .buildAndExpand().toUri();
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listCpu", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
+
 
     @GetMapping (value = {"/listGpu"})
     public  ModelAndView listGpu(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
 
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-gpu");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-gpu-img");
+        else
+            mav = new ModelAndView("list-gpu");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "gpu/list")
@@ -63,20 +69,19 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listGpu", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
-
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
 
 
     @GetMapping (value = {"/listCooler"})
-    public  ModelAndView listCooler(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    public  ModelAndView listCooler() {
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-cooler");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-cooler-img");
+        else
+            mav = new ModelAndView("list-cooler");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "cooler/list")
@@ -84,19 +89,19 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listCooler", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
 
     @GetMapping (value = {"/listMemory"})
-    public  ModelAndView listMemory(@RequestParam(required=false) String username, @RequestParam(required = false) String role) {
+    public  ModelAndView listMemory() {
 
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-memory");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-memory-img");
+        else
+        mav = new ModelAndView("list-memory");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "memory/list")
@@ -104,21 +109,22 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMemory", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
 
 
         return mav;
     }
 
     @GetMapping (value = {"/listMotherboard"})
-    public  ModelAndView listMotherboard(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    public  ModelAndView listMotherboard() {
 
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-motherboard");
-        else
+
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-motherboard-img");
+        else
+            mav = new ModelAndView("list-motherboard");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "motherboard/list")
@@ -126,42 +132,42 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMotherboard", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
 
 
         return mav;
     }
 
     @GetMapping (value = {"/listPsu"})
-    public  ModelAndView listPsu(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    public  ModelAndView listPsu() {
 
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-psu");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-psu-img");
+        else
+            mav = new ModelAndView("list-psu");
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "psu/list")
                 .buildAndExpand().toUri();
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listPsu", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
 
 
         return mav;
     }
 
     @GetMapping (value = {"/listRam"})
-    public  ModelAndView listRam(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    public  ModelAndView listRam() {
 
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-ram");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-ram-img");
+        else
+            mav = new ModelAndView("list-ram");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "ram/list")
@@ -169,8 +175,8 @@ public class ComponentsController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listRam", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
 
 
         return mav;

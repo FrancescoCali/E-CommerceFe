@@ -4,6 +4,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.CartRequest
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.UserView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ public class CartController {
 
     @Value("${eCommerce.backend}")
     String backend;
+
+    @Autowired
+    iUserService user ;
 
     @Autowired
     RestTemplate rest;

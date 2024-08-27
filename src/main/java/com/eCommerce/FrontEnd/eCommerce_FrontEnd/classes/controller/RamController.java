@@ -2,9 +2,9 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.RamView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.RamRequest;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +26,9 @@ public class RamController {
     String backend;
 
     @Autowired
+    iUserService user ;
+
+    @Autowired
     RestTemplate rest;
 
     public static Logger log = LoggerFactory.getLogger(RamController.class);
@@ -36,7 +39,6 @@ public class RamController {
         RamRequest req = new RamRequest();
         req.setErrorMSG(null);
         mav.addObject("ram", req);
-
         return mav;
     }
 

@@ -6,6 +6,9 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.LaptopView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +31,9 @@ public class LaptopController {
     String backend;
 
     @Autowired
+    iUserService user ;
+
+    @Autowired
     RestTemplate rest;
 
     public static Logger log = LoggerFactory.getLogger(CpuController.class);
@@ -43,13 +49,14 @@ public class LaptopController {
     }
 
     @GetMapping("/listLaptop")
-    public ModelAndView list(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    public ModelAndView list( ) {
 
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-laptop");
-        else
+
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-laptop-img");
+        else
+            mav = new ModelAndView("list-laptop");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "laptop/list")
@@ -57,8 +64,8 @@ public class LaptopController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listLaptop", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
 

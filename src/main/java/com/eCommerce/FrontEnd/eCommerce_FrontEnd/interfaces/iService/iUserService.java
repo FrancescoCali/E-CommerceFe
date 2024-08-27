@@ -6,4 +6,6 @@ public interface iUserService {
      void createUser(UserRequest req);
      void updateUser(UserRequest req);
      void removeUser(UserRequest req);
+     String getUsername();
+     String getRole();
 }

@@ -5,6 +5,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.PcView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,12 @@ import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUti
 @Controller
 @RequestMapping("/pc")
 public class  PcController {
+
     @Value("${eCommerce.backend}")
     String backend;
+
+    @Autowired
+    iUserService user ;
 
     @Autowired
     RestTemplate rest;
@@ -39,23 +44,23 @@ public class  PcController {
         return mav;
     }
 
-    @GetMapping (value = {"/listPc"})
-    public  ModelAndView list(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    @GetMapping ("/listPc")
+    public  ModelAndView list( ) {
+        ModelAndView mav ;
 
-        ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-pc");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-pc-img");
+        else
+            mav = new ModelAndView("list-pc");
+
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "pc/list")
                 .buildAndExpand().toUri();
-        log.debug("URI:" + uri);
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listPc", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role",  user.getRole() );
+        mav.addObject("username", user.getUsername() );
         return mav;
     }
 
@@ -116,7 +121,7 @@ public class  PcController {
         PcRequest req = (PcRequest) convertInObject(resp.getDati(),PcRequest.class);
 
         mav.addObject("pc",req);
-//        mav.addObject("myTitle", "Modifica pc");
+        mav.addObject("myTitle", "Modifica pc");
         return mav;
     }
     

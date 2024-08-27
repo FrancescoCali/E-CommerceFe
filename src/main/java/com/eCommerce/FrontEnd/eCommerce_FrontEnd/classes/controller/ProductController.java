@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
-
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import java.net.URI;
 
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
@@ -28,6 +28,9 @@ public class ProductController {
     @Autowired
     RestTemplate rest;
 
+    @Autowired
+    iUserService user;
+
     public static Logger log = LoggerFactory.getLogger(ProductController.class);
 
     @GetMapping("/createProduct")
@@ -39,7 +42,7 @@ public class ProductController {
     }
 
     @GetMapping (value = {"/listProduct"})
-    public  ModelAndView list(@RequestParam(required = false) String username,@RequestParam(required = false) String role) {
+    public  ModelAndView list() {
 
         ModelAndView mav = new ModelAndView("home");
         URI uri = UriComponentsBuilder
@@ -48,8 +51,8 @@ public class ProductController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listProduct", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
 

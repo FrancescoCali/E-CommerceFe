@@ -5,6 +5,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MouseView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,9 @@ public class MouseController {
     String backend;
 
     @Autowired
+    iUserService user ;
+
+    @Autowired
     RestTemplate rest;
 
     public static Logger log = LoggerFactory.getLogger(MouseController.class);
@@ -41,12 +45,12 @@ public class MouseController {
     }
 
     @GetMapping (value = {"/listMouse"})
-    public  ModelAndView list(@RequestParam(required=false) String username,@RequestParam(required = false) String role) {
+    public  ModelAndView list( ) {
         ModelAndView mav;
-        if (role.equalsIgnoreCase("ADMIN"))
-            mav = new ModelAndView("list-mouse");
-        else
+        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
             mav = new ModelAndView("list-mouse-img");
+        else
+            mav = new ModelAndView("list-mouse");
 
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "mouse/list")
@@ -55,8 +59,8 @@ public class MouseController {
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("listMouse", resp);
-        mav.addObject("role", role);
-        mav.addObject("username",username);
+        mav.addObject("role", user.getRole());
+        mav.addObject("username",user.getUsername());
         return mav;
     }
     @PostMapping("/saveMouse")

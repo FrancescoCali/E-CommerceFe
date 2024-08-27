@@ -16,23 +16,23 @@
 
     <div class="navbar">
         <!-- Bottone "Home" -->
-        <a class="btn btn-secondary" th:href="@{/home(username=${username},role=${role})}">
+        <a class="btn btn-secondary" th:href="@{/home}">
             <i class="fas fa-home"></i>
         </a>
 
         <div class="dropdown">
             <a class="dropbtn" sec:authorize="hasRole('ROLE_ADMIN')">Nuovo<i class="fas fa-user-plus" style="margin-left: auto; padding: 3px 7px"></i></a>
             <ul class="dropdown-content">
-                <li><a th:href="@{/admin/createUser(req='USER')}">Utente</a></li>
-                <li><a th:href="@{/admin/createUser(req='ADMIN')}">Admin</a></li>
+                <li><a th:href="@{/admin/createUser}">Utente</a></li>
+                <li><a th:href="@{/admin/createUser}">Admin</a></li>
             </ul>
         </div>
 
         <div class="dropdown">
             <a class="dropbtn" sec:authorize="hasRole('ROLE_ADMIN')">Liste<i class="fas fa-bars" style="margin-left: auto; padding: 3px 7px"></i></a>
             <ul class="dropdown-content">
-                <li><a th:href="@{/admin/listUser(req='USER')}">Utenti</a></li>
-                <li><a th:href="@{/admin/listUser(req='ADMIN')}">Admin</a></li>
+                <li><a th:href="@{/admin/listUser}">Utenti</a></li>
+                <li><a th:href="@{/admin/listUser}">Admin</a></li>
             </ul>
         </div>
 
@@ -55,8 +55,8 @@
                 <li sec:authorize="!isAuthenticated()"><a th:href="@{/user/createUser}">Sign in</a></li>
 
                 <!-- Mostra 'Mio profilo' solo se l'utente è autenticato -->
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/accountUser(username=${username},role=${role})}">Mio profilo</a></li>
-                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/updateUser(username=${username})}">Aggiorna Utente</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/accountUser}">Mio profilo</a></li>
+                <li sec:authorize="isAuthenticated()"><a th:href="@{/user/updateUser}">Aggiorna Utente</a></li>
                 <li sec:authorize="isAuthenticated()"><a th:href="@{/logout}">Logout</a></li>
                 <li><a href="#">Contact us</a></li>
             </ul>
