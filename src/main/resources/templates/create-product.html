@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
+    <meta charset="UTF-8">
+    <title>Create User</title>
+</head>
+<body>
+
+<nav th:insert="~{fragments/navigation :: block-navigation(username=${username}, role=${role})}"></nav>
+
+<div class="container">
+    <h3 class="description">Inserire i dati</h3>
+    <form class="form_content" th:action="@{/}" th:object="${/}" method="post">
+        <input type="hidden" th:field="*{username}" />
+        <input type="hidden" th:field="*{role}"/>
+        <table class="User">
+            <tr>
+                <td><label for="model">Model:</label></td>
+                <td><input type="text" id="model" th:field = "*{model}" placeholder="model" required></td>
+            </tr>
+            <tr>
+                <td><label for="brand">Brand:</label></td>
+                <td><input type="text" id="brand" th:field="*{brand}" placeholder="brand" required></td>
+            </tr>
+            <tr>
+                <td><label for="price">Price:</label></td>
+                <td><input type="text" id="price" th:field = "*{price}" placeholder="price" required></td>
+            </tr>
+            <tr>
+                <td><label for="description">Description:</label></td>
+                <td><input type="text" id="description" th:field="*{description}" placeholder="description" required></td>
+            </tr>
+            <tr>
+                <td><label for="colour">Colour:</label></td>
+                <td><input type="text" id="colour" th:field = "*{colour}" placeholder="colour" required></td>
+            </tr>
+            <tr>
+                <td><label for="contained">Contained:</label></td>
+                <td>
+                    <select id="contained" th:field="*{contained}" required>
+                        <option value="true">Sì</option>
+                        <option value="false">No</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td><label for="quantity">quantity:</label></td>
+                <td><input type="text" id="quantity" th:field="*{quantity}" placeholder="quantity" required></td>
+            </tr>
+
+        </table>
+        <button class="buttonlike" type="submit">Registra Prodotto</button>
+
+        <!-- Visualizzazione degli errori -->
+        <div class="container-error" th:if="${errorMSG} != null">
+            <span th:text="${errorMSG}" style="color: red">***</span>
+        </div>
+    </form>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

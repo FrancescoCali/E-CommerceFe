@@ -5,6 +5,7 @@ public class PsuRequest extends ProductRequest{
     private Boolean cart;
     private Boolean contained;
 
+
     public Integer getId() {
         return id;
     }

@@ -35,7 +35,7 @@ public class UserController {
 
     @GetMapping("/createUser")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-update-user");
+        ModelAndView mav = new ModelAndView("login");
         UserRequest req = new UserRequest();
         req.setErrorMSG(null);
         req.setRole("USER");

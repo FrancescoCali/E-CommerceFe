@@ -20,7 +20,7 @@ import java.net.URI;
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
 
 @Controller
-@RequestMapping("/cooler")
+@RequestMapping("/admin/cooler")
 public class CoolerController {
 
     @Value("${eCommerce.backend}")
@@ -33,7 +33,7 @@ public class CoolerController {
 
     @GetMapping("/createCooler")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-cooler");
+        ModelAndView mav = new ModelAndView("create-component");
         CoolerRequest req = new CoolerRequest();
         req.setErrorMSG(null);
         mav.addObject("cooler", req);

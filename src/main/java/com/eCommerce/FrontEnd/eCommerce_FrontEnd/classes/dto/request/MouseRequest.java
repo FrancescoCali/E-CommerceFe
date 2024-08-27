@@ -4,6 +4,8 @@ public class MouseRequest {
     private Integer id;
     private String errorMSG;
 
+
+
     public String getErrorMSG() {
         return errorMSG;
     }

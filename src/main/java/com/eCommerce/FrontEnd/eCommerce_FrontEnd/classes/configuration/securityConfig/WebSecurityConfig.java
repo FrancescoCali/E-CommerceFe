@@ -201,7 +201,7 @@ public class WebSecurityConfig {
         return http.build();
     }
 
-    @Bean
+    @Bean                           //recupera gli utenti in sessione
     public AuthenticationSuccessHandler authenticationSuccessHandler() {
         return new AuthenticationSuccessHandler() {
             @Override

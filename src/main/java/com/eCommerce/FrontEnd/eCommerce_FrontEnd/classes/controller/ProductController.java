@@ -31,11 +31,10 @@ public class ProductController {
     public static Logger log = LoggerFactory.getLogger(ProductController.class);
 
     @GetMapping("/createProduct")
-    public ModelAndView create( ){
+    public ModelAndView create(  ){
         ModelAndView mav = new ModelAndView("create-product");
         ProductRequest req = new ProductRequest();
         req.setErrorMSG(null);
-        mav.addObject("product", req);
         return mav;
     }
 
@@ -77,7 +76,7 @@ public class ProductController {
             mav.addObject("product", req);
             return mav;
         }
-        return "redirect:/admin/product/listProduct";
+        return "redirect:/product/listProduct";
     }
 
     @GetMapping("/removeProduct")

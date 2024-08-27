@@ -4,6 +4,16 @@ public class RamRequest extends ProductRequest{
     private Integer id;
     private Integer idProduct;
     private String errorMSG;
+    private Boolean contained;
+
+
+    public Boolean getContained() {
+        return contained;
+    }
+
+    public void setContained(Boolean contained) {
+        this.contained = contained;
+    }
 
     public String getErrorMSG() {
         return errorMSG;
