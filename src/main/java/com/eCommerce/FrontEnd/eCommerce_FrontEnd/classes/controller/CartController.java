@@ -32,12 +32,9 @@ public class CartController {
 
     @GetMapping("/createCart")
     public Object create(@RequestParam(required = false) Integer id){
-
         ModelAndView mav = new ModelAndView("create-cart");
-
         if (id == null)
             return "redirect:/user/createUser";
-
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/getById")
                 .queryParam("id", id)
@@ -47,7 +44,6 @@ public class CartController {
         @SuppressWarnings("unchecked")
         ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
-
 
         CartRequest cartRequest = new CartRequest();
         req.setErrorMSG(null);

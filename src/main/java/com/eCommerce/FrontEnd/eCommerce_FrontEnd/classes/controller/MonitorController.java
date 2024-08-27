@@ -10,6 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -65,6 +66,23 @@ public class MonitorController {
         mav.addObject("username",user.getUsername());
         return mav;
     }
+
+    @GetMapping("/monitor/pageMonitor")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("monitor-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdProduct")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<MonitorView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        MonitorView view =(MonitorView) convertInObject(resp , MonitorView.class);
+        mav.addObject("monitor", view );
+        return mav;
+    }
+
+
 
     @PostMapping("/saveMonitor")
     public Object save(@ModelAttribute("monitor") MonitorRequest req){

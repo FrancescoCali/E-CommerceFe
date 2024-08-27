@@ -63,7 +63,7 @@ public class UserController {
         }
         else
             user.updateUser(req);
-        return "redirect:/home?username="+req.getUsername()+"&role="+req.getRole();
+        return "redirect:/home?";
     }
 
 

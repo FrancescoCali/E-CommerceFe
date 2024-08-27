@@ -32,7 +32,6 @@ public class ComponentsController {
          return new ModelAndView("list-components-img");
     }
 
-
     @GetMapping ("/listCpu")
     public  ModelAndView list( ) {
         ModelAndView mav ;
