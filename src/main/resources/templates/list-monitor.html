@@ -8,7 +8,7 @@
 <body>
 <div class="page-wrapper">
     <br>
-    <nav th:insert="~{fragments/navigation :: block-navigation('Elenco Laptop')}"></nav>
+    <nav th:insert="~{fragments/navigation :: block-navigation(username=${username}, role=${role})}"></nav>
     <br>
     <br>
     <div align="center" class="content">
@@ -25,7 +25,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="monitor: ${listmonitor.dati}">
+            <tr th:each="monitor: ${listMonitor.dati}">
 
                 <td th:text="${monitor.id}"></td>
                 <td th:text="${monitor.description}"></td>

@@ -2,6 +2,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.CoolerRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CoolerView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MonitorView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
@@ -87,6 +88,21 @@ public class CoolerController {
 
         mav.addObject("cooler",req);
         mav.addObject("myTitle", "Modifica cooler");
+        return mav;
+    }
+
+    @GetMapping("/pageCooler")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("cooler-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdCooler")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<CoolerView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        CoolerView view =(CoolerView) convertInObject(resp , CoolerView.class);
+        mav.addObject("cooler", view );
         return mav;
     }
 }

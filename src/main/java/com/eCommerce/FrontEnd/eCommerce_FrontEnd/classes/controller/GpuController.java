@@ -1,6 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.GpuRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CpuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.GpuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
@@ -91,6 +92,21 @@ public class GpuController {
 
         mav.addObject("gpu",req);
         mav.addObject("myTitle", "Modifica gpu");
+        return mav;
+    }
+
+    @GetMapping("/pageGpu")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("gpu-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdGpu")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<GpuView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        GpuView view =(GpuView) convertInObject(resp , GpuView.class);
+        mav.addObject("gpu", view );
         return mav;
     }
 

@@ -1,6 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.MemoryRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.LaptopView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MemoryView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
@@ -91,6 +92,21 @@ public class MemoryController {
 
         mav.addObject("memory",req);
         mav.addObject("myTitle", "Modifica memory");
+        return mav;
+    }
+
+    @GetMapping("/pageMemory")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("memory-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdMemory")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<MemoryView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        MemoryView view =(MemoryView) convertInObject(resp , MemoryView.class);
+        mav.addObject("memory", view );
         return mav;
     }
 }

@@ -2,6 +2,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.PcRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.PcView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.ProductView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
@@ -122,6 +123,21 @@ public class  PcController {
 
         mav.addObject("pc",req);
         mav.addObject("myTitle", "Modifica pc");
+        return mav;
+    }
+
+    @GetMapping("/pagePc")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("pc-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdPc")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<PcView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        PcView view =(PcView) convertInObject(resp , PcView.class);
+        mav.addObject("pc", view );
         return mav;
     }
     

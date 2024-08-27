@@ -1,6 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.MotherboardRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MemoryView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MotherboardView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
@@ -88,6 +89,21 @@ public class MotherboardController {
         MotherboardRequest req = (MotherboardRequest) convertInObject(resp.getDati(),MotherboardRequest.class);
 
         mav.addObject("motherboard",req);
+        return mav;
+    }
+
+    @GetMapping("/pageMotherboard")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("motherboard-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdMotherboard")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<MotherboardView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        MotherboardView view =(MotherboardView) convertInObject(resp , MotherboardView.class);
+        mav.addObject("motherboard", view );
         return mav;
     }
 }

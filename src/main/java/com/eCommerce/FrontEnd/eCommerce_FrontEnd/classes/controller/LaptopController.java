@@ -2,6 +2,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.LaptopRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.KeyboardView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.LaptopView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
@@ -122,4 +123,18 @@ public class LaptopController {
         return mav;
     }
 
+    @GetMapping("/pageLaptop")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("laptop-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdLaptop")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<LaptopView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        LaptopView view =(LaptopView) convertInObject(resp , LaptopView.class);
+        mav.addObject("laptop", view );
+        return mav;
+    }
 }

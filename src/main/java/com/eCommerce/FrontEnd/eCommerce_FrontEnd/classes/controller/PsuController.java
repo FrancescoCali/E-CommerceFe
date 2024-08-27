@@ -1,7 +1,9 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.PsuRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CoolerView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.PsuView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.RamView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
@@ -99,4 +101,20 @@ public class PsuController {
         mav.addObject("psu",req);
         return mav;
     }
+
+    @GetMapping("/pagePsu")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("psu-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdPsu")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<PsuView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        PsuView view =(PsuView) convertInObject(resp , PsuView.class);
+        mav.addObject("psu", view );
+        return mav;
+    }
+
 }

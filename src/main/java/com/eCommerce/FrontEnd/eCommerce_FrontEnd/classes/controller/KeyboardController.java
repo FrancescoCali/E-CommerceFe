@@ -1,6 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.KeyboardRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.GpuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.KeyboardView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
@@ -114,6 +115,21 @@ public class KeyboardController {
 
         mav.addObject("keyboard",req);
         mav.addObject("myTitle", "Modifica keyboard");
+        return mav;
+    }
+
+    @GetMapping("/pageKeyboard")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("keyboard-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdKeyboard")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<KeyboardView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        KeyboardView view =(KeyboardView) convertInObject(resp , KeyboardView.class);
+        mav.addObject("keyboard", view );
         return mav;
     }
 }

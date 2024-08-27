@@ -46,9 +46,8 @@ public class MonitorController {
         return mav;
     }
 
-    @GetMapping (value = {"/listMonitor"})
+    @GetMapping ("/listMonitor")
     public  ModelAndView list() {
-
         ModelAndView mav;
 
         if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
@@ -61,13 +60,13 @@ public class MonitorController {
                 .buildAndExpand().toUri();
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listMonitor", resp);
-        mav.addObject("role", user.getRole());
         mav.addObject("username",user.getUsername());
+        mav.addObject("role", user.getRole());
+        mav.addObject("listMonitor", resp);
         return mav;
     }
 
-    @GetMapping("/monitor/pageMonitor")
+    @GetMapping("/pageMonitor")
     public  ModelAndView page( @RequestParam Integer id) {
 
         ModelAndView mav=new ModelAndView("monitor-page");
@@ -123,7 +122,7 @@ public class MonitorController {
         ModelAndView mav = new ModelAndView("create-update-monitor");
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "monitor/getById")
+                .fromHttpUrl(backend + "monitor/getByIdMonitor")
                 .queryParam("id", id)
                 .buildAndExpand()
                 .toUri();

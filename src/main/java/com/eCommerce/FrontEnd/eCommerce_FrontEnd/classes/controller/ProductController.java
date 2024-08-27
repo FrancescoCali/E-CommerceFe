@@ -1,7 +1,9 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.ProductRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CoolerView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.ProductView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.PsuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
@@ -146,4 +148,20 @@ public class ProductController {
 //        mav.addObject("myTitle", "Modifica product");
         return mav;
     }
+
+    @GetMapping("/pageProduct")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("product-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdProduct")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<ProductView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        ProductView view =(ProductView) convertInObject(resp , ProductView.class);
+        mav.addObject("product", view );
+        return mav;
+    }
+
 }

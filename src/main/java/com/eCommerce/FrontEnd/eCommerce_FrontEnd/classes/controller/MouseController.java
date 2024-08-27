@@ -2,6 +2,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.MouseRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MouseView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.ProductView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
@@ -115,4 +116,20 @@ public class MouseController {
         mav.addObject("myTitle", "Modifica mouse");
         return mav;
     }
+
+    @GetMapping("/pageMouse")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("mouse-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdMouse")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<MouseView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        MouseView view =(MouseView) convertInObject(resp , MouseView.class);
+        mav.addObject("mouse", view );
+        return mav;
+    }
+
 }

@@ -1,6 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.CpuRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CoolerView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CpuView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
@@ -90,6 +91,21 @@ public class CpuController {
 
         mav.addObject("cpu",req);
         mav.addObject("myTitle", "Modifica cpu");
+        return mav;
+    }
+
+    @GetMapping("/pageCpu")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("cpu-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdCpu")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<CpuView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        CpuView view =(CpuView) convertInObject(resp , CpuView.class);
+        mav.addObject("cpu", view );
         return mav;
     }
 }

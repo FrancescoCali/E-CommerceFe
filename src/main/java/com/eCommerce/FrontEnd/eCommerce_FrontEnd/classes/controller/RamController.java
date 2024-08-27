@@ -1,5 +1,6 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.CoolerView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.RamView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.RamRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
@@ -101,4 +102,20 @@ public class RamController {
 //        mav.addObject("myTitle", "Modifica ram");
         return mav;
     }
+
+    @GetMapping("/pageRam")
+    public  ModelAndView page( @RequestParam Integer id) {
+
+        ModelAndView mav=new ModelAndView("ram-page");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getByIdRam")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<CoolerView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        RamView view =(RamView) convertInObject(resp , RamView.class);
+        mav.addObject("ram", view );
+        return mav;
+    }
+
 }
