@@ -59,7 +59,7 @@ public class LaptopController {
             mav = new ModelAndView("list-laptop");
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "laptop/list")
+                .fromHttpUrl(backend + "laptop/list") // product/list
                 .buildAndExpand().toUri();
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();

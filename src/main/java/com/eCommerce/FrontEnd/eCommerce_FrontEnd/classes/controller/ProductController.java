@@ -56,6 +56,40 @@ public class ProductController {
         return mav;
     }
 
+    /*
+        PRODOTTI
+
+        LAPTOP
+
+        PC
+
+        RAM
+
+        CPU
+
+        GPU
+
+        ...
+
+
+
+     */
+
+
+    /*
+        LISTE                    quantità
+        LAPTOP I9 BIANCO 32GB       X3
+        LAPTOP I7 BIANCO 32GB       X5
+        LAPTOP I3 BIANCO 32GB       X2
+
+        LAPTOP I9 NERO   32GB
+        LAPTOP I7 NERO   32GB
+        LAPTOP I3 NERO   32GB
+
+     */
+
+
+
     @PostMapping("/saveProduct")
     public Object save(@ModelAttribute("product") ProductRequest req){
 
