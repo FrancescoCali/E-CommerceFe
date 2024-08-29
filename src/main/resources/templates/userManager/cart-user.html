@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova - Il Tuo Carrello Avanzato</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --text-color: #34495e;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: var(--secondary-color);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+            transition: background-color 0.3s ease;
+        }
+        .cart-item:hover {
+            background-color: #f9f9f9;
+        }
+        .item-details {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        .item-image {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            margin-right: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .item-info {
+            flex: 1;
+        }
+        .item-name {
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-bottom: 5px;
+        }
+        .item-specs {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        .item-price {
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            margin-right: 20px;
+        }
+        .quantity-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .quantity-btn:hover {
+            background-color: #2980b9;
+        }
+        .quantity {
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        .remove-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 3px;
+        }
+        .remove-btn:hover {
+            background-color: #c0392b;
+        }
+        .total {
+            font-size: 1.4em;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 30px;
+            color: var(--secondary-color);
+        }
+        .checkout-btn {
+            display: block;
+            width: 200px;
+            margin: 30px auto 0;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .checkout-btn:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Il Tuo Carrello TechNova</h1>
+    <div th:each="item, iterStat : ${cartItems}" class="cart-item">
+        <div class="item-details">
+            <img th:src="@{${item.imageUrl}}" alt="Product Image" class="item-image">
+            <div class="item-info">
+                <div class="item-name" th:text="${item.name}">Nome Prodotto</div>
+                <div class="item-specs" th:text="${item.specs}">Specifiche del prodotto</div>
+                <div class="item-price" th:text="${#numbers.formatCurrency(item.price)}">€0.00</div>
+            </div>
+        </div>
+        <div class="quantity-control">
+            <button class="quantity-btn" th:attr="onclick=|updateQuantity(${iterStat.index}, -1)|">-</button>
+            <span class="quantity" th:text="${item.quantity}">1</span>
+            <button class="quantity-btn" th:attr="onclick=|updateQuantity(${iterStat.index}, 1)|">+</button>
+        </div>
+        <button class="remove-btn" th:attr="onclick=|removeItem(${iterStat.index})|">
+            <i class="fas fa-trash"></i> Rimuovi
+        </button>
+    </div>
+    <div class="total">
+        Totale: <span th:text="${#numbers.formatCurrency(totalPrice)}">€0.00</span>
+    </div>
+    <a href="#" class="checkout-btn">Procedi all'Acquisto</a>
+</div>
+
+<script th:inline="javascript">
+    function updateQuantity(index, change) {
+        // Implementa la logica per aggiornare la quantità
+        console.log('Aggiorna quantità per l\'indice:', index, 'cambio:', change);
+    }
+
+    function removeItem(index) {
+        // Implementa la logica per rimuovere l'articolo
+        console.log('Rimuovi articolo all\'indice:', index);
+    }
+</script>
+</body>
+</html>

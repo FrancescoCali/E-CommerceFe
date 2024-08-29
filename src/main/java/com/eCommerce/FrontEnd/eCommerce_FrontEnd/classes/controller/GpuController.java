@@ -23,6 +23,7 @@ import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUti
 @Controller
 @RequestMapping("/gpu")
 public class GpuController {
+
     @Value("${eCommerce.backend}")
     String backend;
 

@@ -5,27 +5,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
     <meta charset="UTF-8">
-    <title>Pc</title>
+    <title>Cooler</title>
 </head>
 <body>
 <br>
 <nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
-<div >
-    <div th:each="pc : ${listPc.dati}">
-        <img th:src="@{/images/pc.jpg)}" alt="Foto pc">
-        <div >
-            <span><strong>Description:</strong> <span th:text="${pc.description}"></span></span>
-            <span><strong>Model:</strong> <span th:text="${pc.model}"></span></span>
-            <span><strong>Brand:</strong> <span th:text="${pc.brand}"></span></span>
-            <span><strong>Colour:</strong> <span th:text="${pc.colour}"></span></span>
-            <span><strong>CPU:</strong> <span th:text="${pc.CPU}"></span></span>
-            <span><strong>GPU:</strong> <span th:text="${pc.GPU}"></span></span>
-            <span><strong>Memory:</strong> <span th:text="${pc.memory}"></span></span>
-            <span><strong>Ram:</strong> <span th:text="${pc.RAM}"></span></span>
-            <span><strong>Motherboard:</strong> <span th:text="${pc.motherboard}"></span></span>
-            <span><strong>Psu:</strong> <span th:text="${pc.PSU}"></span></span>
-            <span><strong>Cooler:</strong> <span th:text="${pc.cooler}"></span></span>
+<div class="car-list">
+    <div th:each="keyboard : ${listProduct.dati}">
+        <img th:src="@{/images/keyboard.jpg)}" alt="Foto keyboard">
+        <div class="car-info">
+            <span><strong>Description:</strong> <span th:text="${keyboard.description}"></span></span>
+            <span><strong>Model:</strong> <span th:text="${keyboard.model}"></span></span>
+            <span><strong>Brand:</strong> <span th:text="${keyboard.brand}"></span></span>
+            <span><strong>Colour:</strong> <span th:text="${keyboard.colour}"></span></span>
+            <span><strong>Price:</strong> <span th:text="${keyboard.price}"></span></span>
         </div>
     </div>
     <br>

@@ -2,6 +2,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.UserView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -144,6 +146,29 @@ public ModelAndView update() {
         mav.addObject("user", req);
         mav.addObject("username",user.getUsername());
         mav.addObject("role",user.getRole());
+        return mav;
+    }
+
+    @GetMapping("/cartUser")
+    public ModelAndView cart(){
+        ModelAndView mav = new ModelAndView("cart-user");
+
+        mav.addObject("username",user.getUsername());
+        mav.addObject("role",user.getRole());
+
+        URI uri=UriComponentsBuilder
+                .fromHttpUrl(backend + "cart/list")
+                .queryParam("username", user.getUsername() )
+                .buildAndExpand()
+                .toUri();
+        Response<?> resp = rest.getForEntity(uri,Response.class).getBody()  ;
+
+        /*
+
+            QUI C'E' UN ENORME PROBLEMA ! ! !
+
+         */
+
         return mav;
     }
 }

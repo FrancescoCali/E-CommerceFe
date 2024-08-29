@@ -2,7 +2,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request;
 
 public class CartRequest {
     private Integer id;
-    private Integer idUser;
+    private String username;
     private Integer idProduct;
     private String errorMSG;
 
@@ -22,12 +22,12 @@ public class CartRequest {
         this.idProduct = idProduct;
     }
 
-    public Integer getIdUser() {
-        return idUser;
+    public String getUsername() {
+        return username;
     }
 
-    public void setIdUser(Integer idUser) {
-        this.idUser = idUser;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Integer getId() {

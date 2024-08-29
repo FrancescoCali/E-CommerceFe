@@ -12,7 +12,7 @@
 <nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
 <div class="car-list">
-    <div th:each="gpu : ${listGpu.dati}">
+    <div th:each="gpu : ${listProduct.dati}">
         <img th:src="@{/images/gpu.jpg)}" alt="Foto gpu">
         <div class="car-info">
             <span><strong>Description:</strong> <span th:text="${gpu.description}"></span></span>

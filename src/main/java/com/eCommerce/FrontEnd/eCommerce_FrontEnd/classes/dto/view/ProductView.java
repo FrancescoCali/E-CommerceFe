@@ -1,17 +1,33 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view;
 
 public class ProductView {
+
     private Integer idProduct;
     private String model;
     private String brand;
     private Float price;
     private String description;
     private String colour;
+    private String url;
+    private String item;
 
-    public ProductView(){
 
+    public String getUrl() {
+        return url;
     }
 
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+
+    public String getItem() {
+        return item;
+    }
+
+    public void setItem(String item) {
+        this.item = item;
+    }
     public Integer getIdProduct() {
         return idProduct;
     }

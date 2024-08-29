@@ -43,13 +43,11 @@ public class UserService implements iUserService {
     private HttpServletRequest request;
 
     public String getUsername() {
-        HttpSession session = request.getSession();
-        return (String) session.getAttribute("username");
+        return (String) request.getSession().getAttribute("username");
     }
 
     public String getRole() {
-        HttpSession session = request.getSession();
-        return (String) session.getAttribute("role");
+        return (String) request.getSession().getAttribute("role");
     }
 
     @Override

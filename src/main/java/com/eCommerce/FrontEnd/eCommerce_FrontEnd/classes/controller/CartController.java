@@ -2,13 +2,17 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.CartRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.ProductView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.UserView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -31,25 +35,21 @@ public class CartController {
     RestTemplate rest;
 
     @GetMapping("/createCart")
-    public Object create(@RequestParam(required = false) Integer id){
+    public String create(@RequestParam(required = true) ProductView product){
         ModelAndView mav = new ModelAndView("create-cart");
-        if (id == null)
-            return "redirect:/user/createUser";
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "user/getById")
-                .queryParam("id", id)
-                .buildAndExpand()
-                .toUri();
 
-        @SuppressWarnings("unchecked")
-        ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
+        if (user.getUsername() == null)
+            return "redirect:/user/createUser";
 
         CartRequest cartRequest = new CartRequest();
-        req.setErrorMSG(null);
-        mav.addObject("cart", req);
-        return mav;
+        cartRequest.setIdProduct(product.getIdProduct());
+        cartRequest.setUsername(user.getUsername());
+
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "cart/create")
+                .buildAndExpand()
+                .toUri();
+        rest.postForEntity(uri,cartRequest,ResponseBase.class).getBody();
+        return "redirect:user/cartUser";
     }
-
-
 }

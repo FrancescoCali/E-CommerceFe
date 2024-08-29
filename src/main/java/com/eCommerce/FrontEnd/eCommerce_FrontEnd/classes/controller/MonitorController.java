@@ -2,6 +2,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.MonitorRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.MonitorView;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.ProductView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
@@ -23,7 +24,7 @@ import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUti
 
 @Controller
 @RequestMapping("monitor")
-public class MonitorController {
+public class    MonitorController {
     @Value("${eCommerce.backend}")
     String backend;
 
@@ -46,42 +47,26 @@ public class MonitorController {
         return mav;
     }
 
-    @GetMapping ("/listMonitor")
-    public  ModelAndView list() {
+    @GetMapping ("/list")
+    public  ModelAndView list( @RequestParam String item) {
         ModelAndView mav;
 
         if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
-            mav = new ModelAndView("list-monitor-img");
+            mav = new ModelAndView("list-"+item+"-img");
         else
-            mav = new ModelAndView("list-monitor");
+            mav = new ModelAndView("list-"+item);
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "monitor/list")
+                .fromHttpUrl(backend + item+"/list")
                 .buildAndExpand().toUri();
 
         Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
         mav.addObject("username",user.getUsername());
         mav.addObject("role", user.getRole());
-        mav.addObject("listMonitor", resp);
+        mav.addObject("list", resp);
+        mav.addObject(item,item);
         return mav;
     }
-
-    @GetMapping("/pageMonitor")
-    public  ModelAndView page( @RequestParam Integer id) {
-
-        ModelAndView mav=new ModelAndView("monitor-page");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/getByIdProduct")
-                .queryParam("id",id )
-                .buildAndExpand().toUri();
-
-        ResponseObject<MonitorView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        MonitorView view =(MonitorView) convertInObject(resp , MonitorView.class);
-        mav.addObject("monitor", view );
-        return mav;
-    }
-
-
 
     @PostMapping("/saveMonitor")
     public Object save(@ModelAttribute("monitor") MonitorRequest req){

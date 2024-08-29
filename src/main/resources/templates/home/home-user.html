@@ -3,17 +3,7 @@
 <head>
     <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
-    <title>eCommerce</title>
-    <script type="text/javascript">
-        window.onload = function() {
-            if (performance.navigation.type === 2) {
-                // L'utente sta tornando indietro nella cronologia
-                if (window.history.replaceState) {
-                    window.history.replaceState(null, null, window.location.pathname);
-                }
-            }
-        };
-    </script>
+    <title>eCommerce - home</title>
 </head>
 <body>
 
@@ -28,33 +18,33 @@
     <input type="radio" name="testimonial" id="t-6">
     <div class="testimonials">
         <label class="item" for="t-1">
-            <a th:href="@{/components/listMotherboard}">
-                <img th:src="@{/images/motherboard/motherboard-ASRock.png}" alt="motherboard">
+            <a th:href="@{/productUser/list(item='laptop')}">
+                <img th:src="@{/images/laptop/acer-predator-helios.png}" alt="laptop">
             </a>
         </label>
         <label class="item" for="t-2">
-            <a th:href="@{/components/listGpu}">
-                <img th:src="@{/images/gpu/gpu-msi-4070ti-white.png}" alt="gpu">
+            <a th:href="@{/productUser/list(item='pc')}">
+                <img th:src="@{/images/pc/pc-fisso.png}" alt="pc">
             </a>
         </label>
         <label class="item" for="t-3">
-            <a th:href="@{/components/listCpu}">
-                <img th:src="@{/images/cpu/intel-i9-14th.png}" alt="cpu">
+            <a th:href="@{/productUser/list(item='monitor')}">
+                <img th:src="@{/images/monitor/Hp-monitor.png}" alt="monitor">
             </a>
         </label>
         <label class="item" for="t-4">
-            <a th:href="@{/components/listCooler}">
-                <img th:src="@{/images/cooler/cooler_master_hyper_h412r.png}" alt="cooler">
+            <a th:href="@{/productUser/list(item='mouse')}">
+                <img th:src="@{/images/mouse/mouse-trust-nero.png}" alt="mouse">
             </a>
         </label>
         <label class="item" for="t-5">
-            <a th:href="@{/components/listPsu}">
-                <img th:src="@{/images/psu/psu-corsair-black-750w.png}" alt="psu">
+            <a th:href="@{/productUser/list(item='keyboard')}">
+                <img th:src="@{/images/keyboard/keyboard-blademaster-black.png}" alt="keyboard">
             </a>
         </label>
         <label class="item" for="t-6">
-            <a th:href="@{/components/listRam}">
-                <img th:src="@{/images/ram/ram-corsair.png}" alt="ram">
+            <a th:href="@{/productUser/list(item='components')}">
+                <img th:src="@{/images/file.png}" alt="components">
             </a>
         </label>
     </div>

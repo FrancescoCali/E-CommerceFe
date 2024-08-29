@@ -43,21 +43,6 @@ public class ProductController {
         return mav;
     }
 
-    @GetMapping (value = {"/listProduct"})
-    public  ModelAndView list() {
-
-        ModelAndView mav = new ModelAndView("home");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/list")
-                .buildAndExpand().toUri();
-
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listProduct", resp);
-        mav.addObject("role", user.getRole());
-        mav.addObject("username",user.getUsername());
-        return mav;
-    }
-
     /*
         PRODOTTI
 
@@ -90,7 +75,21 @@ public class ProductController {
 
      */
 
+    @GetMapping("/page")
+    public  ModelAndView page(  @RequestParam String item , @RequestParam Integer id) {
 
+        ModelAndView mav=new ModelAndView(item+"-page");
+
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getById")
+                .queryParam("id",id )
+                .buildAndExpand().toUri();
+
+        ResponseObject<ProductView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        ProductView view =(ProductView) convertInObject(resp , ProductView.class);
+        mav.addObject( item, view );
+        return mav;
+    }
 
     @PostMapping("/saveProduct")
     public Object save(@ModelAttribute("product") ProductRequest req){

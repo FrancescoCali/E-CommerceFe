@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>Product Details</title>
+</head>
+<body>
+<nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
+
+<div class="image">
+    <div>
+        <img th:src="@{/images/{url}(url=${view.url})}" alt="Foto product">
+        <div>
+            <span><strong>Description:</strong> <span th:text="${view.description}"></span></span>
+            <span><strong>Model:</strong> <span th:text="${view.model}"></span></span>
+            <span><strong>Brand:</strong> <span th:text="${view.brand}"></span></span>
+            <span><strong>Colour:</strong> <span th:text="${view.colour}"></span></span>
+            <span><strong>Price:</strong> <span th:text="${view.price}"></span></span>
+        </div>
+    </div>
+</div>
+<div>
+    <!-- Link dinamico per inserire nel carrello -->
+    <a th:href="@{/cart/insert(product=${view})}">Insert into cart</a>
+</div>
+</body>
+</html>

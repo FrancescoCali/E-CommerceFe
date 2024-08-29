@@ -5,21 +5,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
     <meta charset="UTF-8">
-    <title>Psu</title>
+    <title>Laptop</title>
 </head>
 <body>
 <br>
 <nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
-<div >
-    <div th:each="psu : ${listPsu.dati}">
-        <img th:src="@{/images/ram.jpg)}" alt="Foto psu">
-        <div >
-            <span><strong>Description:</strong> <span th:text="${psu.description}"></span></span>
-            <span><strong>Model:</strong> <span th:text="${psu.model}"></span></span>
-            <span><strong>Brand:</strong> <span th:text="${psu.brand}"></span></span>
-            <span><strong>Colour:</strong> <span th:text="${psu.colour}"></span></span>
-            <span><strong>Price:</strong> <span th:text="${psu.price}"></span></span>
+<div class="car-list">
+    <div th:each="laptop : ${listProduct.dati}">
+        <img th:src="@{/images/computer.jpg)}" alt="Foto laptop">
+        <div class="car-info">
+            <span><strong>Description:</strong> <span th:text="${laptop.description}"></span></span>
+            <span><strong>Model:</strong> <span th:text="${laptop.model}"></span></span>
+            <span><strong>Brand:</strong> <span th:text="${laptop.brand}"></span></span>
+            <span><strong>Colour:</strong> <span th:text="${laptop.colour}"></span></span>
+            <span><strong>CPU:</strong> <span th:text="${laptop.CPU}"></span></span>
+            <span><strong>GPU:</strong> <span th:text="${laptop.GPU}"></span></span>
+            <span><strong>Memory:</strong> <span th:text="${laptop.memory}"></span></span>
+            <span><strong>Ram:</strong> <span th:text="${laptop.RAM}"></span></span>
+            <span><strong>Motherboard:</strong> <span th:text="${laptop.motherboard}"></span></span>
+            <span><strong>Psu:</strong> <span th:text="${laptop.PSU}"></span></span>
+            <span><strong>Cooler:</strong> <span th:text="${laptop.cooler}"></span></span>
         </div>
     </div>
     <br>

@@ -5,21 +5,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
     <meta charset="UTF-8">
-    <title>Cooler</title>
+    <title>Memory</title>
 </head>
 <body>
 <br>
 <nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
-<div class="car-list">
-    <div th:each="cooler : ${listCooler.dati}">
-        <img th:src="@{/images/cooler.jpg)}" alt="Foto cooler">
-        <div class="car-info">
-            <span><strong>Description:</strong> <span th:text="${cooler.description}"></span></span>
-            <span><strong>Model:</strong> <span th:text="${cooler.model}"></span></span>
-            <span><strong>Brand:</strong> <span th:text="${cooler.brand}"></span></span>
-            <span><strong>Colour:</strong> <span th:text="${cooler.colour}"></span></span>
-            <span><strong>Price:</strong> <span th:text="${cooler.price}"></span></span>
+<div >
+    <div th:each="memory : ${listProduct.dati}">
+        <img th:src="@{/images/memory.jpg)}" alt="Foto psu">
+        <div >
+            <span><strong>Description:</strong> <span th:text="${memory.description}"></span></span>
+            <span><strong>Model:</strong> <span th:text="${memory.model}"></span></span>
+            <span><strong>Brand:</strong> <span th:text="${memory.brand}"></span></span>
+            <span><strong>Colour:</strong> <span th:text="${memory.colour}"></span></span>
+            <span><strong>Price:</strong> <span th:text="${memory.price}"></span></span>
         </div>
     </div>
     <br>
