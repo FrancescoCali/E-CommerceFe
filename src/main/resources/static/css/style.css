@@ -1,17 +1,4 @@
-body {
-  margin: 0;
-  background: #282d34;
-  color: white;
-  font-family: sans-serif;
-  display: flex;
-  align-items: center;
-  min-height: 100vh;
-  position: relative;
-  background-image: url('../resources/static/images/Sfondo.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
+
 
 .image img {
     max-width: 500px;
