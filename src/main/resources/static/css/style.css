@@ -53,13 +53,13 @@ body {
 }
 
 /* Aggiungi questa regola per posizionare il menu in alto */
-nav {
-  position: absolute;
+/* nav {
+  position: fixed;
   top: 0;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Imposta uno sfondo semi-trasparente */
-  z-index: 10; /* Mantieni il menu al di sopra di altri elementi */
-}
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 10;
+} */
 
 .navbar {
   display: flex;
@@ -198,21 +198,12 @@ nav {
   color: #007BFF;
 }
 
-.active {
-  background-color: #04AA6D;
-}
-
 .description {
   font-weight: 200;
 }
 
 a:link, a:visited {
-  background-color: #282d34;
-  color: #ffffff;
-  padding: 11px 25px;
-  text-align: center;
   text-decoration: none;
-  display: inline-block;
 }
 
 a:hover {
@@ -288,15 +279,7 @@ td {
   padding-top: 1vh;
   padding-bottom: 1vh;
 }
-button {
-  background-color: #0094d4;
-  color: #ffffff;
-  border: none;
-  outline: none;
-  border-radius: 50px;
-  width: 20vh;
-  transition: all 0.3s ease-in-out;
-}
+
 
 .buttonlike {
   margin-top: 3vh;
@@ -343,14 +326,6 @@ main {
 .testimonials .item:hover img {
   transform: scale(1.1);
   transition: transform 0.5s ease;
-}
-.slider-sidebar {
-  margin-top: 0; /* Elimina eventuali margini in cima */
-  padding-top: 0; /* Elimina eventuali padding in cima */
-  width: 100%; /* Assicura che il carosello si estenda a tutta la larghezza */
-  background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente */
-  position: relative; /* Assicura che il posizionamento sia relativo al contesto */
-  top: 0; /* Assicura che il carosello sia fissato sotto la nav */
 }
 
 /* Nascondi solo gli input radio sopra il carosello */
@@ -540,27 +515,6 @@ main {
   overflow: visible;
 }
 
-/* Assicurati che i pallini sotto siano visibili e abbiano le dimensioni corrette */
-.slider-sidebar .dots {
-  text-align: center; /* Allinea i pallini al centro */
-}
-
-.slider-sidebar .dots label {
-  display: inline-block; /* Mantiene i pallini sotto visibili */
-  background-color: #413B52; /* Colore dei pallini */
-  height: 10px; /* Dimensione dei pallini */
-  width: 10px; /* Dimensione dei pallini */
-  border-radius: 50%;
-  margin: 5px; /* Margine tra i pallini */
-  transition-duration: 0.2s;
-}
-
-.slider-sidebar .dots label.active {
-  background-color: #fff; /* Colore dei pallini attivi */
-  transform: scale(1.5); /* Dimensione dei pallini attivi */
-  box-shadow: 0px 0px 0px 3px #dddddd24;
-}
-
 .offcanvas-header h2 {
   display: block; /* Rende i link come blocchi per occupare tutta la larghezza */
   width: 100%; /* Assicura che il link occupi tutta la larghezza */
@@ -587,7 +541,6 @@ main {
   text-align: center;
   text-decoration: none;
   color: #ffffff;
-  background-color: #282d34;
   border-radius: 5px;
   transition: background-color 0.3s ease;
   min-height: 30px;
