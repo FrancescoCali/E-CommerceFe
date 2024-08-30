@@ -74,7 +74,11 @@
 
 .btn_bg {background-color: #1b2233;}
 
-.bg_page {background: linear-gradient(to right, #5a5a5a, #32394c);}
+.bg_page {
+  background: linear-gradient(to right, #5a5a5a, #32394c);
+  background-attachment: fixed; /* Mantiene lo sfondo fisso durante lo scroll */
+  background-size: cover; /* Opzionale: adatta l'immagine di sfondo a coprire l'intera area */
+}
 
 .bg_green {background-color: #526799;}
 
@@ -89,5 +93,15 @@
 /*  Button */
 
 .sm-btn-std-w {width: 40px;}
+.sm-btn-std-w:hover {cursor: pointer;}
 
 .btn-std-h {height: 45px;}
+.btn-std-h:hover {cursor: pointer;}
+
+/* Opacity */
+
+.opacity-30 {opacity: 30%;}
+
+.opacity-100 {opacity: 100%;}
+
+.bg-opacity-30 {background-opacity: 30%;}

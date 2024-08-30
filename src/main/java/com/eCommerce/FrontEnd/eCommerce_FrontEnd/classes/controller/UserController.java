@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -70,6 +71,7 @@ public class UserController {
 
     @GetMapping("/removeUser")
     public Object remove(@RequestParam Integer id){
+
         /***************** recupero lo user *****************/
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/getById")
@@ -95,38 +97,38 @@ public class UserController {
         return "redirect:/home";
     }
 
-@GetMapping("/updateUser")
-public ModelAndView update() {
-    ModelAndView mav = new ModelAndView("create-update-user");
-    URI uri = UriComponentsBuilder
-            .fromHttpUrl(backend + "user/getByUsername")
-            .queryParam("username", user.getUsername())
-            .buildAndExpand()
-            .toUri();
-    ResponseObject<UserView> resp;
-    try {
-        log.debug("Chiamata al backend in corso...");
-        resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        log.debug("Risposta dal backend ricevuta: {}", resp);
-    } catch (Exception e) {
-        log.error("Errore durante la chiamata al servizio: {}", e.getMessage(), e);
-        mav.addObject("errorMSG", "Errore durante il recupero dei dati utente.");
+    @GetMapping("/updateUser")
+    public ModelAndView update() {
+        ModelAndView mav = new ModelAndView("userManager/create-update-user");
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "user/getByUsername")
+                .queryParam("username", user.getUsername())
+                .buildAndExpand()
+                .toUri();
+        ResponseObject<UserView> resp;
+        try {
+            log.debug("Chiamata al backend in corso...");
+            resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+            log.debug("Risposta dal backend ricevuta: {}", resp);
+        } catch (Exception e) {
+            log.error("Errore durante la chiamata al servizio: {}", e.getMessage(), e);
+            mav.addObject("errorMSG", "Errore durante il recupero dei dati utente.");
+            return mav;
+        }
+        if (resp == null || resp.getDati() == null) {
+            log.error("La risposta del servizio è nulla o i dati sono nulli.");
+            mav.addObject("errorMSG", "Nessun dato trovato per l'utente.");
+            return mav;
+        }
+        UserRequest req2 = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
+        if (req2 == null) {
+            log.error("Errore nella conversione dell'oggetto.");
+            mav.addObject("errorMSG", "Errore nella conversione dei dati utente.");
+            return mav;
+        }
+        mav.addObject("user", req2);
         return mav;
     }
-    if (resp == null || resp.getDati() == null) {
-        log.error("La risposta del servizio è nulla o i dati sono nulli.");
-        mav.addObject("errorMSG", "Nessun dato trovato per l'utente.");
-        return mav;
-    }
-    UserRequest req2 = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
-    if (req2 == null) {
-        log.error("Errore nella conversione dell'oggetto.");
-        mav.addObject("errorMSG", "Errore nella conversione dei dati utente.");
-        return mav;
-    }
-    mav.addObject("user", req2);
-    return mav;
-}
 
     @GetMapping("/accountUser")
     public ModelAndView profile(){
@@ -160,9 +162,13 @@ public ModelAndView update() {
                 .buildAndExpand()
                 .toUri();
         Response<?> resp = rest.getForEntity(uri,Response.class).getBody()  ;
-        mav.addObject("username",user.getUsername());
-        mav.addObject("role", user.getRole());
-        mav.addObject("list", resp);
+
+        /*
+
+            QUI C'E' UN ENORME PROBLEMA ! ! !
+
+         */
+
         return mav;
     }
 }
