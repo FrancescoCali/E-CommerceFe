@@ -2,29 +2,33 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
     <meta charset="UTF-8">
     <title>Product Details</title>
 </head>
 <body>
-<nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
-
-<div class="image">
-    <div>
-        <img th:src="@{/images/{url}(url=${view.url})}" alt="Foto prodotto">
-        <div>
-            <span><strong>Description:</strong> <span th:text="${view.description}"></span></span><br>
-            <span><strong>Model:</strong> <span th:text="${view.model}"></span></span><br>
-            <span><strong>Brand:</strong> <span th:text="${view.brand}"></span></span><br>
-            <span><strong>Colour:</strong> <span th:text="${view.colour}"></span></span><br>
-            <span><strong>Price:</strong> <span th:text="${view.price}"></span></span><br>
+<div class="bg_page w_100 h_100">
+    <header>
+        <nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
+    </header>
+    <main class="slider-sidebar flex fd_column ai_center m_0 w_100">
+        <div class="image">
+            <div>
+                <img th:src="@{/images/{url}(url=${view.url})}" alt="Foto product">
+                <div>
+                    <span><strong>Description:</strong> <span th:text="${view.description}"></span></span>
+                    <span><strong>Model:</strong> <span th:text="${view.model}"></span></span>
+                    <span><strong>Brand:</strong> <span th:text="${view.brand}"></span></span>
+                    <span><strong>Colour:</strong> <span th:text="${view.colour}"></span></span>
+                    <span><strong>Price:</strong> <span th:text="${view.price}"></span></span>
+                </div>
+            </div>
         </div>
-    </div>
+        <form th:action="@{/cart/createCart}" method="post">
+            <input type="hidden" name="idProduct" th:value="${view.idProduct}" />
+            <button type="submit">Insert into cart</button>
+        </form>
+    </main>
 </div>
-
-<form th:action="@{/cart/createCart}" method="post">
-    <input type="hidden" name="idProduct" th:value="${view.idProduct}" />
-    <button type="submit">Insert into cart</button>
-</form>
-
 </body>
 </html>

@@ -2,77 +2,140 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
     <meta charset="UTF-8">
     <title>eCommerce - home</title>
+    <script type="text/javascript">
+        window.onload = function() {
+            if (performance.navigation.type === 2) {
+                // L'utente sta tornando indietro nella cronologia
+                if (window.history.replaceState) {
+                    window.history.replaceState(null, null, window.location.pathname);
+                }
+            }
+        };
+    </script>
 </head>
 <body>
 
-<nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
+<div class="bg_page w_100 h_100">
 
-<div class="slider-sidebar" align="center">
-    <input type="radio" name="testimonial" id="t-1">
-    <input type="radio" name="testimonial" id="t-2">
-    <input type="radio" name="testimonial" id="t-3" checked>
-    <input type="radio" name="testimonial" id="t-4">
-    <input type="radio" name="testimonial" id="t-5">
-    <input type="radio" name="testimonial" id="t-6">
-    <div class="testimonials">
-        <label class="item" for="t-1">
-            <a th:href="@{/productUser/list(item='laptop')}">
-                <img th:src="@{/images/laptop/acer-predator-helios.png}" alt="laptop">
-            </a>
-        </label>
-        <label class="item" for="t-2">
-            <a th:href="@{/productUser/list(item='pc')}">
-                <img th:src="@{/images/pc/pc-fisso.png}" alt="pc">
-            </a>
-        </label>
-        <label class="item" for="t-3">
-            <a th:href="@{/productUser/list(item='monitor')}">
-                <img th:src="@{/images/monitor/Hp-monitor.png}" alt="monitor">
-            </a>
-        </label>
-        <label class="item" for="t-4">
-            <a th:href="@{/productUser/list(item='mouse')}">
-                <img th:src="@{/images/mouse/mouse-trust-nero.png}" alt="mouse">
-            </a>
-        </label>
-        <label class="item" for="t-5">
-            <a th:href="@{/productUser/list(item='keyboard')}">
-                <img th:src="@{/images/keyboard/keyboard-blademaster-black.png}" alt="keyboard">
-            </a>
-        </label>
-        <label class="item" for="t-6">
-            <a th:href="@{/productUser/list(item='components')}">
-                <img th:src="@{/images/file.png}" alt="components">
-            </a>
-        </label>
-    </div>
-    <br/>
-    <div class="dots">
-        <label for="t-1"></label>
-        <label for="t-2"></label>
-        <label for="t-3"></label>
-        <label for="t-4"></label>
-        <label for="t-5"></label>
-        <label for="t-6"></label>
-    </div>
+    <header>
+        <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div>
+    </header>
+
+    <main class="slider-sidebar flex fd_column ai_center m_0 w_100">
+        <!-- Navbar -->
+        <nav class="flex jc_around w_50 p_075 nav_engine">
+            <button class="m_0 bg_green b_0 br_10 t_white">
+                <label for="t-1" class="btn-std-h p_05 m_0">
+                    Laptop
+                </label>
+            </button>
+            <button class="m_0 btn_bg b_0 br_10 t_white">
+                <label for="t-2" class="btn-std-h p_05 m_0">
+                    Fissi
+                </label>
+            </button>
+            <button class="m_0 btn_bg b_0 br_10 t_white">
+                <label for="t-3" class="btn-std-h p_05 m_0">
+                    Monitor
+                </label>
+            </button>
+            <button class="m_0 btn_bg b_0 br_10 t_white">
+                <label for="t-4" class="btn-std-h p_05 m_0">
+                    Mouse
+                </label>
+            </button>
+            <button class="m_0 btn_bg b_0 br_10 t_white">
+                <label for="t-5" class="btn-std-h p_05 m_0">
+                    Tastiere
+                </label>
+            </button>
+            <button class="m_0 btn_bg b_0 br_10 t_white">
+                <label for="t-6" class="btn-std-h p_05 m_0">
+                    Componenti per Pc
+                </label>
+            </button>
+        </nav>
+        <!-- Carousel -->
+        <div>
+            <input type="radio" name="testimonial" id="t-1" checked>
+            <input type="radio" name="testimonial" id="t-2">
+            <input type="radio" name="testimonial" id="t-3">
+            <input type="radio" name="testimonial" id="t-4">
+            <input type="radio" name="testimonial" id="t-5">
+            <input type="radio" name="testimonial" id="t-6">
+            <div class="testimonials">
+                <label class="item" for="t-1">
+                    <a th:href="@{/productUser/list(item='laptop')}">
+                        <img th:src="@{/images/laptop/acer-predator-helios.png}" alt="laptop">
+                    </a>
+                </label>
+                <label class="item" for="t-2">
+                    <a th:href="@{/productUser/list(item='pc')}">
+                        <img th:src="@{/images/pc/pc-fisso.png}" alt="pc">
+                    </a>
+                </label>
+                <label class="item" for="t-3">
+                    <a th:href="@{/productUser/list(item='monitor')}">
+                        <img th:src="@{/images/monitor/Hp-monitor.png}" alt="monitor">
+                    </a>
+                </label>
+                <label class="item" for="t-4">
+                    <a th:href="@{/productUser/list(item='mouse')}">
+                        <img th:src="@{/images/mouse/mouse-trust-nero.png}" alt="mouse">
+                    </a>
+                </label>
+                <label class="item" for="t-5">
+                    <a th:href="@{/productUser/list(item='keyboard')}">
+                        <img th:src="@{/images/keyboard/keyboard-blademaster-black.png}" alt="keyboard">
+                    </a>
+                </label>
+                <label class="item" for="t-6">
+                    <a th:href="@{/productUser/list(item='components')}">
+                        <img th:src="@{/images/file.png}" alt="components">
+                    </a>
+                </label>
+            </div>
+        </div>
+    </main>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const radios = document.querySelectorAll('.slider-sidebar input[type="radio"]');
+        const labels = document.querySelectorAll('.nav_engine label');
         let currentIndex = 0;
 
         function changeImage() {
             radios[currentIndex].checked = false;
+            labels[currentIndex].parentElement.classList.remove('bg_green');
+            labels[currentIndex].parentElement.classList.add('btn_bg');
+
             currentIndex = (currentIndex + 1) % radios.length;
+
             radios[currentIndex].checked = true;
+            labels[currentIndex].parentElement.classList.add('bg_green');
+            labels[currentIndex].parentElement.classList.remove('btn_bg');
         }
+
         setInterval(changeImage, 15000);
 
-    });
+        labels.forEach((label, index) => {
+            label.addEventListener('click', function() {
+                currentIndex = index;
 
+                labels.forEach(lbl => {
+                    lbl.parentElement.classList.remove('bg_green');
+                    lbl.parentElement.classList.add('btn_bg');
+                });
+
+                label.parentElement.classList.add('bg_green');
+                label.parentElement.classList.remove('btn_bg');
+            });
+        });
+    });
 </script>
 
 

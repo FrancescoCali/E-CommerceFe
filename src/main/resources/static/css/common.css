@@ -1,0 +1,93 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ------ Flex ------ */
+
+.reset {
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+}
+
+/* ------ Flex ------ */
+
+.flex {display: flex;}
+
+.jc_center {justify-content: center;}
+
+.jc_around {justify-content: space-around;}
+
+.jc_between {justify-content: space-between;}
+
+.ai_center {align-items: center;}
+
+.fd_column {flex-direction: column;}
+
+/* ------ Dimensions ------ */
+
+/*  Width  */
+
+.w_100 {width: 100%;}
+
+.w_90 {width: 90%;}
+
+.w_50 {width: 50%;}
+
+/*  Height  */
+
+.h_100 {height: 100vh;}
+
+/* ------ Padding ------ */
+
+.p_025 {padding: 0.25rem;}
+
+.p_05 {padding: 0.5rem;}
+
+.p_075 {padding: 0.75rem;}
+
+.p_1 {padding: 1rem;}
+
+/* ------ Margin ------ */
+
+.m_0 {margin: 0;}
+
+.mt_120px {margin-top: 120px;}
+
+/* ------ Margin ------ */
+
+/* ------ Border ------ */
+
+.b_0 {border: 0;}
+
+/*  Border Radius */
+
+.br_10 {border-radius: 10px;}
+
+.br_30 {border-radius: 30px;}
+
+/* ------ Background ------ */
+
+.bg {background-color: #111319;}
+
+.btn_bg {background-color: #1b2233;}
+
+.bg_page {background: linear-gradient(to right, #5a5a5a, #32394c);}
+
+.bg_green {background-color: #526799;}
+
+/* ------ Text ------ */
+
+.t_white {color: white;}
+
+.t_black {color: black;}
+
+/* ------ Extra ------ */
+
+/*  Button */
+
+.sm-btn-std-w {width: 40px;}
+
+.btn-std-h {height: 45px;}
