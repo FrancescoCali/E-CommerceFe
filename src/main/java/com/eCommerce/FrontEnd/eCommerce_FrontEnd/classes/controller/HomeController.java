@@ -48,7 +48,7 @@ public class HomeController {
         if (auth != null)
             new SecurityContextLogoutHandler().logout(request, response, auth);
 
-        ModelAndView mav=new ModelAndView("return-home");
+        ModelAndView mav=new ModelAndView("home/return-home");
         return mav;
     }
 }

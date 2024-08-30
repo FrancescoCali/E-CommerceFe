@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
@@ -9,27 +9,76 @@
 </head>
 <body>
 <br>
-<nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
+<nav th:insert="~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
-<div >
-    <div th:each="pc : ${listProduct.dati}">
-        <img th:src="@{/images/pc.jpg)}" alt="Foto pc">
-        <div >
-            <span><strong>Description:</strong> <span th:text="${pc.description}"></span></span>
-            <span><strong>Model:</strong> <span th:text="${pc.model}"></span></span>
-            <span><strong>Brand:</strong> <span th:text="${pc.brand}"></span></span>
-            <span><strong>Colour:</strong> <span th:text="${pc.colour}"></span></span>
-            <span><strong>CPU:</strong> <span th:text="${pc.CPU}"></span></span>
-            <span><strong>GPU:</strong> <span th:text="${pc.GPU}"></span></span>
-            <span><strong>Memory:</strong> <span th:text="${pc.memory}"></span></span>
-            <span><strong>Ram:</strong> <span th:text="${pc.RAM}"></span></span>
-            <span><strong>Motherboard:</strong> <span th:text="${pc.motherboard}"></span></span>
-            <span><strong>Psu:</strong> <span th:text="${pc.PSU}"></span></span>
-            <span><strong>Cooler:</strong> <span th:text="${pc.cooler}"></span></span>
-        </div>
+
+<!-- Condizione per mostrare la tabella se il ruolo è ADMIN, altrimenti mostra la lista -->
+<div th:if="${role == 'ROLE_ADMIN'}">
+    <!-- Vista tabella -->
+    <div align="center" class="content">
+        <table class="colorful-table">
+            <thead class="table-head">
+            <tr>
+                <th>id</th>
+                <th>Ram</th>
+                <th>Cpu</th>
+                <th>Gpu</th>
+                <th>Memory</th>
+                <th>Motherboard</th>
+                <th>Colour</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Marca</th>
+                <th>Model</th>
+                <th>idProduct</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="pc : ${listProduct.dati}">
+                <td th:text="${pc.id}"></td>
+                <td th:text="${pc.description}"></td>
+                <td th:text="${pc.brand}"></td>
+                <td th:text="${pc.model}"></td>
+                <td th:text="${pc.colour}"></td>
+                <td th:text="${pc.cpu}"></td>
+                <td th:text="${pc.gpu}"></td>
+                <td th:text="${pc.ram}"></td>
+                <td th:text="${pc.memory}"></td>
+                <td th:text="${pc.motherboard}"></td>
+                <td th:text="${pc.price}"></td>
+                <td th:text="${pc.idProduct}"></td>
+                <td class="edit"><a th:href="@{/updatePc(id=${pc.id})}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td class="delete"><a th:href="@{/removePc(id=${pc.id})}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <a th:href="@{/createPc}" class="buttonlike">Crea Laptop</a>
+        <div style="height: 50px;"></div>
     </div>
-    <br>
-    <div style="height: 50px;"></div> <!-- Spazio aggiuntivo sotto il pulsante -->
+</div>
+
+<div th:unless="${role == 'ROLE_ADMIN'}">
+    <div>
+        <div th:each="pc : ${listProduct.dati}">
+            <img th:src="@{/images/pc.jpg}" alt="Foto pc">
+            <div>
+                <span><strong>Description:</strong> <span th:text="${pc.description}"></span></span>
+                <span><strong>Model:</strong> <span th:text="${pc.model}"></span></span>
+                <span><strong>Brand:</strong> <span th:text="${pc.brand}"></span></span>
+                <span><strong>Colour:</strong> <span th:text="${pc.colour}"></span></span>
+                <span><strong>CPU:</strong> <span th:text="${pc.CPU}"></span></span>
+                <span><strong>GPU:</strong> <span th:text="${pc.GPU}"></span></span>
+                <span><strong>Memory:</strong> <span th:text="${pc.memory}"></span></span>
+                <span><strong>Ram:</strong> <span th:text="${pc.RAM}"></span></span>
+                <span><strong>Motherboard:</strong> <span th:text="${pc.motherboard}"></span></span>
+                <span><strong>Psu:</strong> <span th:text="${pc.PSU}"></span></span>
+                <span><strong>Cooler:</strong> <span th:text="${pc.cooler}"></span></span>
+            </div>
+        </div>
+        <br>
+        <div style="height: 50px;"></div>
+    </div>
 </div>
 
 <!-- Include the Sidebar code here -->

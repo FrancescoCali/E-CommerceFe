@@ -38,20 +38,28 @@ public class ProductUserController {
     //ITEM CAMBIA IN BASE AL CLICK SUL CAROSELLO, SI ASPETTA UN PARAMETRO PASSATO DAL CAROSELLO
     @GetMapping ("/list")
     public  ModelAndView list(@RequestParam(name = "item" ,required = true) String item) {
-        ModelAndView mav;
-        if(user.getRole() == null || user.getRole().equalsIgnoreCase("ROLE_USER")  )
-            mav = new ModelAndView("listUser/list-"+item+"-img");
-        else
-            mav = new ModelAndView("listUser/list-"+item);
-
+        ModelAndView mav = new ModelAndView("listUser/list-product-img");
         if(!item.equalsIgnoreCase("components")){
+
             URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + item +"/list")
+                .fromHttpUrl(backend + "product/list")
+                .queryParam("item", item)
                 .buildAndExpand().toUri();
 
             Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
             mav.addObject("listProduct", resp);
         }
+        else
+            mav = new ModelAndView("listUser/list-components-img");
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println(user.getRole());
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        System.out.println();
         mav.addObject(item,item);
         mav.addObject("username",user.getUsername());
         mav.addObject("role", user.getRole());
@@ -68,7 +76,10 @@ public class ProductUserController {
                 .buildAndExpand().toUri();
         ResponseObject<ProductView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         ProductView view = (ProductView) convertInObject(resp.getDati(), ProductView.class);
+
+        log.debug("\n\n\n"+view.getUrl()+"\n\n\n");
         log.debug(view.getUrl());
+
         mav.addObject("view", view);
         return mav;
     }

@@ -156,11 +156,9 @@ public class ProductController {
                 .fromHttpUrl(backend + "product/getByIdProduct")
                 .queryParam("id",id )
                 .buildAndExpand().toUri();
-
         ResponseObject<ProductView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         ProductView view =(ProductView) convertInObject(resp , ProductView.class);
         mav.addObject("product", view );
         return mav;
     }
-
 }

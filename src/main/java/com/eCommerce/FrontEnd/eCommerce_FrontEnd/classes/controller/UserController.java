@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -71,7 +70,6 @@ public class UserController {
 
     @GetMapping("/removeUser")
     public Object remove(@RequestParam Integer id){
-
         /***************** recupero lo user *****************/
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/getById")
@@ -132,7 +130,7 @@ public ModelAndView update() {
 
     @GetMapping("/accountUser")
     public ModelAndView profile(){
-        ModelAndView mav = new ModelAndView("profile");
+        ModelAndView mav = new ModelAndView("userManager/profile");
         URI uri=UriComponentsBuilder
                 .fromHttpUrl(backend + "user/getByUsername")
                 .queryParam("username", user.getUsername())
@@ -151,7 +149,7 @@ public ModelAndView update() {
 
     @GetMapping("/cartUser")
     public ModelAndView cart(){
-        ModelAndView mav = new ModelAndView("cart-user");
+        ModelAndView mav = new ModelAndView("userManager/cart-user");
 
         mav.addObject("username",user.getUsername());
         mav.addObject("role",user.getRole());
@@ -162,13 +160,9 @@ public ModelAndView update() {
                 .buildAndExpand()
                 .toUri();
         Response<?> resp = rest.getForEntity(uri,Response.class).getBody()  ;
-
-        /*
-
-            QUI C'E' UN ENORME PROBLEMA ! ! !
-
-         */
-
+        mav.addObject("username",user.getUsername());
+        mav.addObject("role", user.getRole());
+        mav.addObject("list", resp);
         return mav;
     }
 }

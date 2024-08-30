@@ -10,19 +10,21 @@
 
 <div class="image">
     <div>
-        <img th:src="@{/images/{url}(url=${view.url})}" alt="Foto product">
+        <img th:src="@{/images/{url}(url=${view.url})}" alt="Foto prodotto">
         <div>
-            <span><strong>Description:</strong> <span th:text="${view.description}"></span></span>
-            <span><strong>Model:</strong> <span th:text="${view.model}"></span></span>
-            <span><strong>Brand:</strong> <span th:text="${view.brand}"></span></span>
-            <span><strong>Colour:</strong> <span th:text="${view.colour}"></span></span>
-            <span><strong>Price:</strong> <span th:text="${view.price}"></span></span>
+            <span><strong>Description:</strong> <span th:text="${view.description}"></span></span><br>
+            <span><strong>Model:</strong> <span th:text="${view.model}"></span></span><br>
+            <span><strong>Brand:</strong> <span th:text="${view.brand}"></span></span><br>
+            <span><strong>Colour:</strong> <span th:text="${view.colour}"></span></span><br>
+            <span><strong>Price:</strong> <span th:text="${view.price}"></span></span><br>
         </div>
     </div>
 </div>
-<div>
-    <!-- Link dinamico per inserire nel carrello -->
-    <a th:href="@{/cart/insert(product=${view})}">Insert into cart</a>
-</div>
+
+<form th:action="@{/cart/createCart}" method="post">
+    <input type="hidden" name="idProduct" th:value="${view.idProduct}" />
+    <button type="submit">Insert into cart</button>
+</form>
+
 </body>
 </html>
