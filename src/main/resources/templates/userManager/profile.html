@@ -25,18 +25,21 @@
 <table class="colorful-table">
     <thead class="table-head">
     <tr>
-        <td>Id</td>
         <td>Username</td>
         <td>Address</td>
     </tr>
     </thead>
     <tbody>
     <tr>
-        <td th:text="${user.id}"></td>
         <td th:text="${user.username}"></td>
         <td th:text="${user.address}"></td>
     </tr>
     </tbody>
+    <tfoot>
+    <tr>
+        <td colspan="2" style="align-items: center;"><a th:href="@{/user/updateUser}"><i class="fas fa-user-pen" style="margin-left: auto; margin-right: auto;"></i></a></td>
+    </tr>
+    </tfoot>
 </table>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

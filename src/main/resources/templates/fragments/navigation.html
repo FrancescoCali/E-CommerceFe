@@ -24,6 +24,12 @@
                 <i class="fas fa-home t_white"></i>
             </a>
         </button>
+        <!-- Pulsanti di navigazione -->
+        <div class="controls">
+            <button class="buttonlike-nav-arrows" id="prevButton">
+                <i class="fas fa-arrow-left t_white"></i>
+            </button>
+        </div>
 
         <div class="dropdown">
             <a class="dropbtn btn_bg btn-std-h br_10 p_05 btn_bg m_0 btn_bg t_white" sec:authorize="hasRole('ROLE_ADMIN')">Liste<i class="fas fa-bars" style="margin-left: auto; padding: 3px 7px"></i></a>
@@ -61,14 +67,14 @@
                                 <div style="margin-right: auto;">Mio profilo</div>
                             </div>
                         </a></li>
-                    <li sec:authorize="isAuthenticated()">
+                    <li sec:authorize="hasRole('ROLE_USER')">
                         <a class="btn-std-h br_10 p_05 btn_bg m_0 btn_bg t_white"
-                           th:href="@{/user/updateUser}">
+                           th:href="@{/user/cartUser}">
                             <div style="display: flex;">
                                 <div style="margin-left: auto;">
-                                    <i class="fas fa-user-pen" style="margin-left: auto; padding: 3px 7px"></i>
+                                    <i class="fas fa-cart-shopping" style="margin-left: auto; padding: 3px 7px"></i>
                                 </div>
-                                <div style="margin-right: auto;">Aggiorna utente</div>
+                                <div style="margin-right: auto;">Carrello</div>
                             </div>
                         </a></li>
                     <!--  Admin Only  -->
@@ -107,5 +113,18 @@
         </div>
     </div>
 </nav>
+
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Gestione della navigazione tra le pagine
+        const prevButton = document.getElementById('prevButton');
+
+        prevButton.addEventListener('click', function () {
+            window.history.back(); // Torna indietro nella cronologia del browser
+        });
+    });
+</script>
 </body>
+</html>

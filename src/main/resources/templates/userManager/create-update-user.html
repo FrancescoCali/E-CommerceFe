@@ -9,16 +9,12 @@
     <title>Create User</title>
 </head>
 <body>
-
-
-
     <nav th:insert="~{fragments/navigation :: block-navigation(username=${username}, role=${role})}"></nav>
-
 <div class="container">
     <h3 class="description">Inserire i dati</h3>
     <form class="form_content" th:action="@{/user/saveUser}" th:object="${user}" method="post">
-        <input type="hidden" th:field="*{id}" />
         <input type="hidden" th:field="*{role}"/>
+        <input type="hidden" th:field="*{id}"/>
         <table class="User">
             <tr>
                 <td><label for="username">Username:</label></td>

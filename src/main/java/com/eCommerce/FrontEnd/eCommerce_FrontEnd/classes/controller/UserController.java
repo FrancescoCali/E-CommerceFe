@@ -24,6 +24,7 @@ import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUti
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
     @Value("${eCommerce.backend}")
     String backend;
 
@@ -32,7 +33,6 @@ public class UserController {
 
     @Autowired
     RestTemplate rest;
-
     public static Logger log = LoggerFactory.getLogger(RamController.class);
 
     @GetMapping("/createUser")
@@ -50,50 +50,44 @@ public class UserController {
     @PostMapping("/saveUser")
     public Object save(@ModelAttribute("user") UserRequest req){
 
-        URI uri = (req.getId() == null) ?
+        URI uri = (req.getUsername() == null) ?
                 UriComponentsBuilder.fromHttpUrl(backend + "user/create").buildAndExpand().toUri() :
                 UriComponentsBuilder.fromHttpUrl(backend + "user/update").buildAndExpand().toUri();
+
         ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
         if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("create-update-user");
+            ModelAndView mav = new ModelAndView("userManager/create-update-user");
             req.setErrorMSG(req.getErrorMSG());
             mav.addObject("user", req);
             return mav;
         }
-        if(req.getId()==null) {
+        if(req.getUsername()==null)
             user.createUser(req);
-        }
-        else
+        else   {
             user.updateUser(req);
+            user.setUsername( req.getUsername());
+        }
         return "redirect:/home?";
     }
 
 
     @GetMapping("/removeUser")
     public Object remove(@RequestParam Integer id){
-
-        /***************** recupero lo user *****************/
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/getById")
                 .queryParam("id", id)
                 .buildAndExpand()
                 .toUri();
-
         @SuppressWarnings("unchecked")
         ResponseObject<UserRequest> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
-
-        user.removeUser(req);    /*** lo rimuovo dalla memoria ***/
-
-        /**************** lo rimuovo dal db ****************/
+        user.removeUser(req);
         uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "/user/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
-
-        ResponseBase respB = rest.postForEntity(uri,id,ResponseBase.class).getBody();
-
+        rest.postForEntity(uri,id,ResponseBase.class) ;
         return "redirect:/home";
     }
 
@@ -106,27 +100,19 @@ public class UserController {
                 .buildAndExpand()
                 .toUri();
         ResponseObject<UserView> resp;
-        try {
-            log.debug("Chiamata al backend in corso...");
             resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-            log.debug("Risposta dal backend ricevuta: {}", resp);
-        } catch (Exception e) {
-            log.error("Errore durante la chiamata al servizio: {}", e.getMessage(), e);
-            mav.addObject("errorMSG", "Errore durante il recupero dei dati utente.");
-            return mav;
-        }
         if (resp == null || resp.getDati() == null) {
             log.error("La risposta del servizio è nulla o i dati sono nulli.");
             mav.addObject("errorMSG", "Nessun dato trovato per l'utente.");
             return mav;
         }
-        UserRequest req2 = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
-        if (req2 == null) {
+        UserRequest req  = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
+        if (req  == null) {
             log.error("Errore nella conversione dell'oggetto.");
             mav.addObject("errorMSG", "Errore nella conversione dei dati utente.");
             return mav;
         }
-        mav.addObject("user", req2);
+        mav.addObject("user", req );
         return mav;
     }
 
@@ -138,11 +124,9 @@ public class UserController {
                 .queryParam("username", user.getUsername())
                 .buildAndExpand()
                 .toUri();
-
         @SuppressWarnings("unchecked")
         ResponseObject<UserRequest> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
-
         mav.addObject("user", req);
         mav.addObject("username",user.getUsername());
         mav.addObject("role",user.getRole());
@@ -152,23 +136,15 @@ public class UserController {
     @GetMapping("/cartUser")
     public ModelAndView cart(){
         ModelAndView mav = new ModelAndView("userManager/cart-user");
-
         mav.addObject("username",user.getUsername());
         mav.addObject("role",user.getRole());
-
-        URI uri=UriComponentsBuilder
+        URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "cart/list")
                 .queryParam("username", user.getUsername() )
                 .buildAndExpand()
                 .toUri();
         Response<?> resp = rest.getForEntity(uri,Response.class).getBody()  ;
-
-        /*
-
-            QUI C'E' UN ENORME PROBLEMA ! ! !
-
-         */
-
+        mav.addObject("cartList",resp);
         return mav;
     }
 }

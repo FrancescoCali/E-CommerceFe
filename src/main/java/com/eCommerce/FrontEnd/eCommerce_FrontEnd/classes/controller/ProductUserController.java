@@ -23,19 +23,15 @@ import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUti
 @Controller
 @RequestMapping("/productUser")
 public class ProductUserController {
-
     @Value("${eCommerce.backend}")
     String backend;
-
     @Autowired
     RestTemplate rest;
-
     @Autowired
     iUserService user;
-
     public static Logger log = LoggerFactory.getLogger(ProductUserController.class);
-
     //ITEM CAMBIA IN BASE AL CLICK SUL CAROSELLO, SI ASPETTA UN PARAMETRO PASSATO DAL CAROSELLO
+
     @GetMapping ("/list")
     public  ModelAndView list(@RequestParam(name = "item" ,required = true) String item) {
         ModelAndView mav = new ModelAndView("listUser/list-product-img");
@@ -51,15 +47,6 @@ public class ProductUserController {
         }
         else
             mav = new ModelAndView("listUser/list-components-img");
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println(user.getRole());
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
         mav.addObject(item,item);
         mav.addObject("username",user.getUsername());
         mav.addObject("role", user.getRole());
@@ -69,17 +56,12 @@ public class ProductUserController {
     @GetMapping("/page")
     public ModelAndView page(@RequestParam Integer id) {
         ModelAndView mav = new ModelAndView("pages/product-page");
-
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "product/getById")
                 .queryParam("id", id)
                 .buildAndExpand().toUri();
         ResponseObject<ProductView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         ProductView view = (ProductView) convertInObject(resp.getDati(), ProductView.class);
-
-        log.debug("\n\n\n"+view.getUrl()+"\n\n\n");
-        log.debug(view.getUrl());
-
         mav.addObject("view", view);
         return mav;
     }

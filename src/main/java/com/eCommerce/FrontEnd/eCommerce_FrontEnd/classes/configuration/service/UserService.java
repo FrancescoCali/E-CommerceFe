@@ -49,6 +49,9 @@ public class UserService implements iUserService {
     public String getRole() {
         return (String) request.getSession().getAttribute("role");
     }
+    public void setUsername(String username){
+        request.getSession().setAttribute("username",username);
+    }
 
     @Override
     public void createUser(UserRequest req) {

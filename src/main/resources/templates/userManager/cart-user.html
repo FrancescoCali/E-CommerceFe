@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <title>Carrello</title>
+</head>
+<body>
+<br>
+<nav th:insert="~{fragments/navigation(username=${username}, role=${role})}"></nav>
+<br>
+
+<div th:if="${cartList != null and cartList.dati != null and not #lists.isEmpty(cartList.dati)}">
+    <div th:each="cart : ${cartList.dati}">
+        <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
+            <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
+            <div>
+                <span><strong>Descrizione:</strong> <span th:text="${cart.description}"></span></span>
+                <span><strong>Prezzo:</strong> <span th:text="${cart.price}"></span></span>
+            </div>
+            <div>
+                <form class="form_content" th:action="@{/cart/removeCart}" method="post">
+                    <input type="hidden" name="id" th:value="${cart.id}">
+                    <input type="hidden" name="confirm" value="false">
+                    <button type="submit">Rimuovi dal carrello</button>
+                </form>
+            </div>
+        </a>
+        <br>
+    </div>
+    <div>
+        <form class="form_content" th:action="@{/cart/removeCart}" method="post">
+            <input type="hidden" name="confirm" value="true">
+            <button type="submit">Acquista tutto</button>
+        </form>
+    </div>
+</div>
+
+<div th:if="${cartList == null or cartList.dati == null or #lists.isEmpty(cartList.dati)}">
+    <p>Il tuo carrello è vuoto.</p>
+</div>
+
+<div style="height: 50px;"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

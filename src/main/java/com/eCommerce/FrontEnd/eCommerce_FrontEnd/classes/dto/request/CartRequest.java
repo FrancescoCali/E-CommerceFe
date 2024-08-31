@@ -5,6 +5,24 @@ public class CartRequest {
     private String username;
     private Integer idProduct;
     private String errorMSG;
+    private Boolean confirm;
+    private Integer idItem;
+
+    public Integer getIdItem() {
+        return idItem;
+    }
+
+    public void setIdItem(Integer idItem) {
+        this.idItem = idItem;
+    }
+
+    public Boolean getConfirm() {
+        return confirm;
+    }
+
+    public void setConfirm(Boolean confirm) {
+        this.confirm = confirm;
+    }
 
     public String getErrorMSG() {
         return errorMSG;
@@ -37,6 +55,4 @@ public class CartRequest {
     public void setId(Integer id) {
         this.id = id;
     }
-
-
 }

@@ -124,15 +124,11 @@ public class CustomUserDetailsService implements UserDetailsService {
                 .queryParam("username", username)
                 .build()
                 .toUri();
-
         ResponseObject<Map<String, Object>> response = rest.getForEntity(uri, ResponseObject.class).getBody();
-
         if (response == null || response.getDati() == null)
             throw new UsernameNotFoundException("User not found");
-
         Map<String, Object> userData = response.getDati();
-
-        return User.withUsername(userData.get("username").toString())
+            return User.withUsername(userData.get("username").toString())
                 .password(passwordEncoder.encode(userData.get("password").toString()))
                 .roles(userData.get("role").toString())
                 .build();

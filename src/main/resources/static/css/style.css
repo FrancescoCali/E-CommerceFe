@@ -280,11 +280,23 @@ td {
   transition: all 0.3s ease-in-out;
 }
 
+.buttonlike-nav-arrows {
+  border: 2px solid #1b2233;
+  background-color: #1b2233;
+  color: #ffffff;
+  outline: none;
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 1em;
+  transition: all 0.3s ease-in-out;
+}
+
 .buttonlike:hover {
   margin-top: 3vh;
   padding: 1.5vh;
   border: 2px solid #0094d4;
-  background-color: #282d34;
+  background-color: transparent;
   color: #0094d4;
   outline: none;
   border-radius: 50px;
@@ -292,6 +304,12 @@ td {
   font-size: 1em;
   transition: all 0.3s ease-in-out;
 }
+
+.controls {
+  margin-right: auto;
+  margin-left: 5px;
+}
+
 
 main {
   margin:150px 200px;
@@ -311,6 +329,7 @@ main {
 
 .testimonials .item:hover img {
   transform: scale(1.1);
+  filter : drop-shadow(2px 2px 10px rgba(255, 255, 255, 0.5));
   transition: transform 0.5s ease;
 }
 
@@ -339,7 +358,6 @@ main {
   margin:0;
   padding: 10px;
   background: none;
-  filter : drop-shadow(2px 2px 30px white);
   overflow: visible;
 }
 
@@ -393,28 +411,28 @@ main {
   transform: scale(1.2);
 }
 
-/* Nascondi completamente il label che si trova in fondo */
+/* Nascondi l'elemento che si trova direttamente dietro quello in stato checked */
 #t-1:checked ~ .testimonials label[for="t-4"],
 #t-2:checked ~ .testimonials label[for="t-5"],
 #t-3:checked ~ .testimonials label[for="t-6"],
 #t-4:checked ~ .testimonials label[for="t-1"],
 #t-5:checked ~ .testimonials label[for="t-2"],
 #t-6:checked ~ .testimonials label[for="t-3"] {
-  opacity: 0; /* Nascondi */
-  pointer-events: none; /* Disabilita interazioni */
-  transform: translate3d(0, 0, -500px); /* Portalo indietro nella scena */
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, 0, -700px); /* Portalo ulteriormente indietro nella scena */
 }
 
-/* Posizionamento e visibilitÃ  dei label laterali */
+/* Posizionamento e visibilità dei label laterali */
 #t-1:checked ~ .testimonials label[for="t-3"],
 #t-2:checked ~ .testimonials label[for="t-4"],
 #t-3:checked ~ .testimonials label[for="t-5"],
 #t-4:checked ~ .testimonials label[for="t-6"],
 #t-5:checked ~ .testimonials label[for="t-1"],
 #t-6:checked ~ .testimonials label[for="t-2"] {
-  transform: translate3d(500px, 0, -350px) rotateY(45deg);
+  transform: translate3d(700px, 0, -450px) rotateY(45deg); /* Aumentata la distanza */
   z-index: 2;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 #t-1:checked ~ .testimonials label[for="t-2"],
@@ -423,9 +441,9 @@ main {
 #t-4:checked ~ .testimonials label[for="t-5"],
 #t-5:checked ~ .testimonials label[for="t-6"],
 #t-6:checked ~ .testimonials label[for="t-1"] {
-  transform: translate3d(320px, 0, -160px) rotateY(35deg);
+  transform: translate3d(420px, 0, -260px) rotateY(35deg); /* Aumentata la distanza */
   z-index: 3;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 #t-2:checked ~ .testimonials label[for="t-1"],
@@ -434,9 +452,9 @@ main {
 #t-5:checked ~ .testimonials label[for="t-4"],
 #t-6:checked ~ .testimonials label[for="t-5"],
 #t-1:checked ~ .testimonials label[for="t-6"] {
-  transform: translate3d(-320px, 0, -160px) rotateY(-35deg);
+  transform: translate3d(-420px, 0, -260px) rotateY(-35deg); /* Aumentata la distanza */
   z-index: 3;
-  opacity: 0.7;
+  opacity: 1;
 }
 
 #t-3:checked ~ .testimonials label[for="t-1"],
@@ -445,9 +463,9 @@ main {
 #t-6:checked ~ .testimonials label[for="t-4"],
 #t-2:checked ~ .testimonials label[for="t-6"],
 #t-1:checked ~ .testimonials label[for="t-5"] {
-  transform: translate3d(-500px, 0, -350px) rotateY(-45deg);
+  transform: translate3d(-700px, 0, -450px) rotateY(-45deg); /* Aumentata la distanza */
   z-index: 2;
-  opacity: 0.5;
+  opacity: 1;
 }
 
 /* Il label attivo viene visualizzato */
@@ -458,9 +476,113 @@ main {
 #t-5:checked ~ .testimonials label[for="t-5"],
 #t-6:checked ~ .testimonials label[for="t-6"] {
   z-index: 4;
-  opacity: 1; /* Rendi visibile solo l'elemento selezionato */
-  transform: translate3d(0, 0, 0) rotateY(0deg); /* Posizionalo in primo piano */
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotateY(0deg);
 }
+
+/* Modifiche per il carosello da 7 elementi */
+
+/* Nascondi l'elemento che si trova direttamente dietro quello in stato checked */
+#t7-1:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-2:checked ~ .testimonials-7 label[for="t7-6"],
+#t7-3:checked ~ .testimonials-7 label[for="t7-7"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-1"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-2"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-3"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-4"] {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, 0, -1200px); /* Portalo ulteriormente indietro */
+}
+
+/* Nascondi completamente il label che si trova in fondo */
+#t7-1:checked ~ .testimonials-7 label[for="t7-4"],
+#t7-2:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-3:checked ~ .testimonials-7 label[for="t7-6"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-7"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-1"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-2"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-3"] {
+  opacity: 0;
+  pointer-events: none;
+  transform: translate3d(0, 0, -700px);
+}
+
+/* Nascondi il settimo elemento quando in posizioni specifiche */
+#t7-1:checked ~ .testimonials-7 label[for="t7-7"],
+#t7-2:checked ~ .testimonials-7 label[for="t7-1"],
+#t7-3:checked ~ .testimonials-7 label[for="t7-2"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-3"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-4"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-6"] {
+  opacity: 0;
+  transform: translate3d(-700px, 0, -700px);
+}
+
+/* Posizionamento e visibilità dei label laterali */
+#t7-1:checked ~ .testimonials-7 label[for="t7-3"],
+#t7-2:checked ~ .testimonials-7 label[for="t7-4"],
+#t7-3:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-6"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-7"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-1"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-2"] {
+  transform: translate3d(700px, 0, -450px) rotateY(45deg);
+  z-index: 2;
+  opacity: 1;
+}
+
+#t7-1:checked ~ .testimonials-7 label[for="t7-2"],
+#t7-2:checked ~ .testimonials-7 label[for="t7-3"],
+#t7-3:checked ~ .testimonials-7 label[for="t7-4"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-6"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-7"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-1"] {
+  transform: translate3d(420px, 0, -260px) rotateY(35deg);
+  z-index: 3;
+  opacity: 1;
+}
+
+#t7-2:checked ~ .testimonials-7 label[for="t7-1"],
+#t7-3:checked ~ .testimonials-7 label[for="t7-2"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-3"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-4"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-6"],
+#t7-1:checked ~ .testimonials-7 label[for="t7-7"] {
+  transform: translate3d(-420px, 0, -260px) rotateY(-35deg);
+  z-index: 3;
+  opacity: 1;
+}
+
+#t7-3:checked ~ .testimonials-7 label[for="t7-1"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-2"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-3"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-4"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-2:checked ~ .testimonials-7 label[for="t7-7"],
+#t7-1:checked ~ .testimonials-7 label[for="t7-6"] {
+  transform: translate3d(-700px, 0, -450px) rotateY(-45deg);
+  z-index: 2;
+  opacity: 1;
+}
+
+/* Il label attivo viene visualizzato */
+#t7-1:checked ~ .testimonials-7 label[for="t7-1"],
+#t7-2:checked ~ .testimonials-7 label[for="t7-2"],
+#t7-3:checked ~ .testimonials-7 label[for="t7-3"],
+#t7-4:checked ~ .testimonials-7 label[for="t7-4"],
+#t7-5:checked ~ .testimonials-7 label[for="t7-5"],
+#t7-6:checked ~ .testimonials-7 label[for="t7-6"],
+#t7-7:checked ~ .testimonials-7 label[for="t7-7"] {
+  z-index: 4;
+  opacity: 1;
+  transform: translate3d(0, 0, 0) rotateY(0deg);
+}
+
+
 
 .slider-sidebar .testimonials .item {
   border: none;

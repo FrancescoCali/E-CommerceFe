@@ -8,4 +8,6 @@ public interface iUserService {
      void removeUser(UserRequest req);
      String getUsername();
      String getRole();
+     void setUsername(String username);
+
 }

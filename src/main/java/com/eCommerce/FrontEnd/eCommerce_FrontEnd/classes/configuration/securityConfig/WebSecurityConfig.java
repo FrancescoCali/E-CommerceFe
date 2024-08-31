@@ -207,15 +207,12 @@ public class WebSecurityConfig {
             @Override
             public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
                                                 Authentication authentication) throws IOException, ServletException {
-
                 String role = authentication.getAuthorities().iterator().next().getAuthority();
                 role = URLEncoder.encode(role, StandardCharsets.UTF_8.toString());
                 String username = authentication.getName();
                 username = URLEncoder.encode(username, StandardCharsets.UTF_8.toString());
-
                 request.getSession().setAttribute("username",username);
                 request.getSession().setAttribute("role",role);
-
                 response.sendRedirect("/home");
             }
         };
