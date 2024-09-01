@@ -35,53 +35,22 @@ public class ProductController {
 
     public static Logger log = LoggerFactory.getLogger(ProductController.class);
 
-    @GetMapping("/createProduct")
-    public ModelAndView create(  ){
-        ModelAndView mav = new ModelAndView("create-product");
+    @GetMapping("/create")
+    public ModelAndView create( @RequestParam (required = true ) String item ){
+        ModelAndView mav = new ModelAndView("create-"+item);
         ProductRequest req = new ProductRequest();
         req.setErrorMSG(null);
         return mav;
     }
 
-    /*
-        PRODOTTI
-
-        LAPTOP
-
-        PC
-
-        RAM
-
-        CPU
-
-        GPU
-
-        ...
-
-
-
-     */
-
-
-    /*
-        LISTE                    quantità
-        LAPTOP I9 BIANCO 32GB       X3
-        LAPTOP I7 BIANCO 32GB       X5
-        LAPTOP I3 BIANCO 32GB       X2
-
-        LAPTOP I9 NERO   32GB
-        LAPTOP I7 NERO   32GB
-        LAPTOP I3 NERO   32GB
-
-     */
 
     @GetMapping("/page")
-    public  ModelAndView page(  @RequestParam String item , @RequestParam Integer id) {
+    public  ModelAndView page(@RequestParam Integer id ,@RequestParam (required = true ) String item) {
 
         ModelAndView mav=new ModelAndView(item+"-page");
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/getById")
+                .fromHttpUrl(backend + item +"/getById")
                 .queryParam("id",id )
                 .buildAndExpand().toUri();
 
@@ -91,18 +60,18 @@ public class ProductController {
         return mav;
     }
 
-    @PostMapping("/saveProduct")
-    public Object save(@ModelAttribute("product") ProductRequest req){
+    @PostMapping("/save")
+    public Object save(@ModelAttribute("product") ProductRequest req,@RequestParam (required = true ) String item){
 
         URI uri ;
         if(req.getIdProduct()==null)
             uri = UriComponentsBuilder
-                    .fromHttpUrl(backend + "product/create")
+                    .fromHttpUrl(backend + item +"/create")
                     .buildAndExpand()
                     .toUri();
         else
             uri = UriComponentsBuilder
-                    .fromHttpUrl(backend + "product/update")
+                    .fromHttpUrl(backend + item +"/update")
                     .buildAndExpand()
                     .toUri();
 
@@ -114,27 +83,27 @@ public class ProductController {
             mav.addObject("product", req);
             return mav;
         }
-        return "redirect:/product/listProduct";
+        return "redirect:/product/list";
     }
 
-    @GetMapping("/removeProduct")
-    public Object remove(@RequestParam Integer id){
+    @GetMapping("/remove")
+    public Object remove(@RequestParam Integer id,@RequestParam (required = true ) String item){
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "/product/remove")
+                .fromHttpUrl(backend + item + "/remove")
                 .queryParam("id",id)
                 .buildAndExpand()
                 .toUri();
 
         ResponseBase resp = rest.postForEntity(uri,id, ResponseBase.class).getBody();
-        return "redirect:/admin/product/listProduct";
+        return "redirect:/admin/product/list";
     }
 
-    @GetMapping("/updateProduct")
-    public ModelAndView update(@RequestParam Integer id) {
+    @GetMapping("/update")
+    public ModelAndView update(@RequestParam Integer id,@RequestParam (required = true ) String item) {
         ModelAndView mav = new ModelAndView("create-update-product");
 
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/getById")
+                .fromHttpUrl(backend + item + "/getById")
                 .queryParam("id", id)
                 .buildAndExpand()
                 .toUri();
@@ -144,21 +113,18 @@ public class ProductController {
         ProductRequest req = (ProductRequest) convertInObject(resp.getDati(),ProductRequest.class);
 
         mav.addObject("product",req);
-//        mav.addObject("myTitle", "Modifica product");
         return mav;
     }
 
-    @GetMapping("/pageProduct")
-    public  ModelAndView page( @RequestParam Integer id) {
-
-        ModelAndView mav=new ModelAndView("product-page");
+    @GetMapping("/list")
+    public ModelAndView listProductModels(@RequestParam (required = true ) String item){
+        ModelAndView mav=new ModelAndView("listAdmin/list-product");
         URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/getByIdProduct")
-                .queryParam("id",id )
+                .fromHttpUrl(backend + item + "/list")
+                .queryParam("item",item )
                 .buildAndExpand().toUri();
-        ResponseObject<ProductView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        ProductView view =(ProductView) convertInObject(resp , ProductView.class);
-        mav.addObject("product", view );
+        Response<?> resp = rest.getForEntity(uri,Response.class).getBody();
+        mav.addObject("list", resp );
         return mav;
     }
 }

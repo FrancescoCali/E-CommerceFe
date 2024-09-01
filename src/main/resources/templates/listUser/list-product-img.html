@@ -6,22 +6,24 @@
     <title>Products view</title>
 </head>
 <body>
-<br>
-<nav th:insert="~{fragments/navigation(username=${username}, role=${role})}"></nav>
-<br>
+<div class="bg_page w_100 h_100">
 
-<!-- Usa un contenitore per ogni monitor -->
-<div th:each="product : ${listProduct.dati}">
-    <!-- Link per la pagina dei dettagli del monitor -->
-    <a th:href="@{/productUser/page(id=${product.idProduct})}" class="image">
-        <!-- Immagine del monitor -->
-        <img th:src="@{'/images/'+${product.url}}" alt="${product.item}">
-        <div>
-            <span><strong>Description:</strong> <span th:text="${product.description}"></span></span>
-            <span><strong>Price:</strong> <span th:text="${product.price}"></span></span>
-        </div>
-    </a>
-    <br>
+    <header>
+        <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div>
+    </header>
+
+    <!-- Usa un contenitore per ogni monitor -->
+    <div th:each="product : ${listProduct.dati}">
+        <!-- Link per la pagina dei dettagli del monitor -->
+        <a th:href="@{/productUser/page(id=${product.idProduct})}" class="image">
+            <!-- Immagine del monitor -->
+            <img th:src="@{'/images/'+${product.url}}" alt="${product.item}">
+            <div>
+                <span><strong>Description:</strong> <span th:text="${product.description}"></span></span>
+                <span><strong>Price:</strong> <span th:text="${product.price}"></span></span>
+            </div>
+        </a>
+    </div>
 </div>
 
 <div style="height: 50px;"></div> <!-- Spazio aggiuntivo sotto il pulsante -->

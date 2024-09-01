@@ -1,10 +1,77 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Componenti e Prodotti</title>
 </head>
 <body>
+
+<header>
+    <div th:insert="~{fragments/navigation(username=${username}, role=${role})}"></div>
+</header>
+
+<h3 align="center">Componenti e Prodotti</h3>
+
+<table border="1" cellspacing="0" cellpadding="10">
+    <thead>
+    <tr>
+        <th>Categoria</th>
+        <th>Dettagli</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='motherboard')}">Motherboard</a></td>
+        <td>Scopri le diverse schede madri disponibili</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='gpu')}">GPU</a></td>
+        <td>Esplora la gamma di schede grafiche</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='cpu')}">CPU</a></td>
+        <td>Scopri i processori disponibili</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='cooler')}">Cooler</a></td>
+        <td>Consulta i diversi sistemi di raffreddamento</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='psu')}">PSU</a></td>
+        <td>Visualizza gli alimentatori per il tuo PC</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='ram')}">RAM</a></td>
+        <td>Scopri le memorie RAM disponibili</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='memory')}">Memory</a></td>
+        <td>Consulta le memorie di archiviazione disponibili</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='laptop')}">Laptop</a></td>
+        <td>Vedi tutti i prodotti relativi ai laptop</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='pc')}">PC</a></td>
+        <td>Vedi tutti i prodotti relativi ai PC desktop</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='mouse')}">Mouse</a></td>
+        <td>Vedi tutti i prodotti relativi ai mouse</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='keyboard')}">Keyboard</a></td>
+        <td>Vedi tutti i prodotti relativi alle tastiere</td>
+    </tr>
+    <tr>
+        <td><a th:href="@{/admin/product/list(item='monitor')}">Monitor</a></td>
+        <td>Vedi tutti i prodotti relativi ai monitor</td>
+    </tr>
+    </tbody>
+</table>
 
 </body>
 </html>

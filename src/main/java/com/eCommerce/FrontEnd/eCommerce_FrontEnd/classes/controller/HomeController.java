@@ -29,7 +29,7 @@ public class HomeController {
     public ModelAndView homepage() {
         ModelAndView mav;
         if(user.getRole() != null) {
-            if (user.getRole().equalsIgnoreCase("ADMIN"))
+            if (user.getRole().equalsIgnoreCase("ROLE_ADMIN"))
                 mav = new ModelAndView("home/home-admin");
             else
                 mav = new ModelAndView("home/home-user");

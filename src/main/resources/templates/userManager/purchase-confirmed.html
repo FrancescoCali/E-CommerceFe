@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <meta charset="UTF-8">
+    <title>Purchase confirmed</title>
+</head>
+<body>
+
+<header>
+    <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div>
+</header>
+<div class="card-order">
+    <h1 align="center" style="color: #512da8;">Acquisto effettuato</h1>
+    <a th:href="@{/user/cartUser}" class="buttonlike-cart">Torna al carrello</a>
+</div>
+
+
+</body>
+</html>

@@ -7,6 +7,15 @@ public class CartRequest {
     private String errorMSG;
     private Boolean confirm;
     private Integer idItem;
+    private Boolean selected;
+
+    public Boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
+    }
 
     public Integer getIdItem() {
         return idItem;

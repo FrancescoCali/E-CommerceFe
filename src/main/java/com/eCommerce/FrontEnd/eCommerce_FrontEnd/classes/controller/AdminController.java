@@ -35,10 +35,6 @@ public class AdminController {
 
     public static Logger log = LoggerFactory.getLogger(AdminController.class);
 
-
-
-
-
     @GetMapping("/createUser")
     public ModelAndView create(){
         ModelAndView mav = new ModelAndView("create-update-user");

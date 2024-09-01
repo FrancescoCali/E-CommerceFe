@@ -49,7 +49,6 @@ public class UserController {
 
     @PostMapping("/saveUser")
     public Object save(@ModelAttribute("user") UserRequest req){
-
         URI uri = (req.getUsername() == null) ?
                 UriComponentsBuilder.fromHttpUrl(backend + "user/create").buildAndExpand().toUri() :
                 UriComponentsBuilder.fromHttpUrl(backend + "user/update").buildAndExpand().toUri();
@@ -147,4 +146,5 @@ public class UserController {
         mav.addObject("cartList",resp);
         return mav;
     }
+
 }

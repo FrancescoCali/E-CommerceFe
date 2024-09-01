@@ -4,6 +4,32 @@
     <link rel="stylesheet" href="../css/style.css">
     <meta charset="UTF-8">
     <title>Carrello</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        function toggleSelection(id, checkbox) {
+            console.log("ID passato alla funzione:", id);
+            const isSelected = checkbox.checked;
+            $.ajax({
+                url: '/cart/select',
+                method: 'GET',
+                data: { id: id, selected: isSelected },  // Passa il nuovo stato selezionato
+                success: function(response) {
+                    console.log('Selezione aggiornata con successo', response);
+                    if (!response.rc) {
+                        // Revert the checkbox state in caso di errore
+                        checkbox.checked = !isSelected;
+                        alert('Si è verificato un errore: ' + (response.msg || 'Errore sconosciuto'));
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.error('Errore AJAX:', xhr.responseText);
+                    // Revert the checkbox state in caso di errore
+                    checkbox.checked = !isSelected;
+                    alert('Si è verificato un errore. Riprova.');
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <br>
@@ -21,21 +47,24 @@
             <div>
                 <form class="form_content" th:action="@{/cart/removeCart}" method="post">
                     <input type="hidden" name="id" th:value="${cart.id}">
-                    <input type="hidden" name="confirm" value="false">
                     <button type="submit">Rimuovi dal carrello</button>
                 </form>
+                <label>
+                    <!-- Corretto l'attributo th:checked per riflettere correttamente il valore iniziale -->
+                    <input type="checkbox"
+                           th:checked="${cart.selected ? 'checked' : null}"
+                    th:onclick="toggleSelection([[${cart.id}]], this)"
+                    aria-label="Seleziona per l'acquisto"/>
+                    Seleziona per l'acquisto
+                </label>
             </div>
         </a>
         <br>
     </div>
     <div>
-        <form class="form_content" th:action="@{/cart/removeCart}" method="post">
-            <input type="hidden" name="confirm" value="true">
-            <button type="submit">Acquista tutto</button>
-        </form>
+        <a class="buttonlike" th:href="@{/cart/confirmPurchase}" title="Acquista tutto">Procedi all'acquisto</a>
     </div>
 </div>
-
 <div th:if="${cartList == null or cartList.dati == null or #lists.isEmpty(cartList.dati)}">
     <p>Il tuo carrello è vuoto.</p>
 </div>

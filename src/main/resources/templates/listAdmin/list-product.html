@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="page-wrapper">
+    <br>
+    <nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
+    <br>
+    <br>
+    <div align="center" class="content">
+        <table class="colorful-table">
+            <thead class="table-head">
+            <tr>
+                <th>id</th>
+                <th>Description</th>
+                <th>Marca</th>
+                <th>Model</th>
+                <th>Colour</th>
+                <th>Price</th>
+                <th>idProduct</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item: ${list.dati}">
+                <td th:text="${item.id}"></td>
+                <td th:text="${item.description}"></td>
+                <td th:text="${item.brand}"></td>
+                <td th:text="${item.model}"></td>
+                <td th:text="${item.colour}"></td>
+                <td th:text="${item.price}"></td>
+                <td th:text="${item.idProduct}"></td>
+                <td class="edit"><a th:href="@{/update(id=${item.id,item.model})}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                <td class="delete"><a th:href="@{/remove(id=${item.id},item.model)}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <a th:href="@{/create}" class="buttonlike">Crea prodotto</a>
+        <div style="height: 50px;"></div>
+    </div>
+</div>
+</body>
+</html>
