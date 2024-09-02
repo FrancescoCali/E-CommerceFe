@@ -1,5 +1,7 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.ProductRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -12,6 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.util.UriComponentsBuilder;
+
+import java.net.URI;
 
 @Controller
 public class HomeController {
@@ -47,8 +52,9 @@ public class HomeController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         if (auth != null)
             new SecurityContextLogoutHandler().logout(request, response, auth);
-
         ModelAndView mav=new ModelAndView("home/return-home");
         return mav;
     }
+
+
 }

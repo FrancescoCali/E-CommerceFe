@@ -4,22 +4,17 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/common.css">
     <meta charset="UTF-8">
-    <title>Componenti e Prodotti</title>
+    <title>Prodotti</title>
 </head>
 <body>
-
-<header>
-    <div th:insert="~{fragments/navigation(username=${username}, role=${role})}"></div>
-</header>
-
-<h3 align="center">Componenti e Prodotti</h3>
-
-<table border="1" cellspacing="0" cellpadding="10">
+<header> <div th:insert="~{fragments/navigation(username=${username}, role=${role})}"></div> </header>
+<h3 align="center" style="margin: 0 0 20px 0; padding: 0;">Prodotti</h3>
+<table border="1" cellspacing="0" cellpadding="10" style="margin-top: 0; padding-top: 0;">
     <thead>
-    <tr>
-        <th>Categoria</th>
-        <th>Dettagli</th>
-    </tr>
+        <tr>
+            <th>Categoria</th>
+            <th>Dettagli</th>
+        </tr>
     </thead>
     <tbody>
     <tr>
@@ -71,6 +66,7 @@
         <td>Vedi tutti i prodotti relativi ai monitor</td>
     </tr>
     </tbody>
+
 </table>
 
 </body>

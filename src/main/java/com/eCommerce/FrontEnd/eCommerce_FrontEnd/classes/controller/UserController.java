@@ -98,20 +98,8 @@ public class UserController {
                 .queryParam("username", user.getUsername())
                 .buildAndExpand()
                 .toUri();
-        ResponseObject<UserView> resp;
-            resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        if (resp == null || resp.getDati() == null) {
-            log.error("La risposta del servizio è nulla o i dati sono nulli.");
-            mav.addObject("errorMSG", "Nessun dato trovato per l'utente.");
-            return mav;
-        }
-        UserRequest req  = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
-        if (req  == null) {
-            log.error("Errore nella conversione dell'oggetto.");
-            mav.addObject("errorMSG", "Errore nella conversione dei dati utente.");
-            return mav;
-        }
-        mav.addObject("user", req );
+        ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        mav.addObject("user", resp );
         return mav;
     }
 
@@ -131,7 +119,7 @@ public class UserController {
         mav.addObject("role",user.getRole());
         return mav;
     }
-
+    //CARRELLO DELL'UTENTE
     @GetMapping("/cartUser")
     public ModelAndView cart(){
         ModelAndView mav = new ModelAndView("userManager/cart-user");

@@ -11,18 +11,24 @@
 <br>
 
 <div th:if="${cartList != null and cartList.dati != null and not #lists.isEmpty(cartList.dati)}">
-    <div th:each="cart : ${cartList.dati}">
-        <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
-            <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
-            <div>
-                <span><strong>Descrizione:</strong> <span th:text="${cart.description}"></span></span>
-                <span><strong>Prezzo:</strong> <span th:text="${cart.price}"></span></span>
-            </div>
-        </a>
-        <br>
-    </div>
-    <div>
-        <a class="buttonlike" th:href="@{/cart/purchaseConfirmed}">Conferma acquisto</a>
+    <div th:with="total=0">
+        <div th:each="cart : ${cartList.dati}" th:with="total=${total}+${cart.price}">
+            <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
+                <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
+                <div>
+                    <span><strong>Descrizione:</strong> <span th:text="${cart.description}"></span></span>
+                    <span><strong>Prezzo:</strong> <span th:text="${cart.price}"></span></span>
+                </div>
+            </a>
+            <br>
+        </div>
+        <div>
+            <a class="buttonlike" th:href="@{/cart/purchaseConfirmed}">Conferma acquisto</a>
+        </div>
+        <div class="total-price">
+            <span class="total-price-label">Totale Prezzo:</span>
+            <span class="total-price-value" th:text="${#numbers.formatDecimal(#aggregates.sum(cartList.dati.![price]), 1, 2)} + ' €'"></span>
+        </div>
     </div>
 </div>
 

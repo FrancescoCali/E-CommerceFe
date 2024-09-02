@@ -102,6 +102,20 @@
             </div>
         </div>
     </div>
+
+    <div class="container mt-5">
+    <!-- Form di ricerca -->
+    <form th:action="@{/productUser/search}" method="get" class="form-inline">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Cerca..." aria-label="Cerca">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-success">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    </div>
 </nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

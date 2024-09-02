@@ -10,6 +10,23 @@
     margin-right: auto;
 }
 
+.total-price {
+    font-size: 1.3em;
+    font-weight: bold;
+     background-color: #101214 ; /* Imposta sfondo nero */
+      color: #fff ;
+}
+
+.total-price-value {
+    margin-left: 10px; /* Spazio tra la voce e il prezzo */
+     background-color: #101214 !important; /* Imposta sfondo nero */
+      color: #fff ;
+}
+        .total-price-label {
+            font-weight: bold;
+             background-color: #101214 !important; /* Imposta sfondo nero */
+              color: #fff !important;
+        }
 .image div {
     display: flex;
     flex-direction: column;

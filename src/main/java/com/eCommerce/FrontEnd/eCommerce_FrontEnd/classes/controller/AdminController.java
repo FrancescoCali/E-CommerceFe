@@ -40,8 +40,7 @@ public class AdminController {
         ModelAndView mav = new ModelAndView("create-update-user");
         UserRequest req = new UserRequest();
         req.setErrorMSG(null);
-        req.setRole("ADMIN"); //--> Accesso solo admin
-
+        req.setRole("ADMIN");
         mav.addObject("user", req);
         return mav;
     }

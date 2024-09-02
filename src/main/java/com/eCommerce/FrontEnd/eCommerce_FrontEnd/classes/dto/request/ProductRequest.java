@@ -1,14 +1,51 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request;
 
 public class ProductRequest {
+
+    private Integer id;
+    private Integer quantity ;
     private Integer idProduct;
-    private String model;
-    private String brand;
-    private Float price;
-    private String description;
-    private String colour;
+    private String model ;
+    private String brand ;
+    private Float price ;
+    private String description ;
+    private String colour ;
+    private String item ;
+    private Boolean contained;
+    private Boolean cart ;
     private String errorMSG;
-    private Integer quantity;
+
+    public String getErrorMSG() {
+        return errorMSG;
+    }
+
+    public void setErrorMSG(String errorMSG) {
+        this.errorMSG = errorMSG;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Boolean getCart() {
+        return cart;
+    }
+
+    public void setCart(Boolean cart) {
+        this.cart = cart;
+    }
+
+    public Boolean getContained() {
+        return contained;
+    }
+
+    public void setContained(Boolean contained) {
+        this.contained = contained;
+    }
 
     public Integer getQuantity() {
         return quantity;
@@ -66,11 +103,13 @@ public class ProductRequest {
         this.colour = colour;
     }
 
-    public String getErrorMSG() {
-        return errorMSG;
+    public String getItem() {
+        return item;
     }
 
-    public void setErrorMSG(String errorMSG) {
-        this.errorMSG = errorMSG;
+    public void setItem(String item) {
+        this.item = item;
     }
+
+
 }

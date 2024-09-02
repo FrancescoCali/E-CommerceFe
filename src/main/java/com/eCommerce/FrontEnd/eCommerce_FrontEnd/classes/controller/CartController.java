@@ -79,6 +79,7 @@ public class CartController {
         return response;
     }
 
+    /*********/
     @GetMapping("/confirmPurchase")
     public ModelAndView confirmPurchase(){
         ModelAndView mav = new ModelAndView("userManager/order-summary");
@@ -87,8 +88,7 @@ public class CartController {
                 .queryParam("username",user.getUsername())
                 .buildAndExpand()
                 .toUri();
-        Response<?> resp = rest.getForEntity(uri,Response.class).getBody();
-        mav.addObject("cartList",resp);
+        mav.addObject("cartList",rest.getForEntity(uri,Response.class).getBody());
         mav.addObject("username",user.getUsername());
         mav.addObject("role",user.getRole());
         return mav ;
@@ -106,7 +106,6 @@ public class CartController {
                 .toUri();
 
         rest.getForEntity(uri, ResponseBase.class);
-
         mav.addObject("username", user.getUsername());
         mav.addObject("role", user.getRole());
         return mav;
