@@ -3,16 +3,30 @@
 .image img {
     max-width: 500px;
     display: block;
-    margin: 0 auto;
 }
 
 .image {
-    margin-top: 200px;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid #fff;
 }
 
+.total-price {
+    font-size: 1.3em;
+    font-weight: bold;
+     background-color: #101214 ; /* Imposta sfondo nero */
+      color: #fff ;
+}
+
+.total-price-value {
+    margin-left: 10px; /* Spazio tra la voce e il prezzo */
+     background-color: #101214 !important; /* Imposta sfondo nero */
+      color: #fff ;
+}
+        .total-price-label {
+            font-weight: bold;
+             background-color: #101214 !important; /* Imposta sfondo nero */
+              color: #fff !important;
+        }
 .image div {
     display: flex;
     flex-direction: column;
@@ -250,6 +264,18 @@ table {
   border: 2px solid #8a8a8a;
 }
 
+table.card {
+  border: none;
+  background-color: transparent;
+  margin: auto;
+}
+
+table.card tr,
+table.card tr td {
+  display: flex;
+  width: 100%;
+}
+
 th {
   background-color: #cecece;
   padding: 3vh;
@@ -276,6 +302,32 @@ td {
   outline: none;
   border-radius: 50px;
   width: 20vh;
+  font-size: 1em;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonlike-cart {
+  margin-top: 3vh;
+  padding: 1vh;
+  border: 2px solid #0094d4;
+  background-color: #0094d4;
+  color: #ffffff;
+  outline: none;
+  border-radius: 50px;
+  width: 18vh;
+  font-size: 1em;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonlike-cart:hover {
+  margin-top: 3vh;
+  padding: 1vh;
+  border: 2px solid #0094d4;
+  background-color: transparent;
+  color: #ffffff;
+  outline: none;
+  border-radius: 50px;
+  width: 18vh;
   font-size: 1em;
   transition: all 0.3s ease-in-out;
 }
@@ -376,40 +428,6 @@ main {
   overflow: hidden;
 }
 .testimonials .item h1{font-size: 114px; color: white;}
-.dots{display: flex; justify-content: center;align-items: center;}
-.dots label{
-  height: 5px;
-  width: 5px;
-  border-radius: 50%;
-  cursor: pointer;
-  background-color: #413B52;
-  margin: 7px;
-  transition-duration: 0.2s;
-}
-
-#t-1:checked ~ .dots label[for="t-1"],
-#t-2:checked ~ .dots label[for="t-2"],
-#t-3:checked ~ .dots label[for="t-3"],
-#t-4:checked ~ .dots label[for="t-4"],
-#t-5:checked ~ .dots label[for="t-5"],
-#t-6:checked ~ .dots label[for="t-6"] {
-  transform: scale(1.5);
-  background-color: #fff;
-  box-shadow: 0px 0px 0px 2px #dddddd24;
-}
-
-#t-1:checked ~ .dots label[for="t-2"],
-#t-2:checked ~ .dots label[for="t-1"],
-#t-2:checked ~ .dots label[for="t-3"],
-#t-3:checked ~ .dots label[for="t-2"],
-#t-3:checked ~ .dots label[for="t-4"],
-#t-4:checked ~ .dots label[for="t-3"],
-#t-4:checked ~ .dots label[for="t-5"],
-#t-5:checked ~ .dots label[for="t-4"],
-#t-5:checked ~ .dots label[for="t-6"],
-#t-6:checked ~ .dots label[for="t-5"] {
-  transform: scale(1.2);
-}
 
 /* Nascondi l'elemento che si trova direttamente dietro quello in stato checked */
 #t-1:checked ~ .testimonials label[for="t-4"],
@@ -759,4 +777,14 @@ table.colorful-table tfoot td a{
 table.colorful-table tfoot td a:hover{
   color: #005599;
   transition: color 0.3 ease-in-out;
+}
+
+.card-order {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border-radius: 50px;
+    width: 500px;
+    align-items: center;
+    padding: 10px;
 }

@@ -7,26 +7,25 @@
     <meta charset="UTF-8">
     <title>BetaCommerce</title>
 </head>
-
 <body>
 <nav class="flex fd_column ai_center t_white w_100" th:fragment="block-navigation(username,role)">
-    <!--  Title  -->
     <div class="bg w_100">
         <h1 class="flex jc_center ai_center p_05 m_0">
             BetaCommerce
         </h1>
     </div>
+<<<<<<< HEAD
 
 
     <!--  Navbar  -->
+=======
+>>>>>>> 6b62a7f948d8e319b2c2a5db8ccf276afd0a6dfc
     <div class="flex jc_between ai_center w_90 p_05 m_0">
-        <!--  Home  -->
         <button class="btn_bg br_10 p_05 sm-btn-std-w b_0">
             <a class="reset" th:href="@{/home(username=${username},role=${role})}">
                 <i class="fas fa-home t_white"></i>
             </a>
         </button>
-        <!-- Pulsanti di navigazione -->
         <div class="controls">
             <button class="buttonlike-nav-arrows" id="prevButton">
                 <i class="fas fa-arrow-left t_white"></i>
@@ -39,11 +38,9 @@
                 <li><a th:href="@{/admin/listUser(req='ADMIN')}">Admin</a></li>
             </ul>
         </div>
-        <!--  Login  -->
         <button class="btn_bg br_10 p_05 t_white sm-btn-std-w b_0" type="button" data-bs-toggle="offcanvas" data-bs-target="#userSidebar" aria-controls="userSidebar">
             <i class="fas fa-user"></i>
         </button>
-        <!--  Offcanvas  -->
         <div class="offcanvas offcanvas-end" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="userSidebar" aria-labelledby="userSidebarLabel">
             <div class="offcanvas-header">
                 <h2>Menu</h2>
@@ -53,11 +50,9 @@
         </div>
             <div class="offcanvas-body">
                 <ul>
-                    <!-- Mostra 'Log in' e 'Sign in' solo se l'utente non è autenticato -->
                     <li sec:authorize="!isAuthenticated()"><a class="btn_bg" th:href="@{/login}">Log in</a></li>
                     <li sec:authorize="!isAuthenticated()"><a class="btn_bg" th:href="@{/user/createUser}">Sign in</a></li>
 
-                    <!-- Mostra 'Mio profilo' solo se l'utente è autenticato -->
                     <li sec:authorize="isAuthenticated()">
                         <a class="btn-std-h br_10 p_05 btn_bg m_0 btn_bg t_white"
                            th:href="@{/user/accountUser}">
@@ -113,6 +108,7 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 
 
 
@@ -132,7 +128,23 @@
     </div>
 
 </nav>
+=======
+>>>>>>> 6b62a7f948d8e319b2c2a5db8ccf276afd0a6dfc
 
+    <div class="container mt-5">
+    <!-- Form di ricerca -->
+    <form th:action="@{/productUser/search}" method="get" class="form-inline">
+        <div class="input-group">
+            <input type="text" name="search" class="form-control" placeholder="Cerca..." aria-label="Cerca">
+            <div class="input-group-append">
+                <button type="submit" class="btn btn-outline-success">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+    </div>
+</nav>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 <script>

@@ -33,7 +33,6 @@ public class UserController {
 
     @Autowired
     RestTemplate rest;
-    public static Logger log = LoggerFactory.getLogger(RamController.class);
 
     @GetMapping("/createUser")
     public ModelAndView create(){
@@ -49,7 +48,6 @@ public class UserController {
 
     @PostMapping("/saveUser")
     public Object save(@ModelAttribute("user") UserRequest req){
-
         URI uri = (req.getUsername() == null) ?
                 UriComponentsBuilder.fromHttpUrl(backend + "user/create").buildAndExpand().toUri() :
                 UriComponentsBuilder.fromHttpUrl(backend + "user/update").buildAndExpand().toUri();
@@ -69,7 +67,6 @@ public class UserController {
         }
         return "redirect:/home?";
     }
-
 
     @GetMapping("/removeUser")
     public Object remove(@RequestParam Integer id){
@@ -99,20 +96,8 @@ public class UserController {
                 .queryParam("username", user.getUsername())
                 .buildAndExpand()
                 .toUri();
-        ResponseObject<UserView> resp;
-            resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        if (resp == null || resp.getDati() == null) {
-            log.error("La risposta del servizio è nulla o i dati sono nulli.");
-            mav.addObject("errorMSG", "Nessun dato trovato per l'utente.");
-            return mav;
-        }
-        UserRequest req  = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
-        if (req  == null) {
-            log.error("Errore nella conversione dell'oggetto.");
-            mav.addObject("errorMSG", "Errore nella conversione dei dati utente.");
-            return mav;
-        }
-        mav.addObject("user", req );
+        ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
+        mav.addObject("user", resp );
         return mav;
     }
 
@@ -132,7 +117,7 @@ public class UserController {
         mav.addObject("role",user.getRole());
         return mav;
     }
-
+    //CARRELLO DELL'UTENTE
     @GetMapping("/cartUser")
     public ModelAndView cart(){
         ModelAndView mav = new ModelAndView("userManager/cart-user");
@@ -147,4 +132,5 @@ public class UserController {
         mav.addObject("cartList",resp);
         return mav;
     }
+
 }

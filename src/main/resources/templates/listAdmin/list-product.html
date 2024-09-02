@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div class="page-wrapper">
+    <nav th:insert="~{fragments/navigation(username=${username}, role=${role})}"></nav>
+    <div align="center" class="content">
+        <table class="colorful-table">
+            <thead class="table-head">
+            <tr>
+                <th>idProduct</th>
+                <th>Description</th>
+                <th>Marca</th>
+                <th>Model</th>
+                <th>Colour</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product: ${list.dati}" th:href="@{/productUser/page(id=${product.idProduct})}" th:classappend="clickable-row">
+                <td th:text="${product.idProduct}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.brand}"></td>
+                <td th:text="${product.model}"></td>
+                <td th:text="${product.colour}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td class="edit">
+                    <a th:href="@{/admin/product/updateProduct(idProduct=${product.idProduct},item=${item})}">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td class="delete">
+                    <a th:href="@{/admin/product/removeProduct(id=${product.idProduct},item=${item})}">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <br>
+        <a th:href="@{/admin/product/create(item=${item})}" class="buttonlike">Crea prodotto</a>
+        <div style="height: 50px;"></div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.clickable-row').forEach(row => {
+        row.addEventListener('click', () => {
+            window.location.href = row.getAttribute('href');
+        });
+    });
+</script>
+</body>
+</html>

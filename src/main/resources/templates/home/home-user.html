@@ -26,39 +26,6 @@
     </header>
 
     <main class="slider-sidebar flex fd_column ai_center m_0 w_100">
-        <!-- Navbar -->
-        <nav class="flex jc_around w_50 p_075 nav_engine">
-            <button class="m_0 bg_green b_0 br_10 t_white">
-                <label for="t-1" class="btn-std-h p_05 m_0">
-                    Laptop
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t-2" class="btn-std-h p_05 m_0">
-                    Fissi
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t-3" class="btn-std-h p_05 m_0">
-                    Monitor
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t-4" class="btn-std-h p_05 m_0">
-                    Mouse
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t-5" class="btn-std-h p_05 m_0">
-                    Tastiere
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t-6" class="btn-std-h p_05 m_0">
-                    Componenti per Pc
-                </label>
-            </button>
-        </nav>
         <!-- Carousel -->
         <div>
             <input type="radio" name="testimonial" id="t-1" checked>
@@ -100,43 +67,95 @@
                 </label>
             </div>
         </div>
+        <!-- Navbar -->
+        <nav class="flex jc_around w_50 p_075 nav_engine">
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t-1" class="btn-std-h p_05 m_0">
+                    Laptop
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t-2" class="btn-std-h p_05 m_0">
+                    Fissi
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t-3" class="btn-std-h p_05 m_0">
+                    Monitor
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t-4" class="btn-std-h p_05 m_0">
+                    Mouse
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t-5" class="btn-std-h p_05 m_0">
+                    Tastiere
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t-6" class="btn-std-h p_05 m_0">
+                    Componenti per Pc
+                </label>
+            </button>
+        </nav>
     </main>
 </div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const radios = document.querySelectorAll('.slider-sidebar input[type="radio"]');
-        const labels = document.querySelectorAll('.nav_engine label');
-        let currentIndex = 0;
+    const radios = document.querySelectorAll('.slider-sidebar input[type="radio"]');
+    const labels = document.querySelectorAll('.nav_engine label');
+    let currentIndex = Array.from(radios).findIndex(radio => radio.checked);
 
-        function changeImage() {
-            radios[currentIndex].checked = false;
-            labels[currentIndex].parentElement.classList.remove('bg_green');
-            labels[currentIndex].parentElement.classList.add('btn_bg');
-
-            currentIndex = (currentIndex + 1) % radios.length;
-
-            radios[currentIndex].checked = true;
-            labels[currentIndex].parentElement.classList.add('bg_green');
-            labels[currentIndex].parentElement.classList.remove('btn_bg');
-        }
-
-        setInterval(changeImage, 15000);
-
+    // Funzione per aggiornare lo stato dei filtri
+    function updateFilter() {
         labels.forEach((label, index) => {
-            label.addEventListener('click', function() {
-                currentIndex = index;
+            if (radios[index].checked) {
+                label.parentElement.classList.add('filter');
+                label.parentElement.classList.add('t_black');
+                label.style.filter = "brightness(1.2)"; // Applica il filtro al pulsante attivo
+            } else {
+                label.parentElement.classList.remove('filter');
+                label.parentElement.classList.remove('t_black');
+                label.style.filter = "none"; // Rimuove il filtro dagli altri pulsanti
+            }
+        });
+    }
 
-                labels.forEach(lbl => {
-                    lbl.parentElement.classList.remove('bg_green');
-                    lbl.parentElement.classList.add('btn_bg');
-                });
+    // Aggiorna il filtro al caricamento della pagina
+    updateFilter();
 
-                label.parentElement.classList.add('bg_green');
-                label.parentElement.classList.remove('btn_bg');
+    // Funzione per cambiare l'immagine automaticamente ogni 15 secondi
+    function changeImage() {
+        radios[currentIndex].checked = false;
+
+        // Incrementa l'indice e ciclalo se supera la lunghezza degli input
+        currentIndex = (currentIndex + 1) % radios.length;
+
+        radios[currentIndex].checked = true;
+        updateFilter(); // Aggiorna lo stato del filtro durante la rotazione automatica
+    }
+
+    // Avvia l'intervallo per cambiare l'immagine
+    setInterval(changeImage, 15000);
+
+    // Aggiungi l'evento di click per ciascun pulsante
+    labels.forEach((label, index) => {
+        label.addEventListener('click', function() {
+            currentIndex = index;
+
+            // Aggiorna l'elemento "checked" in base al pulsante cliccato
+            radios.forEach((radio, i) => {
+                radio.checked = i === index;
             });
+
+            updateFilter(); // Aggiorna lo stato del filtro quando un pulsante viene cliccato
         });
     });
+});
+
 </script>
 
 

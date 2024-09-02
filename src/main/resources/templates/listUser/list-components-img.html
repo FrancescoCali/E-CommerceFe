@@ -19,52 +19,9 @@
 <body>
 
 <div class="bg_page w_100 h_100">
-
-    <header>
-        <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div>
-    </header>
-
+    <header> <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div> </header>
     <main class="slider-sidebar flex fd_column ai_center m_0 w_100">
-        <!-- Navbar -->
-        <nav class="flex jc_around w_50 p_075 nav_engine">
-            <button class="m_0 bg_green b_0 br_10 t_white">
-                <label for="t7-1" class="btn-std-h p_05 m_0">
-                    Motherboard
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t7-2" class="btn-std-h p_05 m_0">
-                    GPU
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t7-3" class="btn-std-h p_05 m_0">
-                    CPU
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t7-4" class="btn-std-h p_05 m_0">
-                    Cooler
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t7-5" class="btn-std-h p_05 m_0">
-                    PSU
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t7-6" class="btn-std-h p_05 m_0">
-                    RAM
-                </label>
-            </button>
-            <button class="m_0 btn_bg b_0 br_10 t_white">
-                <label for="t7-7" class="btn-std-h p_05 m_0">
-                    Memory
-                </label>
-            </button>
-        </nav>
-
-        <div class="slider-sidebar" align="center">
+        <div>
             <input type="radio" name="testimonial-7" id="t7-1" checked>
             <input type="radio" name="testimonial-7" id="t7-2">
             <input type="radio" name="testimonial-7" id="t7-3">
@@ -112,41 +69,100 @@
             <br/>
         </div>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            const radios7 = document.querySelectorAll('.slider-sidebar input[name="testimonial-7"]');
-            const labels7 = document.querySelectorAll('.nav_engine label');
-            let currentIndex7 = 0;
+        <nav class="flex jc_around w_50 p_075 nav_engine">
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t7-1" class="btn-std-h p_05 m_0">
+                    Motherboard
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t7-2" class="btn-std-h p_05 m_0">
+                    GPU
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t7-3" class="btn-std-h p_05 m_0">
+                    CPU
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t7-4" class="btn-std-h p_05 m_0">
+                    Cooler
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t7-5" class="btn-std-h p_05 m_0">
+                    PSU
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t7-6" class="btn-std-h p_05 m_0">
+                    RAM
+                </label>
+            </button>
+            <button class="m_0 btn_bg_none b_0 br_10 t_white">
+                <label for="t7-7" class="btn-std-h p_05 m_0">
+                    Memory
+                </label>
+            </button>
+        </nav>
 
-            function changeImage7() {
-                radios7[currentIndex7].checked = false;
-                labels7[currentIndex7].parentElement.classList.remove('bg_green');
-                labels7[currentIndex7].parentElement.classList.add('btn_bg');
+    </main>
+</div>
 
-                currentIndex7 = (currentIndex7 + 1) % radios7.length;
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const radios = document.querySelectorAll('.slider-sidebar input[type="radio"]');
+    const labels = document.querySelectorAll('.nav_engine label');
+    let currentIndex = Array.from(radios).findIndex(radio => radio.checked);
 
-                radios7[currentIndex7].checked = true;
-                labels7[currentIndex7].parentElement.classList.add('bg_green');
-                labels7[currentIndex7].parentElement.classList.remove('btn_bg');
+    // Funzione per aggiornare lo stato dei filtri
+    function updateFilter() {
+        labels.forEach((label, index) => {
+            if (radios[index].checked) {
+                label.parentElement.classList.add('filter');
+                label.parentElement.classList.add('t_black');
+                label.style.filter = "brightness(1.2)"; // Applica il filtro al pulsante attivo
+            } else {
+                label.parentElement.classList.remove('filter');
+                label.parentElement.classList.remove('t_black');
+                label.style.filter = "none"; // Rimuove il filtro dagli altri pulsanti
             }
-
-            setInterval(changeImage7, 15000);
-
-            labels7.forEach((label, index) => {
-                label.addEventListener('click', function() {
-                    currentIndex7 = index;
-
-                    labels7.forEach(lbl => {
-                        lbl.parentElement.classList.remove('bg_green');
-                        lbl.parentElement.classList.add('btn_bg');
-                    });
-
-                    label.parentElement.classList.add('bg_green');
-                    label.parentElement.classList.remove('btn_bg');
-                });
-            });
         });
-        </script>
+    }
+
+    // Aggiorna il filtro al caricamento della pagina
+    updateFilter();
+
+    // Funzione per cambiare l'immagine automaticamente ogni 15 secondi
+    function changeImage() {
+        radios[currentIndex].checked = false;
+
+        // Incrementa l'indice e ciclalo se supera la lunghezza degli input
+        currentIndex = (currentIndex + 1) % radios.length;
+
+        radios[currentIndex].checked = true;
+        updateFilter(); // Aggiorna lo stato del filtro durante la rotazione automatica
+    }
+
+    // Avvia l'intervallo per cambiare l'immagine
+    setInterval(changeImage, 15000);
+
+    // Aggiungi l'evento di click per ciascun pulsante
+    labels.forEach((label, index) => {
+        label.addEventListener('click', function() {
+            currentIndex = index;
+
+            // Aggiorna l'elemento "checked" in base al pulsante cliccato
+            radios.forEach((radio, i) => {
+                radio.checked = i === index;
+            });
+
+            updateFilter(); // Aggiorna lo stato del filtro quando un pulsante viene cliccato
+        });
+    });
+    });
+</script>
 
 
 </body>

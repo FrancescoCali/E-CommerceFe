@@ -11,24 +11,36 @@
     <header>
         <nav th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></nav>
     </header>
-    <main class="slider-sidebar flex fd_column ai_center m_0 w_100">
-        <div class="image">
-            <div>
-                <img th:src="@{/images/{url}(url=${view.url})}" alt="Foto product">
-                <div>
-                    <span><strong>Description:</strong> <span th:text="${view.description}"></span></span>
-                    <span><strong>Model:</strong> <span th:text="${view.model}"></span></span>
-                    <span><strong>Brand:</strong> <span th:text="${view.brand}"></span></span>
-                    <span><strong>Colour:</strong> <span th:text="${view.colour}"></span></span>
-                    <span><strong>Price:</strong> <span th:text="${view.price}"></span></span>
-                </div>
-            </div>
-        </div>
-        <form th:action="@{/cart/createCart}" method="post">
-            <input type="hidden" name="idProduct" th:value="${view.idProduct}" />
-            <button type="submit">Insert into cart</button>
-        </form>
-    </main>
+    <div class="product-container">
+        <table class="card">
+            <thead></thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="image">
+                        <img th:src="@{/images/{url}(url=${view.url})}" alt="Foto product">
+                    </div>
+                </td>
+                <td>
+                    <div class="w_100 ai-center">
+                        <ul style="margin-top: 50px;">
+                            <li align="left"><strong>Description:</strong> <span th:text="${view.description}"></span></li>
+                            <li align="left"><strong>Model:</strong> <span th:text="${view.model}"></span></li>
+                            <li align="left"><strong>Brand:</strong> <span th:text="${view.brand}"></span></li>
+                            <li align="left"><strong>Colour:</strong> <span th:text="${view.colour}"></span></li>
+                            <li align="left"><strong>Price:</strong> € <span th:text="${view.price}"></span></li>
+                        </ul>
+                        <form th:action="@{/cart/createCart}" method="post" style="height: 90%; margin: 0 auto;">
+                            <input type="hidden" name="idProduct" th:value="${view.idProduct}" />
+                            <button class="buttonlike-cart" type="submit">Insert into cart</button>
+                        </form>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div style="height: 50px;"></div>
 </div>
 </body>
 </html>

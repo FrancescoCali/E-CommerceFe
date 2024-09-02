@@ -30,18 +30,16 @@ public class ProductUserController {
     @Autowired
     iUserService user;
     public static Logger log = LoggerFactory.getLogger(ProductUserController.class);
-    //ITEM CAMBIA IN BASE AL CLICK SUL CAROSELLO, SI ASPETTA UN PARAMETRO PASSATO DAL CAROSELLO
 
+    //ITEM CAMBIA IN BASE AL CLICK SUL CAROSELLO, SI ASPETTA UN PARAMETRO PASSATO DAL CAROSELLO
     @GetMapping ("/list")
     public  ModelAndView list(@RequestParam(name = "item" ,required = true) String item) {
         ModelAndView mav = new ModelAndView("listUser/list-product-img");
         if(!item.equalsIgnoreCase("components")){
-
             URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "product/list")
                 .queryParam("item", item)
                 .buildAndExpand().toUri();
-
             Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
             mav.addObject("listProduct", resp);
         }
@@ -60,9 +58,23 @@ public class ProductUserController {
                 .fromHttpUrl(backend + "product/getById")
                 .queryParam("id", id)
                 .buildAndExpand().toUri();
-        ResponseObject<ProductView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        ProductView view = (ProductView) convertInObject(resp.getDati(), ProductView.class);
-        mav.addObject("view", view);
+        mav.addObject("username",user.getUsername());
+        mav.addObject("role", user.getRole());
+        mav.addObject("view", rest.getForEntity(uri, ResponseObject.class).getBody().getDati());
+        return mav;
+    }
+    @GetMapping("/search")
+    public ModelAndView search(@RequestParam (name = "search", required = true) String search) {
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/search")
+                .queryParam("search", search)
+                .buildAndExpand()
+                .toUri();
+
+        ModelAndView mav = new ModelAndView("listUser/list-product-img");
+        mav.addObject("listProduct", rest.getForEntity(uri, ResponseObject.class).getBody());
+        mav.addObject("username",user.getUsername());
+        mav.addObject("username",user.getRole());
         return mav;
     }
 

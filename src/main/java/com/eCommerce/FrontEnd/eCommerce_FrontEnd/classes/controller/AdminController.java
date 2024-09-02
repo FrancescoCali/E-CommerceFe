@@ -1,6 +1,5 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.PsuRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.UserView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
@@ -35,17 +34,12 @@ public class AdminController {
 
     public static Logger log = LoggerFactory.getLogger(AdminController.class);
 
-
-
-
-
     @GetMapping("/createUser")
     public ModelAndView create(){
         ModelAndView mav = new ModelAndView("create-update-user");
         UserRequest req = new UserRequest();
         req.setErrorMSG(null);
-        req.setRole("ADMIN"); //--> Accesso solo admin
-
+        req.setRole("ADMIN");
         mav.addObject("user", req);
         return mav;
     }
