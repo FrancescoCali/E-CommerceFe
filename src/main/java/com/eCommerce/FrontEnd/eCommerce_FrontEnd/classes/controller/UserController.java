@@ -48,25 +48,33 @@ public class UserController {
 
     @PostMapping("/saveUser")
     public Object save(@ModelAttribute("user") UserRequest req){
+
         URI uri = (req.getUsername() == null) ?
                 UriComponentsBuilder.fromHttpUrl(backend + "user/create").buildAndExpand().toUri() :
                 UriComponentsBuilder.fromHttpUrl(backend + "user/update").buildAndExpand().toUri();
 
-        ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
-        if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("userManager/create-update-user");
-            req.setErrorMSG(req.getErrorMSG());
+        ResponseBase resp = rest.postForEntity(uri, req, ResponseBase.class).getBody();
+        System.out.println(req.getUsername());
+        if (!resp.getRc()) {
+            // In caso di errore, visualizza la pagina di registrazione con un messaggio di errore
+            ModelAndView mav = new ModelAndView("login");
             mav.addObject("user", req);
+            mav.addObject("errorMessage", "Errore durante la registrazione. Per favore, riprova.");
             return mav;
         }
-        if(req.getUsername()==null)
+
+        if (req.getUsername() == null) {
+            // Creazione di un nuovo utente
             user.createUser(req);
-        else   {
+        } else {
+            // Aggiornamento di un utente esistente
             user.updateUser(req);
-            user.setUsername( req.getUsername());
+            user.setUsername(req.getUsername());
         }
-        return "redirect:/home?";
+        // Redirect alla home page
+        return "redirect:/home";
     }
+
 
     @GetMapping("/removeUser")
     public Object remove(@RequestParam Integer id){

@@ -12,18 +12,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
-<<<<<<< HEAD
-import java.net.URI;
-import java.util.List;
-import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
-=======
 
-import java.net.URI;
->>>>>>> 6b62a7f948d8e319b2c2a5db8ccf276afd0a6dfc
 
 @Controller
 public class HomeController {

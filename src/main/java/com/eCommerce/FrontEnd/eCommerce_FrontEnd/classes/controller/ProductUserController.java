@@ -78,20 +78,4 @@ public class ProductUserController {
         return mav;
     }
 
-    @GetMapping("/search")
-    public ModelAndView search(@RequestParam (name = "search", required = true) String search) {
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/search")
-                .queryParam("search", search)
-                .buildAndExpand()
-                .toUri();
-
-        @SuppressWarnings("unchecked")
-
-        ModelAndView mav = new ModelAndView("listUser/list-product-img");
-        mav.addObject("listProduct", rest.getForEntity(uri, ResponseObject.class).getBody());
-        mav.addObject("username",user.getUsername());
-        mav.addObject("username",user.getRole());
-        return mav;
-    }
 }
