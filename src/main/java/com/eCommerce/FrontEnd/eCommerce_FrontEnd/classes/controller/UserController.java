@@ -33,7 +33,6 @@ public class UserController {
 
     @Autowired
     RestTemplate rest;
-    public static Logger log = LoggerFactory.getLogger(RamController.class);
 
     @GetMapping("/createUser")
     public ModelAndView create(){
@@ -68,7 +67,6 @@ public class UserController {
         }
         return "redirect:/home?";
     }
-
 
     @GetMapping("/removeUser")
     public Object remove(@RequestParam Integer id){

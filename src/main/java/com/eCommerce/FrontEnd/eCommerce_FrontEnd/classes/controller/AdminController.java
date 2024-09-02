@@ -1,6 +1,5 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.PsuRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.UserView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
