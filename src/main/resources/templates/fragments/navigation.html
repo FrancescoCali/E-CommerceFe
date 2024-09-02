@@ -16,6 +16,8 @@
             BetaCommerce
         </h1>
     </div>
+
+
     <!--  Navbar  -->
     <div class="flex jc_between ai_center w_90 p_05 m_0">
         <!--  Home  -->
@@ -30,7 +32,6 @@
                 <i class="fas fa-arrow-left t_white"></i>
             </button>
         </div>
-
         <div class="dropdown">
             <a class="dropbtn btn_bg btn-std-h br_10 p_05 btn_bg m_0 btn_bg t_white" sec:authorize="hasRole('ROLE_ADMIN')">Liste<i class="fas fa-bars" style="margin-left: auto; padding: 3px 7px"></i></a>
             <ul class="dropdown-content">
@@ -49,7 +50,7 @@
                 <button type="button" class="btn_bg br_10 p_05 sm-btn-std-w b_0" data-bs-dismiss="offcanvas" aria-label="Close">
                     <i class="fa-solid fa-x t_white"></i>
                 </button>
-            </div>
+        </div>
             <div class="offcanvas-body">
                 <ul>
                     <!-- Mostra 'Log in' e 'Sign in' solo se l'utente non è autenticato -->
@@ -112,6 +113,24 @@
             </div>
         </div>
     </div>
+
+
+
+    <div class="container mt-5">
+        <!-- Form di ricerca -->
+        <form th:action="@{/productUser/search}" method="get" class="form-inline">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Cerca..." aria-label="Cerca">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-success">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+
 </nav>
 
 
