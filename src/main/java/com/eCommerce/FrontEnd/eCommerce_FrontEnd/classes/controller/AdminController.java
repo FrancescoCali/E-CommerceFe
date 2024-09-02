@@ -36,7 +36,7 @@ public class AdminController {
 
     @GetMapping("/createUser")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-update-user");
+        ModelAndView mav = new ModelAndView("create-update/create-update-user");
         UserRequest req = new UserRequest();
         req.setErrorMSG(null);
         req.setRole("ADMIN");
@@ -75,11 +75,9 @@ public class AdminController {
                     .fromHttpUrl(backend + "user/update")
                     .buildAndExpand()
                     .toUri();
-
         ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
-
         if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("create-user");
+            ModelAndView mav = new ModelAndView("create-update/create-update-user");
             req.setErrorMSG(req.getErrorMSG());
             mav.addObject("user", req);
             return mav;

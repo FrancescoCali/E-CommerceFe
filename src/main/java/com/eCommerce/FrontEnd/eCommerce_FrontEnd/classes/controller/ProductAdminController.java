@@ -28,8 +28,6 @@ public class ProductAdminController {
     @Autowired
     iUserService user;
 
-    public static Logger log = LoggerFactory.getLogger(ProductAdminController.class);
-
     @GetMapping("/create")
     public ModelAndView create( @RequestParam (required = true ) String item ){
         ModelAndView mav = new ModelAndView("create-update/create-update-product");
