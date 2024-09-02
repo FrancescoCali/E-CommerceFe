@@ -18,11 +18,15 @@
     <div class="form-container sign-up">
         <form th:action="@{/user/saveUser}" th:object="${user}" method="post">
             <h1>Create Account</h1>
-            <input type="hidden" th:field="*{id}" />
+            <input type="hidden" name="param" value="create"/>
             <input type="hidden" th:field="*{role}"/>
             <input type="text" id="signup-username" th:field="*{username}" placeholder="Username" required>
             <input type="password" id="signup-password" th:field="*{password}" placeholder="Password" required>
             <input type="text" id="signup-address" th:field="*{address}" placeholder="Address" required>
+
+            <!-- Blocco per mostrare il messaggio di errore -->
+
+
             <button type="submit">Sign Up</button>
         </form>
     </div>
@@ -67,7 +71,9 @@
         </ul>
     </div>
 </div>
-
+<div th:if="${errorMSG != null}" class="error">
+    <span th:text="${errorMSG}" style="color: red;"></span>
+</div>
 <script>
     let eyeicon = document.getElementById("eyeicon");
     let password = document.getElementById("login-password");

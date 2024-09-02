@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
-
 import java.net.URI;
-
-import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
 
 @Controller
 @RequestMapping("/productUser")
@@ -31,7 +28,6 @@ public class ProductUserController {
     iUserService user;
     public static Logger log = LoggerFactory.getLogger(ProductUserController.class);
 
-    //ITEM CAMBIA IN BASE AL CLICK SUL CAROSELLO, SI ASPETTA UN PARAMETRO PASSATO DAL CAROSELLO
     @GetMapping ("/list")
     public  ModelAndView list(@RequestParam(name = "item" ,required = true) String item) {
         ModelAndView mav = new ModelAndView("listUser/list-product-img");

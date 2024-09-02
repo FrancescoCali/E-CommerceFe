@@ -16,7 +16,7 @@
     </div>
     <div class="flex jc_between ai_center w_90 p_05 m_0">
         <button class="btn_bg br_10 p_05 sm-btn-std-w b_0">
-            <a class="reset" th:href="@{/home(username=${username},role=${role})}">
+            <a class="reset" th:href="@{/home}">
                 <i class="fas fa-home t_white"></i>
             </a>
         </button>
@@ -45,7 +45,6 @@
             <div class="offcanvas-body">
                 <ul>
                     <li sec:authorize="!isAuthenticated()"><a class="btn_bg" th:href="@{/login}">Log in</a></li>
-                    <li sec:authorize="!isAuthenticated()"><a class="btn_bg" th:href="@{/user/createUser}">Sign in</a></li>
 
                     <li sec:authorize="isAuthenticated()">
                         <a class="btn-std-h br_10 p_05 btn_bg m_0 btn_bg t_white"
@@ -70,7 +69,7 @@
                     <!--  Admin Only  -->
                     <li sec:authorize="hasRole('ROLE_ADMIN')">
                         <a class="btn-std-h br_10 p_05 btn_bg m_0 btn_bg t_white" sec:authorize="hasRole('ROLE_ADMIN')"
-                           th:href="@{/admin/createUser(req='ADMIN')}">
+                           th:href="@{/admin/createUser}">
                             <div style="display: flex;">
                                 <div style="margin-left: auto;">
                                     <i class="fas fa-user-plus" style="margin-left: auto; padding: 3px 7px"></i>

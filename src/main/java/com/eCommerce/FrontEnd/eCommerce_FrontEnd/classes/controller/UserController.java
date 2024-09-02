@@ -6,12 +6,9 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,38 +31,62 @@ public class UserController {
     @Autowired
     RestTemplate rest;
 
-    @GetMapping("/createUser")
-    public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("login");
-        UserRequest req = new UserRequest();
-        req.setErrorMSG(null);
-        req.setRole("USER");
-        mav.addObject("user", req);
-        mav.addObject("username", req.getUsername());
-        mav.addObject("role", req.getRole());
-        return mav;
-    }
-
     @PostMapping("/saveUser")
-    public Object save(@ModelAttribute("user") UserRequest req){
-        URI uri = (req.getUsername() == null) ?
-                UriComponentsBuilder.fromHttpUrl(backend + "user/create").buildAndExpand().toUri() :
-                UriComponentsBuilder.fromHttpUrl(backend + "user/update").buildAndExpand().toUri();
+    public Object save(@ModelAttribute("user") UserRequest req, @RequestParam(required = false) String param) {
+        System.out.println(req.getUsername());
+        URI checkUri = UriComponentsBuilder
+                .fromHttpUrl(backend + "user/checkByUsername")
+                .queryParam("username", req.getUsername())
+                .buildAndExpand()
+                .toUri();
 
-        ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
-        if(!resp.getRc()){
-            ModelAndView mav = new ModelAndView("userManager/create-update-user");
-            req.setErrorMSG(req.getErrorMSG());
-            mav.addObject("user", req);
+        ResponseObject<Boolean> checkResponse = rest.getForEntity(checkUri, ResponseObject.class).getBody();
+        boolean bool = checkResponse.getDati();
+        System.out.println();
+        System.out.println();
+
+        System.out.println("stampa di bool linea 45"+bool);
+        System.out.println();
+        System.out.println();
+
+        URI uri;
+        if (param == null && bool) {
+            uri = UriComponentsBuilder
+                    .fromHttpUrl(backend + "user/update")
+                    .buildAndExpand()
+                    .toUri();
+
+        } else if (param.equalsIgnoreCase("create") && !bool) {
+            uri = UriComponentsBuilder
+                    .fromHttpUrl(backend + "user/create")
+                    .buildAndExpand()
+                    .toUri();
+        } else {
+            ModelAndView mav = new ModelAndView("login");
+            mav.addObject("errorMSG", "Cannot create or update user: Username already exists or invalid operation.");
             return mav;
         }
-        if(req.getUsername()==null)
-            user.createUser(req);
-        else   {
-            user.updateUser(req);
-            user.setUsername( req.getUsername());
+
+        ResponseBase resp = rest.postForObject(uri, req, ResponseBase.class);
+
+        if (resp == null || !resp.getRc()) {
+            ModelAndView mav = (!bool) ?
+                    new ModelAndView("login") : new ModelAndView("userManager/update-user");
+            req.setErrorMSG(resp != null ? resp.getMsg() : "An error occurred");
+            mav.addObject("user", req);
+            mav.addObject("errorMSG", req.getErrorMSG()); // Aggiunta dell'errore
+            return mav;
         }
-        return "redirect:/home?";
+        ModelAndView home = new ModelAndView("home/home-user");
+        home.addObject("username", user.getUsername());
+        if (!bool) {
+            user.createUser(req);
+            return home;
+        } else {
+            user.updateUser(req);
+            user.setUsername(req.getUsername());
+            return home;
+        }
     }
 
     @GetMapping("/removeUser")
