@@ -73,7 +73,7 @@ public class UserController {
         System.out.println("TEST 3");
         user.createUser(req);
         home.addObject("username", user.getUsername());
-        home.addObject("username", user.getRole());
+        home.addObject("role", user.getRole());
         return home;
     }
     @PostMapping("/saveUpdate")

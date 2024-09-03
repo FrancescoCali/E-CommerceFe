@@ -788,3 +788,116 @@ table.colorful-table tfoot td a:hover{
     align-items: center;
     padding: 10px;
 }
+
+      body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 50px;
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* Tre colonne di larghezza uguale */
+            gap: 20px; /* Spaziatura tra le card */
+            padding: 50px;
+            height: 70%
+
+        }
+
+        .product-card {
+            background-color: #787878;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            display: flex;
+
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        .product-image {
+            width: 53%;
+            height: 200px;
+            object-fit: cover;
+            margin-top: 3%
+        }
+        .product-info {
+            padding: 15px;
+        }
+        .info-item {
+            font-size: 1.0em;
+            color: black;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .info-item strong {
+            font-weight: bold;
+        }
+        .add-to-cart {
+            display: block;
+            width: 50%;
+            padding: 10px;
+            background-color: #1e90ff; /* Cambiato in celeste scuro */
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-align: center;
+
+        }
+        .add-to-cart:hover {
+            background-color: #1873cc;
+        }
+
+.search-container {
+    position: fixed;
+    right: 160px; /* Distanza dal bordo destro della pagina */
+    top: 73px; /* Distanza dal bordo superiore della pagina */
+    display: flex;
+    align-items: center;
+}
+
+.search-input {
+    max-width: 0;
+    overflow: hidden;
+    transition: max-width 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+    margin-left: 10px; /* Spazio tra la lente e il campo di input */
+    padding: 0;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+}
+
+.search-input.show {
+    max-width: 300px; /* Larghezza massima che il campo di input può raggiungere */
+    opacity: 1;
+    padding: 5px 10px;
+}
+
+.search-button {
+    cursor: pointer;
+    border: 2px solid #1B2233 !important; /* Colore del bordo del pulsante */
+    background-color: #1B2233 !important; /* Colore di sfondo del pulsante */
+    border-radius: 70%; /* Arrotonda i bordi del bottone */
+    padding: 8px; /* Aggiunge un po' di spazio attorno all'icona */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; /* Imposta una larghezza fissa per garantire che il bottone sia circolare */
+
+
+}
+
+.search-button i {
+    color: white; /* Colore della lente di ingrandimento */
+    font-size: 1.0em; /* Dimensione della lente di ingrandimento */
+}
+
+
+

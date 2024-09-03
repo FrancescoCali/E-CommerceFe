@@ -11,6 +11,7 @@ public class ECommerceFrontEndApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ECommerceFrontEndApplication.class, args);
 	}
+
 	@Bean
 	public RestTemplate rest(){
 		return new RestTemplate();

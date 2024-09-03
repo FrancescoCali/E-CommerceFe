@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="../css/common.css">
     <meta charset="UTF-8">
     <title>eCommerce - home</title>
+    <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
     <script type="text/javascript">
         window.onload = function() {
             if (performance.navigation.type === 2) {
@@ -20,12 +21,10 @@
 
 <div class="bg_page w_100 h_100">
 
-    <header>
-        <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div>
-    </header>
+    <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div>
+
 
     <main class="slider-sidebar flex fd_column ai_center m_0 w_100">
-        <!-- Carousel -->
         <div>
             <input type="radio" name="testimonial" id="t-1" checked>
             <input type="radio" name="testimonial" id="t-2">
@@ -66,7 +65,6 @@
                 </label>
             </div>
         </div>
-        <!-- Navbar -->
         <nav class="flex jc_around w_50 p_075 nav_engine">
             <button class="m_0 btn_bg_none b_0 br_10 t_white">
                 <label for="t-1" class="btn-std-h p_05 m_0">

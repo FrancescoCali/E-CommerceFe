@@ -14,9 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.util.UriComponentsBuilder;
 
-import java.net.URI;
 
 @Controller
 public class HomeController {
@@ -29,6 +27,9 @@ public class HomeController {
 
     @Autowired
     RestTemplate rest;
+
+
+
 
     @GetMapping("/home")
     public ModelAndView homepage() {

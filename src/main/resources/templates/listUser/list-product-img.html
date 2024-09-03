@@ -1,33 +1,29 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
     <meta charset="UTF-8">
     <title>Products view</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-<div class="bg_page w_100 h_100">
+<div th:insert="~{fragments/navigation(username=${username}, role=${role})}"></div>
 
-    <header>
-        <div th:insert= "~{fragments/navigation(username=${username}, role=${role})}"></div>
-    </header>
-
-    <!-- Usa un contenitore per ogni monitor -->
-    <div th:each="product : ${listProduct.dati}">
-        <!-- Link per la pagina dei dettagli del monitor -->
-        <a th:href="@{/productUser/page(id=${product.idProduct})}" class="image">
-            <!-- Immagine del monitor -->
-            <img th:src="@{'/images/'+${product.url}}" alt="${product.item}">
-            <div>
-                <span><strong>Description:</strong> <span th:text="${product.description}"></span></span>
-                <span><strong>Price:</strong> <span th:text="${product.price}"></span></span>
+<div class="product-grid">
+    <div th:each="product : ${listProduct.dati}" class="product-card">
+        <a th:href="@{/productUser/page(id=${product.idProduct})}" class="product-link"></a>
+        <img th:src="@{'/images/'+${product.url}}" th:alt="${product.item}" class="product-image">
+        <div class="product-info">
+            <div class="info-item">
+                <strong>Description:</strong>
+                <span  th:text="${product.description}"></span>
             </div>
-        </a>
+            <div class="info-item">
+                <strong>Price:</strong>
+                <span th:text="${product.price}"></span>
+            </div>
+        </div>
+        <button class="add-to-cart">Aggiungi al carrello</button>
     </div>
 </div>
-
-<div style="height: 50px;"></div> <!-- Spazio aggiuntivo sotto il pulsante -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
