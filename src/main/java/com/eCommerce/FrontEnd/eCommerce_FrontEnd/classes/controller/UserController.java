@@ -31,38 +31,14 @@ public class UserController {
     @Autowired
     RestTemplate rest;
 
-    @PostMapping("/saveUser")
-<<<<<<< HEAD
-    public Object save(@ModelAttribute("user") UserRequest req){
 
-        URI uri = (req.getUsername() == null) ?
-                UriComponentsBuilder.fromHttpUrl(backend + "user/create").buildAndExpand().toUri() :
-                UriComponentsBuilder.fromHttpUrl(backend + "user/update").buildAndExpand().toUri();
-
-        ResponseBase resp = rest.postForEntity(uri, req, ResponseBase.class).getBody();
-        System.out.println(req.getUsername());
-        if (!resp.getRc()) {
-            // In caso di errore, visualizza la pagina di registrazione con un messaggio di errore
-            ModelAndView mav = new ModelAndView("login");
-            mav.addObject("user", req);
-            mav.addObject("errorMessage", "Errore durante la registrazione. Per favore, riprova.");
-            return mav;
-        }
-
-        if (req.getUsername() == null) {
-            // Creazione di un nuovo utente
-            user.createUser(req);
-        } else {
-            // Aggiornamento di un utente esistente
-            user.updateUser(req);
-            user.setUsername(req.getUsername());
-        }
-        // Redirect alla home page
-        return "redirect:/home";
-=======
-    public Object save(@ModelAttribute("user") UserRequest req, @RequestParam(required = false) String param) {
+        //PARAM SI RIFERISCE SOLO ED ESCLUSIVAMENTE AL CREATE PER IDENTIFICARLO, E GLIELO PASSIAMO CON NAME E VALUE NELL HTML
+        //PARAM E GIA POPOLATO DA CREATE E UPDATE
+        @PostMapping("/saveUser")
+        public Object save(@ModelAttribute("user") UserRequest req ,@RequestParam(required = false) String param) {
         System.out.println(req.getUsername());
         URI checkUri = UriComponentsBuilder
+                //checkByUsername TI FA UN CONTROLLO SUL NOME SE ESISTE GIA
                 .fromHttpUrl(backend + "user/checkByUsername")
                 .queryParam("username", req.getUsername())
                 .buildAndExpand()
@@ -72,7 +48,6 @@ public class UserController {
         boolean bool = checkResponse.getDati();
         System.out.println();
         System.out.println();
-
         System.out.println("stampa di bool linea 45"+bool);
         System.out.println();
         System.out.println();
@@ -115,7 +90,6 @@ public class UserController {
             user.setUsername(req.getUsername());
             return home;
         }
->>>>>>> ea20b76d622f6eeed954ec1e72fd2bafa8b29f88
     }
 
 
