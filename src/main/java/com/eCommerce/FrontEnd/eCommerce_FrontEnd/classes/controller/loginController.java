@@ -12,6 +12,7 @@ public class loginController {
     @GetMapping("/login")
     public String showLoginPage(Model model) {
         model.addAttribute("user", new UserRequest());
+        System.out.println("STAMPA");
         return "login";
     }
 

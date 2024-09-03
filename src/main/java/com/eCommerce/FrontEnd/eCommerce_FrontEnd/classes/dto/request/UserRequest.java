@@ -5,7 +5,7 @@ public class UserRequest {
     private String username;
     private String password;
     private String role;
-    private String Address;
+    private String address;
     private String errorMSG;
 
 
@@ -42,11 +42,11 @@ public class UserRequest {
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public void setAddress(String address) {
-        Address = address;
+        this.address = address;
     }
 
     public String getErrorMSG() {

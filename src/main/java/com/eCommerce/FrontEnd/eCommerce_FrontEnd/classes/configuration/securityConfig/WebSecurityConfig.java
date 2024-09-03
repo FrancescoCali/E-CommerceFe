@@ -180,7 +180,7 @@ public class WebSecurityConfig {
         http
                 .authorizeHttpRequests((request) -> request
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .requestMatchers("/user/createUser", "/user/saveUser").permitAll()
+                        .requestMatchers("/user/saveCreate").permitAll()
                         .requestMatchers("/user/**").hasRole("USER")
                         .requestMatchers("/**").permitAll()
                         .anyRequest().authenticated()
