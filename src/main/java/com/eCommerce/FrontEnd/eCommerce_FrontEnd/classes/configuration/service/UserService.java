@@ -52,9 +52,15 @@ public class UserService implements iUserService {
     public void setUsername(String username){
         request.getSession().setAttribute("username",username);
     }
-
+    public void setRole(String role){
+        request.getSession().setAttribute("role",role);
+    }
     @Override
     public void createUser(UserRequest req) {
+
+        System.out.println("CREATE USER "+req.getUsername());
+        System.out.println("CREATE USER "+req.getRole());
+
         if (!inMemoryUserDetailsManager.userExists(req.getUsername())) {
             UserDetails createUser = User.withUsername(req.getUsername())
                     .password(passwordEncoder.encode(req.getPassword()))
@@ -62,11 +68,12 @@ public class UserService implements iUserService {
                     .build();
                     inMemoryUserDetailsManager.createUser(createUser);
             try {
+                setUsername(req.getUsername());
+                setRole(req.getRole());
                 request.login(req.getUsername(), req.getPassword());
             } catch (ServletException e) {
                 log.error("Errore durante l'autenticazione automatica", e);
             }
-
         } else
             log.debug(req.getUsername() + " already exists");
     }

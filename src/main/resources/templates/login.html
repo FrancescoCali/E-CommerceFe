@@ -17,14 +17,13 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up">
-        <form th:action="@{/user/saveCreate}" th:object="${user}" method="post">
+            <form th:action="@{/user/saveCreate}" th:object="${user}" method="post">
             <h1>Create Account</h1>
-            <input type="hidden" name="param" value="create"/>
             <input type="hidden" th:field="*{role}"/>
             <input type="text" id="signup-username" th:field="*{username}" placeholder="Username" required>
             <input type="password" id="signup-password" th:field="*{password}" placeholder="Password" required>
             <input type="text" id="signup-address" th:field="*{address}" placeholder="Address" required>
-            <!-- Blocco per mostrare il messaggio di errore -->
+
             <button type="submit">Sign Up</button>
             <div th:if="${errorMessage}" class="error-message" style="color: red; margin-top: 10px;">
                 <p th:text="${errorMessage}"></p>
@@ -36,9 +35,9 @@
             <h1>Sign In</h1>
             <input type="text" placeholder="Username" id="login-username" name="username">
             <div class="password-wrapper">
-                <input type="password" placeholder="Password" id="login-password" name="password">
-                <img src="/images/eye/eye-close.png" id="eyeicon" alt="Toggle Password Visibility">
             </div>
+            <input type="password" placeholder="Password" id="login-password" name="password">
+            <img src="/images/eye/eye-close.png" id="eyeicon" alt="Toggle Password Visibility">
             <button type="submit">Sign In</button>
         </form>
     </div>
@@ -94,3 +93,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+
+

@@ -10,7 +10,7 @@
 
 <div class="product-grid">
     <div th:each="product : ${listProduct.dati}" class="product-card">
-        <a th:href="@{/productUser/page(id=${product.idProduct})}" class="product-link"></a>
+        <a th:href="@{/productUser/page(id=${product.idProduct})}" class="product-link">
         <img th:src="@{'/images/'+${product.url}}" th:alt="${product.item}" class="product-image">
         <div class="product-info">
             <div class="info-item">
@@ -21,8 +21,7 @@
                 <strong>Price:</strong>
                 <span th:text="${product.price}"></span>
             </div>
-        </div>
-        <button class="add-to-cart">Aggiungi al carrello</button>
+        </div></a>
     </div>
 </div>
 </body>

@@ -34,23 +34,17 @@ public class UserController {
     @PostMapping("/saveCreate")
     public Object saveCreate(@ModelAttribute("user") UserRequest req) {
 
-        System.out.println( req.getUsername());
-
-        System.out.println("TEST 0");
-        System.out.println("TEST 0");
         URI checkUri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/checkByUsername")
                 .queryParam("username", req.getUsername())
                 .buildAndExpand()
                 .toUri();
 
-        System.out.println("TEST 1");
         ResponseObject<Boolean> checkResponse = rest.getForEntity(checkUri, ResponseObject.class).getBody();
         boolean bool = checkResponse.getDati();
 
         URI uri;
-
-        if (bool) {
+        if (!bool) {
             uri = UriComponentsBuilder
                     .fromHttpUrl(backend + "user/create")
                     .buildAndExpand()
@@ -60,7 +54,6 @@ public class UserController {
             mav.addObject("errorMSG", "Cannot create or update user: Username already exists or invalid operation.");
             return mav;
         }
-        System.out.println("TEST 2");
         ResponseBase resp = rest.postForObject(uri, req, ResponseBase.class);
         if (resp == null || !resp.getRc()) {
             ModelAndView mav = new ModelAndView("login");
@@ -70,21 +63,20 @@ public class UserController {
             return mav;
         }
         ModelAndView home = new ModelAndView("home/home-user");
-        System.out.println("TEST 3");
+        req.setRole("USER");
         user.createUser(req);
-        home.addObject("username", user.getUsername());
-        home.addObject("role", user.getRole());
+        home.addObject("username", req.getUsername());
+        home.addObject("role", req.getRole());
         return home;
     }
+
     @PostMapping("/saveUpdate")
     public Object saveUpdate(@ModelAttribute("user") UserRequest req) {
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/update")
                 .buildAndExpand()
                 .toUri();
-
         ResponseBase resp = rest.postForObject(uri, req, ResponseBase.class);
-
         if (resp == null || !resp.getRc()) {
             ModelAndView mav = new ModelAndView("userManager/update-user");
             req.setErrorMSG(resp != null ? resp.getMsg() : "An error occurred");
@@ -95,7 +87,7 @@ public class UserController {
         ModelAndView home = new ModelAndView("home/home-user");
         user.updateUser(req);
         home.addObject("username", user.getUsername());
-        home.addObject("username", user.getRole());
+        home.addObject("role", user.getRole());
         return home;
     }
 
@@ -119,19 +111,6 @@ public class UserController {
         return "redirect:/home";
     }
 
-    @GetMapping("/updateUser")
-    public ModelAndView update() {
-        ModelAndView mav = new ModelAndView("userManager/create-update-user");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "user/getByUsername")
-                .queryParam("username", user.getUsername())
-                .buildAndExpand()
-                .toUri();
-        ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        mav.addObject("user", resp);
-        return mav;
-    }
-
     @GetMapping("/accountUser")
     public ModelAndView profile() {
         ModelAndView mav = new ModelAndView("userManager/profile");
@@ -144,8 +123,6 @@ public class UserController {
         ResponseObject<UserRequest> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
         mav.addObject("user", req);
-        mav.addObject("username", user.getUsername());
-        mav.addObject("role", user.getRole());
         return mav;
     }
 

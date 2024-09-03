@@ -36,12 +36,12 @@ public class AdminController {
 
     @GetMapping("/createUser")
     public ModelAndView create(){
-        ModelAndView mav = new ModelAndView("create-update/create-update-user");
-        UserRequest req = new UserRequest();
-        req.setErrorMSG(null);
-        req.setRole("ADMIN");
-        mav.addObject("user", req);
-        return mav;
+           ModelAndView mav = new ModelAndView("create-update/create-update-user");
+//        UserRequest req = new UserRequest();
+//        req.setErrorMSG(null);
+//        req.setRole("ADMIN");
+//        mav.addObject("user", req);
+         return mav;
     }
 
     @GetMapping ("/listUser")
