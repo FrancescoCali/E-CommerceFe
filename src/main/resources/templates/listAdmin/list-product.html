@@ -1,16 +1,149 @@
 <!DOCTYPE html>
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>BetaCommerce</title>
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #34495E;
+            --accent-color: #1ABC9C;
+            --text-color: #FFFFFF;
+            --table-header-color: #7F8C8D;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            background-color: var(--primary-color);
+        }
+
+        .page-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: center; /* Centra orizzontalmente il contenuto */
+            align-items: center; /* Centra verticalmente il contenuto */
+            position: relative; /* Necessario per posizionare gli elementi assoluti */
+        }
+
+        nav > div {
+            position: absolute;
+            right: 2rem; /* Posiziona il div con username e role a destra */
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .content {
+            margin-top: 2rem;
+            text-align: center; /* Centra il testo all'interno di .content */
+        }
+
+        .colorful-table {
+            width: 80%; /* Imposta una larghezza percentuale o fissa per la tabella */
+            max-width: 100%; /* Assicurati che la tabella non superi la larghezza del contenitore */
+            margin: 0 auto; /* Centra la tabella orizzontalmente */
+            border-collapse: collapse;
+            background-color: var(--primary-color);
+        }
+
+        .colorful-table th, .colorful-table td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        .colorful-table th {
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .colorful-table tbody tr:nth-child(even) {
+            background-color: var(--secondary-color);
+        }
+
+        .clickable-row:hover {
+            background-color: var(--table-header-color);
+            cursor: pointer;
+        }
+
+        .edit a, .delete a {
+            color: var(--text-color);
+            text-decoration: none;
+        }
+
+        .edit a:hover, .delete a:hover {
+            color: #E74C3C;
+        }
+
+        .buttonlike {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            position: relative;
+            top: -450px;
+        }
+
+        .buttonlike:hover {
+            background-color: #16A085;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: space-between; /* Spazio uguale tra gli elementi */
+            align-items: center; /* Allinea verticalmente al centro */
+            padding: 0.5rem; /* Aggiunge un po' di padding */
+        }
+
+        .actions i {
+            font-size: 1.2rem; /* Imposta una dimensione uniforme per le icone */
+            margin: 0 5px; /* Spazio tra le icone */
+            color: #FFFFFF; /* Imposta il colore bianco per le icone */
+        }
+    </style>
 </head>
+
+
+
+
 
 <body>
 <div class="page-wrapper">
-    <nav th:insert="~{fragments/navigation(username=${username}, role=${role})}"></nav>
-    <div align="center" class="content">
+    <nav>
+        <a th:href="@{/}" >BetaCommerce</a>
+        <div>
+            <span th:text="${username}"></span>
+            <span th:text="${role}"></span>
+        </div>
+    </nav>
+    <div class="content">
         <table class="colorful-table">
             <thead class="table-head">
             <tr>
@@ -33,21 +166,21 @@
                 <td th:text="${product.colour}"></td>
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.quantity}"></td>
-                <td class="edit">
+                <td class="actions"> <!-- Applica la classe actions -->
                     <a th:href="@{/admin/product/updateProduct(idProduct=${product.idProduct},item=${item})}">
-                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                        <i class="fas fa-pencil-alt"></i>
                     </a>
-                </td>
-                <td class="delete">
                     <a th:href="@{/admin/product/removeProduct(id=${product.idProduct},item=${item})}">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        <i class="fas fa-trash"></i>
                     </a>
                 </td>
             </tr>
             </tbody>
         </table>
         <br>
-        <a th:href="@{/admin/product/create(item=${item})}" class="buttonlike">Crea prodotto</a>
+        <div class="button-container">
+            <a th:href="@{/admin/product/create(item=${item})}" class="buttonlike" align="center">Crea prodotto</a>
+        </div>
         <div style="height: 50px;"></div>
     </div>
 </div>

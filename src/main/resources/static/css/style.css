@@ -293,6 +293,55 @@ td {
 }
 
 
+.buttoncart {
+  margin-top: 3vh;
+  padding: 1.5vh;
+  border: 2px solid #0094d4;
+  background-color: #0094d4;
+  color: #fff;
+  border-radius: 5px;
+  width: 30vh;
+  font-size: 1em;
+  transition: all 0.3s ease-in-out;
+}
+.buttoncart:hover {
+  margin-top: 3vh;
+  padding: 1.5vh;
+  border: 2px solid #0094d4;
+  background-color: transparent;
+  color: #0094d4;
+  border-radius: 5px;
+  width: 30vh;
+  font-size: 1em;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonlike-big {
+  margin-top: 3vh;
+  padding: 1.5vh;
+  border: 2px solid #0094d4;
+  background-color: #0094d4;
+  color: #ffffff;
+  outline: none;
+  border-radius: 50px;
+  width: 30vh;
+  font-size: 2em;
+  transition: all 0.3s ease-in-out;
+}
+
+.buttonlike-big:hover {
+  margin-top: 3vh;
+  padding: 1.5vh;
+  border: 2px solid #0094d4;
+  background-color: transparent;
+  color: #0094d4;
+  outline: none;
+  border-radius: 50px;
+  width: 30vh;
+  font-size: 2em;
+  transition: all 0.3s ease-in-out;
+}
+
 .buttonlike {
   margin-top: 3vh;
   padding: 1.5vh;
@@ -727,12 +776,12 @@ main {
 
 table{
   margin: auto;
-  margin-top: 22%;
+  margin-top: 50px;
 }
 
 table.colorful-table {
   font-family: Arial, Helvetica, sans-serif;
-  width: 350px;
+  width: 60%;
   height: 100px;
   text-align: center;
   border-collapse: collapse;
@@ -742,19 +791,27 @@ table.colorful-table td, table.colorful-table th {
   padding: 3px 2px;
 }
 table.colorful-table tbody td {
-  font-size: 13px;
+  font-size: 29px;
+  background-color: #fff;
+  border: 1px solid #FFFFFF;
+}
+table.colorful-table tbody td a img {
+    width: 200px;
+    height: 100%;
 }
 table.colorful-table tr:nth-child(even) {
+  background-color: #999999;
 }
 table.colorful-table thead {
   background: #64B464;
   border-bottom: 0px solid #FFFFFF;
 }
 table.colorful-table thead th {
-  font-size: 17px;
+  font-size: 34px;
   font-weight: bold;
   color: #FFFFFF;
   text-align: center;
+  background-color: #1B2233;
   border-left: 0px solid #FFFFFF;
 }
 table.colorful-table thead th:first-child {
@@ -788,11 +845,15 @@ table.colorful-table tfoot td a:hover{
     align-items: center;
     padding: 10px;
 }
+
       body {
-            font-family: Arial, sans-serif;
             background: linear-gradient(to bottom, #5a5a5a, #32394c);
+            background-attachment: fixed; /* Mantiene lo sfondo fisso mentre si scrolla */
+            background-size: cover; /* Estende lo sfondo per coprire l'intera area della finestra */
             margin: 0;
-            padding: 50px;
+            padding: 0;
+            min-height: 100vh; /* Assicura che il body copra almeno l'altezza della finestra */
+            overflow-x: hidden; /* Evita lo scroll orizzontale */
         }
         .product-grid {
             display: grid;
@@ -809,7 +870,7 @@ table.colorful-table tfoot td a:hover{
             border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 2px 4px rgba(0,0,15,0.5);
-            width: 300px;
+            width: 400px;
             transition: transform 0.3s ease;
             margin: auto;
             flex-direction: column;
@@ -825,7 +886,7 @@ table.colorful-table tfoot td a:hover{
         }
         .product-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
             margin-top: 3%
         }

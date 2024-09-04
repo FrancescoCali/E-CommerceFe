@@ -3,9 +3,110 @@
 <head>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/style.css"> <!-- Mantieni il tuo file CSS personalizzato -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/footer.css">
+    <link rel="stylesheet" href="../css/common.css">
+
     <meta charset="UTF-8">
     <title>Create User</title>
+    <style>
+        :root {
+            --primary-color: #2C3E50;
+            --secondary-color: #34495E;
+            --accent-color: #1ABC9C;
+            --text-color: #FFFFFF;
+            --input-bg-color: #f5f5f5;
+            --error-color: #E74C3C;
+        }
+
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        nav {
+            background-color: var(--secondary-color);
+            padding: 1rem;
+        }
+
+        .container {
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .description {
+            color: var(--text-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .form_content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        table.User {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 1rem;
+            background-color: var(--secondary-color);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        table.User td {
+            padding: 0.5rem 1rem;
+        }
+
+        table.User td label {
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        table.User input, table.User select {
+            width: 100%;
+            padding: 0.5rem;
+            border: none;
+            border-radius: 4px;
+            background-color: var(--input-bg-color);
+            color: var(--primary-color);
+        }
+
+        .buttonlike {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+            border: none;
+            cursor: pointer;
+            margin-top: 1rem;
+            display: block;
+            width: 100%;
+        }
+
+        .buttonlike:hover {
+            background-color: #16A085;
+        }
+
+        .container-error {
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .container-error span {
+            color: var(--error-color);
+            font-weight: 600;
+        }
+
+
+    </style>
 </head>
 <body>
 
@@ -18,7 +119,7 @@
             <input type="hidden" th:field="*{item}"/>
             <tr>
                 <td><label for="model">Model:</label></td>
-                <td><input type="text" id="model" th:field = "*{model}" placeholder="model" required></td>
+                <td><input type="text" id="model" th:field="*{model}" placeholder="model" required></td>
             </tr>
             <tr>
                 <td><label for="brand">Brand:</label></td>
@@ -26,7 +127,7 @@
             </tr>
             <tr>
                 <td><label for="price">Price:</label></td>
-                <td><input type="text" id="price" th:field = "*{price}" placeholder="price" required></td>
+                <td><input type="text" id="price" th:field="*{price}" placeholder="price" required></td>
             </tr>
             <tr>
                 <td><label for="description">Description:</label></td>
@@ -34,7 +135,7 @@
             </tr>
             <tr>
                 <td><label for="colour">Colour:</label></td>
-                <td><input type="text" id="colour" th:field = "*{colour}" placeholder="colour" required></td>
+                <td><input type="text" id="colour" th:field="*{colour}" placeholder="colour" required></td>
             </tr>
             <tr>
                 <td><label for="contained">Contained:</label></td>
@@ -45,22 +146,19 @@
                     </select>
                 </td>
             </tr>
-
             <tr>
-                <td><label for="quantity">quantity:</label></td>
+                <td><label for="quantity">Quantity:</label></td>
                 <td><input type="text" id="quantity" th:field="*{quantity}" placeholder="quantity" required></td>
             </tr>
-
         </table>
         <button class="buttonlike" type="submit">Registra Prodotto</button>
 
         <!-- Visualizzazione degli errori -->
         <div class="container-error" th:if="${errorMSG} != null">
-            <span th:text="${errorMSG}" style="color: red">***</span>
+            <span th:text="${errorMSG}">***</span>
         </div>
     </form>
 </div>
-
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -56,15 +56,25 @@ public class CartController {
                 .toUri();
         @SuppressWarnings("unchecked")
         ResponseObject<CartView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
-        CartView req = (CartView) convertInObject(resp.getDati(),CartView.class);
+        CartView view = (CartView) convertInObject(resp.getDati(),CartView.class);
+        CartRequest req=new CartRequest();
+        req.setId(view.getId());
+        req.setIdProduct(view.getIdProduct());
         uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "/cart/remove")
                 .buildAndExpand()
                 .toUri();
-        mav.addObject("req",req) ;
+        rest.postForEntity(uri,req,ResponseBase.class) ;
+        uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "/cart/list")
+                .queryParam("username",view.getUsername())
+                .buildAndExpand()
+                .toUri();
+        Response<?>resp2=rest.getForEntity(uri,Response.class).getBody();
+        mav.addObject("cartList",resp2) ;
         mav.addObject("username",user.getUsername());
         mav.addObject("role",user.getRole());
-        rest.postForEntity(uri,req,Response.class) ;
+        System.out.println(resp2.getDati());
         return mav ;
     }
 

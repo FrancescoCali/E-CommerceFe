@@ -44,36 +44,57 @@
 
 <!-- Mostra la lista dei prodotti solo se ci sono elementi nel carrello -->
 <div th:unless="${cartList == null or cartList.dati == null or #lists.isEmpty(cartList.dati)}">
-    <div th:each="cart : ${cartList.dati}">
-        <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
-            <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
-            <div>
-                <span><strong>Descrizione:</strong> <span th:text="${cart.description}"></span></span>
-                <span><strong>Prezzo:</strong> <span th:text="${cart.price}"></span></span>
-            </div>
-            <div>
-                <form class="form_content" th:action="@{/cart/removeCart}" method="post">
-                    <input type="hidden" name="id" th:value="${cart.id}">
-                    <button type="submit">Rimuovi dal carrello</button>
-                </form>
-                <label>
-                    <!-- Corretto l'attributo th:checked per riflettere correttamente il valore iniziale -->
-                    <input type="checkbox"
-                           th:checked="${cart.selected ? 'checked' : null}"
-                           th:onclick="toggleSelection([[${cart.id}]], this)"
-                           aria-label="Seleziona per l'acquisto"/>
-                    Seleziona per l'acquisto
-                </label>
-            </div>
-        </a>
-        <br>
-    </div>
-    <br>
+
+    <div style="height: 50px;"></div>
     <!-- Mostra il pulsante "Procedi all'acquisto" solo se ci sono prodotti nel carrello -->
     <div align="center">
-        <a class="buttonlike" th:href="@{/cart/confirmPurchase}" title="Acquista tutto">Procedi all'acquisto</a>
+        <a class="buttonlike-big" th:href="@{/cart/confirmPurchase}" title="Acquista tutto">Procedi all'acquisto</a>
     </div>
-    <div style="height: 50px;"></div>
+
+    <table class="colorful-table">
+                <thead>
+                    <tr>
+                        <th>Immagine</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <div th:each="cart : ${cartList.dati}" >
+                        <tr>
+                            <td>
+                                <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
+                                    <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
+                                </a>
+                            </td>
+                            <td>
+                                <span th:text="${cart.description}"></span>
+                            </td>
+                            <td>
+                                <span th:text="${cart.price}"></span>
+                            </td>
+                            <td>
+                                <div>
+                                    <form class="form_content" th:action="@{/cart/removeCart}" method="post">
+                                        <input type="hidden" name="id" th:value="${cart.id}">
+                                        <button type="submit" class="buttoncart">Rimuovi dal carrello</button>
+                                    </form>
+                                    <label>
+                                        <!-- Corretto l'attributo th:checked per riflettere correttamente il valore iniziale -->
+                                        <input type="checkbox"
+                                               th:checked="${cart.selected ? 'checked' : null}"
+                                               th:onclick="toggleSelection([[${cart.id}]], this)"
+                                               aria-label="Seleziona per l'acquisto"/>
+                                        Seleziona per l'acquisto
+                                    </label>
+                                </div>
+                            </td>
+                        </tr>
+                    </div>
+                </tbody>
+            </table>
+
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

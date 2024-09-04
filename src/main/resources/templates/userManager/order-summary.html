@@ -2,6 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
     <meta charset="UTF-8">
     <title>Carrello</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -12,20 +13,38 @@
 
 <div th:if="${cartList != null and cartList.dati != null and not #lists.isEmpty(cartList.dati)}">
     <div th:with="total=0">
-        <div th:each="cart : ${cartList.dati}" th:with="total=${total}+${cart.price}">
-            <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
-                <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
-                <div>
-                    <span><strong>Descrizione:</strong> <span th:text="${cart.description}"></span></span>
-                    <span><strong>Prezzo:</strong> <span th:text="${cart.price}"></span></span>
-                </div>
-            </a>
-            <br>
-        </div>
-        <div align="center">
-            <a class="buttonlike" th:href="@{/cart/purchaseConfirmed}">Conferma acquisto</a>
-        </div>
         <div style="height: 50px;"></div>
+        <!-- Mostra il pulsante "Procedi all'acquisto" solo se ci sono prodotti nel carrello -->
+        <div align="center">
+            <a class="buttonlike-big" th:href="@{/cart/purchaseConfirmed}">Conferma acquisto</a>
+        </div>
+
+        <table class="colorful-table">
+            <thead>
+            <tr>
+                <th>Immagine</th>
+                <th>Description</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <div th:each="cart : ${cartList.dati}" >
+                <tr>
+                    <td>
+                        <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
+                            <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
+                        </a>
+                    </td>
+                    <td>
+                        <span th:text="${cart.description}"></span>
+                    </td>
+                    <td>
+                        <span th:text="${cart.price}"></span>
+                    </td>
+                </tr>
+            </div>
+            </tbody>
+        </table>
         <div class="total-price">
             <span class="total-price-label">Totale Prezzo:</span>
             <span class="total-price-value" th:text="${#numbers.formatDecimal(#aggregates.sum(cartList.dati.![price]), 1, 2)} + ' €'"></span>
