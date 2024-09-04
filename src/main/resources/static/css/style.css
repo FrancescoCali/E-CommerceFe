@@ -788,28 +788,30 @@ table.colorful-table tfoot td a:hover{
     align-items: center;
     padding: 10px;
 }
-
       body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background: linear-gradient(to bottom, #5a5a5a, #32394c);
             margin: 0;
             padding: 50px;
         }
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* Tre colonne di larghezza uguale */
+            grid-template-columns: repeat(4, 1fr); /* Tre colonne di larghezza uguale */
             gap: 20px; /* Spaziatura tra le card */
             padding: 50px;
+            align-items: center;
             height: 70%
 
         }
 
         .product-card {
-            background-color: #787878;
+            background-color: #999999;
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 4px rgba(0,0,15,0.5);
+            width: 300px;
             transition: transform 0.3s ease;
+            margin: auto;
             flex-direction: column;
             align-items: center;
             padding: 10px;
@@ -817,10 +819,12 @@ table.colorful-table tfoot td a:hover{
 
         }
         .product-card:hover {
+            transition: all 0.5s ease-in-out;
+            background-color: #fff;
             transform: translateY(-5px);
         }
         .product-image {
-            width: 53%;
+            width: 100%;
             height: 200px;
             object-fit: cover;
             margin-top: 3%
@@ -898,6 +902,3 @@ table.colorful-table tfoot td a:hover{
     color: white; /* Colore della lente di ingrandimento */
     font-size: 1.0em; /* Dimensione della lente di ingrandimento */
 }
-
-
-

@@ -5,8 +5,8 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.UserView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
-import org.slf4j.Logger;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.security.MyUserDetailsService;
+ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,7 +27,7 @@ public class AdminController {
     String backend;
 
     @Autowired
-    iUserService userService;
+    MyUserDetailsService userService;
 
     @Autowired
     RestTemplate rest;
@@ -82,7 +82,6 @@ public class AdminController {
             mav.addObject("user", req);
             return mav;
         }
-        userService.createUser(req);
         return "redirect:/admin/listUser";
     }
 
@@ -100,7 +99,6 @@ public class AdminController {
         ResponseObject<UserView> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
 
-        userService.removeUser(req);    /*** lo rimuovo dalla memoria ***/
 
         /**************** lo rimuovo dal db ****************/
         uri = UriComponentsBuilder
@@ -128,8 +126,6 @@ public class AdminController {
 
         UserRequest req = (UserRequest) convertInObject(resp.getDati(),UserRequest.class);
         mav.addObject("user",req);
-
-        userService.updateUser(req);
 
         return mav;
     }

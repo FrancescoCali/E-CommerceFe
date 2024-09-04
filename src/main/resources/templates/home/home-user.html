@@ -3,6 +3,7 @@
 <head>
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <meta charset="UTF-8">
     <title>eCommerce - home</title>
     <link rel="icon" th:href="@{/images/favicon.ico}" type="image/x-icon">
@@ -99,6 +100,8 @@
         </nav>
     </main>
 </div>
+<!-- Inserimento del footer con Thymeleaf -->
+<div th:insert="~{fragments/footer :: footer}"></div>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

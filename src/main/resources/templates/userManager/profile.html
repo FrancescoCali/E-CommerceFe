@@ -21,7 +21,7 @@
 <body>
 
 <!-- Include the navigation fragment and pass username and role -->
-<nav th:insert="~{fragments/navigation :: block-navigation(username=${username}, role=${role})}"></nav>
+<nav th:insert="~{fragments/navigation :: block-navigation(username=${user.username}, role=${user.role})}"></nav>
 <table class="colorful-table">
     <thead class="table-head">
     <tr>

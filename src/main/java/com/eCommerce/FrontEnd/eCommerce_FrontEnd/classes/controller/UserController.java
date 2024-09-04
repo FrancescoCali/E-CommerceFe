@@ -3,7 +3,7 @@ package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.UserRequest;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.UserView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.security.MyUserDetailsService;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class UserController {
     String backend;
 
     @Autowired
-    iUserService user;
+    MyUserDetailsService user;
 
     @Autowired
     RestTemplate rest;
@@ -64,7 +64,6 @@ public class UserController {
         }
         ModelAndView home = new ModelAndView("home/home-user");
         req.setRole("USER");
-        user.createUser(req);
         home.addObject("username", req.getUsername());
         home.addObject("role", req.getRole());
         return home;
@@ -85,7 +84,6 @@ public class UserController {
             return mav;
         }
         ModelAndView home = new ModelAndView("home/home-user");
-        user.updateUser(req);
         home.addObject("username", user.getUsername());
         home.addObject("role", user.getRole());
         return home;
@@ -101,7 +99,6 @@ public class UserController {
         @SuppressWarnings("unchecked")
         ResponseObject<UserRequest> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
-        user.removeUser(req);
         uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "/user/remove")
                 .queryParam("id", id)
@@ -123,6 +120,8 @@ public class UserController {
         ResponseObject<UserRequest> resp = rest.getForEntity(uri, ResponseObject.class).getBody();
         UserRequest req = (UserRequest) convertInObject(resp.getDati(), UserRequest.class);
         mav.addObject("user", req);
+        mav.addObject("username",user.getUsername());
+        mav.addObject("role",user.getRole());
         return mav;
     }
 

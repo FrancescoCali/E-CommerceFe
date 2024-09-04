@@ -17,7 +17,7 @@
 
 <div class="container" id="container">
     <div class="form-container sign-up">
-            <form th:action="@{/user/saveCreate}" th:object="${user}" method="post">
+        <form th:action="@{/user/saveCreate}" th:object="${user}" method="post">
             <h1>Create Account</h1>
             <input type="hidden" th:field="*{role}"/>
             <input type="text" id="signup-username" th:field="*{username}" placeholder="Username" required>
@@ -35,9 +35,9 @@
             <h1>Sign In</h1>
             <input type="text" placeholder="Username" id="login-username" name="username">
             <div class="password-wrapper">
+                <input type="password" placeholder="Password" id="login-password" name="password">
+                <img src="/images/eye/eye-close.png" id="eyeicon" alt="Toggle Password Visibility">
             </div>
-            <input type="password" placeholder="Password" id="login-password" name="password">
-            <img src="/images/eye/eye-close.png" id="eyeicon" alt="Toggle Password Visibility">
             <button type="submit">Sign In</button>
         </form>
     </div>

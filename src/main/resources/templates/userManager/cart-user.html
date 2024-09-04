@@ -2,6 +2,7 @@
 <html lang="it" xmlns:th="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/common.css">
     <meta charset="UTF-8">
     <title>Carrello</title>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -32,11 +33,17 @@
     </script>
 </head>
 <body>
-<br>
+
 <nav th:insert="~{fragments/navigation(username=${username}, role=${role})}"></nav>
 <br>
 
-<div th:if="${cartList != null and cartList.dati != null and not #lists.isEmpty(cartList.dati)}">
+<!-- Mostra il messaggio solo se il carrello è vuoto -->
+<div th:if="${cartList == null or cartList.dati == null or #lists.isEmpty(cartList.dati)}">
+    <p>Il tuo carrello è vuoto.</p>
+</div>
+
+<!-- Mostra la lista dei prodotti solo se ci sono elementi nel carrello -->
+<div th:unless="${cartList == null or cartList.dati == null or #lists.isEmpty(cartList.dati)}">
     <div th:each="cart : ${cartList.dati}">
         <a th:href="@{/productUser/page(id=${cart.idProduct})}" class="image">
             <img th:src="@{'/images/'+${cart.url}}" th:alt="${cart.description}">
@@ -53,23 +60,22 @@
                     <!-- Corretto l'attributo th:checked per riflettere correttamente il valore iniziale -->
                     <input type="checkbox"
                            th:checked="${cart.selected ? 'checked' : null}"
-                    th:onclick="toggleSelection([[${cart.id}]], this)"
-                    aria-label="Seleziona per l'acquisto"/>
+                           th:onclick="toggleSelection([[${cart.id}]], this)"
+                           aria-label="Seleziona per l'acquisto"/>
                     Seleziona per l'acquisto
                 </label>
             </div>
         </a>
         <br>
     </div>
-    <div>
+    <br>
+    <!-- Mostra il pulsante "Procedi all'acquisto" solo se ci sono prodotti nel carrello -->
+    <div align="center">
         <a class="buttonlike" th:href="@{/cart/confirmPurchase}" title="Acquista tutto">Procedi all'acquisto</a>
     </div>
-</div>
-<div th:if="${cartList == null or cartList.dati == null or #lists.isEmpty(cartList.dati)}">
-    <p>Il tuo carrello è vuoto.</p>
+    <div style="height: 50px;"></div>
 </div>
 
-<div style="height: 50px;"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

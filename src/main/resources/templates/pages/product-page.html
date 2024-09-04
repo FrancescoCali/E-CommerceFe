@@ -30,7 +30,7 @@
                             <li align="left"><strong>Colour:</strong> <span th:text="${view.colour}"></span></li>
                             <li align="left"><strong>Price:</strong> € <span th:text="${view.price}"></span></li>
                         </ul>
-                        <form th:action="@{/cart/createCart}" method="post" style="height: 90%; margin: 0 auto;">
+                        <form th:action="@{/cart/createCart}" method="post" style="height: 50%; margin: 0 auto;">
                             <input type="hidden" name="idProduct" th:value="${view.idProduct}" />
                             <button class="buttonlike-cart" type="submit">Insert into cart</button>
                         </form>

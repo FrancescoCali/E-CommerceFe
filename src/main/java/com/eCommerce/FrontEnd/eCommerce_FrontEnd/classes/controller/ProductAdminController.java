@@ -4,8 +4,7 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.ProductRequ
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.security.MyUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
 import java.net.URI;
 
 @Controller
@@ -26,7 +24,7 @@ public class ProductAdminController {
     RestTemplate rest;
 
     @Autowired
-    iUserService user;
+    MyUserDetailsService user;
 
     @GetMapping("/create")
     public ModelAndView create( @RequestParam (required = true ) String item ){
@@ -34,14 +32,14 @@ public class ProductAdminController {
         ProductRequest req = new ProductRequest();
         req.setErrorMSG(null);
         req.setItem(item);
-        mav.addObject("req",req);
+        mav.addObject("product",req);
         mav.addObject("username",user.getUsername());
         mav.addObject("role",user.getRole());
         return mav;
     }
 
     @PostMapping("/save")
-    public Object save(@ModelAttribute("req") ProductRequest req ){
+    public Object save(@ModelAttribute("product") ProductRequest req ){
         URI uri ;
         if(req.getIdProduct()==null)
             uri = UriComponentsBuilder
@@ -53,12 +51,8 @@ public class ProductAdminController {
                     .fromHttpUrl(backend +"product/update")
                     .buildAndExpand()
                     .toUri();
-
         ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
         if(!resp.getRc()){
-            System.out.println();System.out.println();System.out.println();
-            System.out.println("STAMPA");
-            System.out.println();System.out.println();System.out.println();
             ModelAndView mav = new ModelAndView("create-update/create-update-product");
             req.setErrorMSG(req.getErrorMSG());
             mav.addObject("req", req);

@@ -22,9 +22,10 @@
             </a>
             <br>
         </div>
-        <div>
+        <div align="center">
             <a class="buttonlike" th:href="@{/cart/purchaseConfirmed}">Conferma acquisto</a>
         </div>
+        <div style="height: 50px;"></div>
         <div class="total-price">
             <span class="total-price-label">Totale Prezzo:</span>
             <span class="total-price-value" th:text="${#numbers.formatDecimal(#aggregates.sum(cartList.dati.![price]), 1, 2)} + ' €'"></span>
@@ -32,7 +33,6 @@
     </div>
 </div>
 
-<div style="height: 50px;"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

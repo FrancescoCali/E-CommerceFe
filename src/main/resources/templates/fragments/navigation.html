@@ -8,9 +8,9 @@
     <title>BetaCommerce</title>
 </head>
 <body>
-<nav class="flex fd_column ai_center t_white w_100" th:fragment="block-navigation(username,role)">
+<nav class="flex fd_column ai_center t_white w_100 h_140px bg" th:fragment="block-navigation(username,role)">
     <div class="bg w_100">
-        <h1 class="flex jc_center ai_center p_05 m_0">
+        <h1 class="flex jc_center ai_center p_1 m_0">
             BetaCommerce
         </h1>
     </div>
@@ -29,6 +29,20 @@
                 <i class="fas fa-arrow-left t_white"></i>
             </button>
         </div>
+        <!-- Form di ricerca -->
+        <form th:action="@{/productUser/search}" method="get" class="form-inline search-form">
+            <div class="error-message" style="color: red; display: none; margin-top: -24px;">
+                Inserisci una parola da cercare.
+            </div>
+            <div class="input-group">
+                <input type="text" name="search" class="form-control search-input" placeholder="Cerca..." aria-label="Cerca">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-success search-button">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
         <div class="dropdown">
             <a class="dropbtn btn_bg btn-std-h br_10 p_05 btn_bg m_0 btn_bg t_white" sec:authorize="hasRole('ROLE_ADMIN')">Liste<i class="fas fa-bars" style="margin-left: auto; padding: 3px 7px"></i></a>
             <ul class="dropdown-content">
@@ -45,7 +59,7 @@
                 <button type="button" class="btn_bg br_10 p_05 sm-btn-std-w b_0" data-bs-dismiss="offcanvas" aria-label="Close">
                     <i class="fa-solid fa-x t_white"></i>
                 </button>
-        </div>
+            </div>
 
             <div class="offcanvas-body">
                 <ul>
@@ -105,22 +119,7 @@
                 </ul>
             </div>
         </div>
-        <div class="search-container">
-            <!-- Form di ricerca -->
-            <form th:action="@{/productUser/search}" method="get" class="form-inline search-form">
-                <div class="input-group">
-                    <input type="text" name="search" class="form-control search-input" placeholder="Cerca..." aria-label="Cerca">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-outline-success search-button">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="error-message" style="color: black; display: none; margin-top: 10px;">
-                    Inserisci una parola da cercare.
-                </div>
-            </form>
-        </div>
+
     </div>
 </nav>
 

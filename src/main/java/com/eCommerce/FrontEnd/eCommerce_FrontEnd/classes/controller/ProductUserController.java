@@ -1,9 +1,8 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.ProductView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
-import com.eCommerce.FrontEnd.eCommerce_FrontEnd.interfaces.iService.iUserService;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.security.MyUserDetailsService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class ProductUserController {
     @Autowired
     RestTemplate rest;
     @Autowired
-    iUserService user;
+    MyUserDetailsService user;
     public static Logger log = LoggerFactory.getLogger(ProductUserController.class);
 
     @GetMapping ("/list")
