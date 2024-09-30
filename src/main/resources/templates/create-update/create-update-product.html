@@ -117,6 +117,7 @@
     <form class="form_content" th:action="@{/admin/product/save}" th:object="${product}" method="post">
         <table class="User">
             <input type="hidden" th:field="*{item}"/>
+            <input type="hidden" th:field="*{idProduct}"/>
             <tr>
                 <td><label for="model">Model:</label></td>
                 <td><input type="text" id="model" th:field="*{model}" placeholder="model" required></td>

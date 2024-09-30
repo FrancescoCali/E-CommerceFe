@@ -6,8 +6,10 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.security.MyUserDetailsService;
- import org.slf4j.Logger;
+
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
 
@@ -47,7 +51,7 @@ public class AdminController {
     @GetMapping ("/listUser")
     public  ModelAndView list(@RequestParam String req) {
         ModelAndView mav = new ModelAndView("list-user");
-        URI uri = null ;
+        URI uri;
         if(req.equalsIgnoreCase("ADMIN"))
             uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "user/listAdmin")

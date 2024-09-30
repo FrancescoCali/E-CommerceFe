@@ -1,10 +1,12 @@
 package com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.controller;
 
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.request.ProductRequest;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.dto.view.ProductView;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.Response;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseBase;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.response.ResponseObject;
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.security.MyUserDetailsService;
+import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,9 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 import java.net.URI;
+import java.util.Objects;
+
+import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
 
 @Controller
 @RequestMapping("/admin/product")
@@ -40,6 +45,7 @@ public class ProductAdminController {
 
     @PostMapping("/save")
     public Object save(@ModelAttribute("product") ProductRequest req ){
+
         URI uri ;
         if(req.getIdProduct()==null)
             uri = UriComponentsBuilder
@@ -48,9 +54,10 @@ public class ProductAdminController {
                     .toUri();
         else
             uri = UriComponentsBuilder
-                    .fromHttpUrl(backend +"product/update")
+                    .fromHttpUrl(backend + "product/update")
                     .buildAndExpand()
                     .toUri();
+
         ResponseBase resp = rest.postForEntity(uri,req,ResponseBase.class).getBody();
         if(!resp.getRc()){
             ModelAndView mav = new ModelAndView("create-update/create-update-product");
@@ -62,17 +69,17 @@ public class ProductAdminController {
     }
 
     @GetMapping("/removeProduct")
-    public Object removeProduct(@RequestParam Integer id,@RequestParam (required = true ) String item){
+    public Object removeProduct(@RequestParam Integer id ,@RequestParam (required = true ) String item){
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "product/remove")
                 .queryParam("id",id)
-                .queryParam("item",item)
                 .buildAndExpand()
                 .toUri();
         rest.postForEntity(uri,id, ResponseBase.class).getBody();
-        return "redirect:/admin/product/list";
+        return "redirect:/admin/product/list?item="+item;
     }
 
+/*
     @GetMapping("/removeItem")
     public Object removeItem(@RequestParam Integer idProduct ,@RequestParam (required = true ) String item){
         URI uri = UriComponentsBuilder
@@ -86,17 +93,42 @@ public class ProductAdminController {
     }
 
     @GetMapping("/updateProduct")
-    public ModelAndView updateProduct(@RequestParam Integer idProduct , @RequestParam (required = true ) String item) {
+    public ModelAndView updateProduct(@RequestParam (required = true )  Integer id ,@RequestParam (required = true )String item  ) {
         ModelAndView mav = new ModelAndView("create-update/create-update-product");
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "product/getById")
-                .queryParam("idProduct", idProduct)
+                .queryParam("id", id)
                 .buildAndExpand()
                 .toUri();
+        mav.addObject("username",user.getUsername());
+        mav.addObject("role", user.getRole());
+        mav.addObject("item",item);
+
+        ProductRequest view = (ProductRequest) WebUtils.convertInObject( Objects.requireNonNull(rest.getForEntity(uri, ResponseObject.class).getBody()).getDati() ,ProductRequest.class) ;
         mav.addObject("product", rest.getForEntity(uri, ResponseObject.class).getBody());
+
         return mav;
     }
+*/
 
+    @GetMapping("/updateProduct")
+    public ModelAndView updateProduct(@RequestParam(required = true) Integer id, @RequestParam(required = true) String item) {
+        ModelAndView mav = new ModelAndView("create-update/create-update-product");
+
+        URI uri = UriComponentsBuilder
+                .fromHttpUrl(backend + "product/getById")
+                .queryParam("id", id)
+                .buildAndExpand()
+                .toUri();
+
+        mav.addObject("username", user.getUsername());
+        mav.addObject("role", user.getRole());
+        mav.addObject("item", item);
+
+        mav.addObject("product", WebUtils.convertInObject( rest.getForEntity(uri, ResponseObject.class).getBody().getDati(), ProductRequest.class));
+        return mav;
+    }
+/*
     @GetMapping("/updateItem")
     public ModelAndView updateItem(@RequestParam Integer id , @RequestParam (required = true ) String item) {
         ModelAndView mav = new ModelAndView("create-update/create-update-product");
@@ -108,7 +140,7 @@ public class ProductAdminController {
         mav.addObject("product", rest.getForEntity(uri, ResponseObject.class).getBody());
         return mav;
     }
-
+*/
     @GetMapping("/list")
     public ModelAndView listProductModels(@RequestParam (required = true ) String item){
         ModelAndView mav=new ModelAndView("listAdmin/list-product");

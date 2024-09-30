@@ -21,8 +21,10 @@ public class MyUserDetailsService implements UserDetailsService {
 
     @Value("${eCommerce.backend}")
     private String backend;
+
     @Autowired
     private RestTemplate rest;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 

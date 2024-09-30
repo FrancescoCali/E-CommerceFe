@@ -167,7 +167,7 @@
                 <td th:text="${product.price}"></td>
                 <td th:text="${product.quantity}"></td>
                 <td class="actions"> <!-- Applica la classe actions -->
-                    <a th:href="@{/admin/product/updateProduct(idProduct=${product.idProduct},item=${item})}">
+                    <a th:href="@{/admin/product/updateProduct(id=${product.idProduct},item=${item})}">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
                     <a th:href="@{/admin/product/removeProduct(id=${product.idProduct},item=${item})}">
@@ -177,11 +177,11 @@
             </tr>
             </tbody>
         </table>
-        <br>
-        <div class="button-container">
-            <a th:href="@{/admin/product/create(item=${item})}" class="buttonlike" align="center">Crea prodotto</a>
-        </div>
+        <br><br>
         <div style="height: 50px;"></div>
+    </div>
+    <div class="button-container">
+        <a th:href="@{/admin/product/create(item=${item})}" class="buttonlike" align="center">Crea prodotto</a>
     </div>
 </div>
 

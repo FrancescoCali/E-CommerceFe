@@ -14,13 +14,14 @@ public class ProductRequest {
     private Boolean contained;
     private Boolean cart ;
     private String errorMSG;
+    private String url;
 
-    public String getErrorMSG() {
-        return errorMSG;
+    public String getUrl() {
+        return url;
     }
 
-    public void setErrorMSG(String errorMSG) {
-        this.errorMSG = errorMSG;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Integer getId() {
@@ -29,22 +30,6 @@ public class ProductRequest {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Boolean getCart() {
-        return cart;
-    }
-
-    public void setCart(Boolean cart) {
-        this.cart = cart;
-    }
-
-    public Boolean getContained() {
-        return contained;
-    }
-
-    public void setContained(Boolean contained) {
-        this.contained = contained;
     }
 
     public Integer getQuantity() {
@@ -111,5 +96,27 @@ public class ProductRequest {
         this.item = item;
     }
 
+    public Boolean getContained() {
+        return contained;
+    }
 
+    public void setContained(Boolean contained) {
+        this.contained = contained;
+    }
+
+    public Boolean getCart() {
+        return cart;
+    }
+
+    public void setCart(Boolean cart) {
+        this.cart = cart;
+    }
+
+    public String getErrorMSG() {
+        return errorMSG;
+    }
+
+    public void setErrorMSG(String errorMSG) {
+        this.errorMSG = errorMSG;
+    }
 }

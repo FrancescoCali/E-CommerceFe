@@ -52,12 +52,14 @@ public class ProductUserController {
         URI uri = UriComponentsBuilder
                 .fromHttpUrl(backend + "product/getById")
                 .queryParam("id", id)
-                .buildAndExpand().toUri();
+                .buildAndExpand()
+                .toUri();
         mav.addObject("username",user.getUsername());
         mav.addObject("role", user.getRole());
         mav.addObject("view", rest.getForEntity(uri, ResponseObject.class).getBody().getDati());
         return mav;
     }
+
     @GetMapping("/search")
     public ModelAndView search(@RequestParam (name = "search", required = true) String search) {
         URI uri = UriComponentsBuilder

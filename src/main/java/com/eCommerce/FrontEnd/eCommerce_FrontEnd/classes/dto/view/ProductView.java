@@ -10,7 +10,15 @@ public class ProductView {
     private String colour;
     private String url;
     private String item;
+    private Integer quantity;
 
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
 
     public String getUrl() {
         return url;
@@ -20,7 +28,6 @@ public class ProductView {
         this.url = url;
     }
 
-
     public String getItem() {
         return item;
     }
@@ -28,6 +35,7 @@ public class ProductView {
     public void setItem(String item) {
         this.item = item;
     }
+
     public Integer getIdProduct() {
         return idProduct;
     }
