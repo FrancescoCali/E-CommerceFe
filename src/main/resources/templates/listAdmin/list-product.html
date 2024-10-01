@@ -32,14 +32,14 @@
             background-color: var(--secondary-color);
             padding: 1rem 2rem;
             display: flex;
-            justify-content: center; /* Centra orizzontalmente il contenuto */
-            align-items: center; /* Centra verticalmente il contenuto */
-            position: relative; /* Necessario per posizionare gli elementi assoluti */
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
 
         nav > div {
             position: absolute;
-            right: 2rem; /* Posiziona il div con username e role a destra */
+            right: 2rem;
         }
 
         nav a {
@@ -50,13 +50,13 @@
 
         .content {
             margin-top: 2rem;
-            text-align: center; /* Centra il testo all'interno di .content */
+            text-align: center;
         }
 
         .colorful-table {
-            width: 80%; /* Imposta una larghezza percentuale o fissa per la tabella */
-            max-width: 100%; /* Assicurati che la tabella non superi la larghezza del contenitore */
-            margin: 0 auto; /* Centra la tabella orizzontalmente */
+            width: 80%;
+            max-width: 100%;
+            margin: 0 auto;
             border-collapse: collapse;
             background-color: var(--primary-color);
         }
@@ -100,8 +100,6 @@
             font-weight: 600;
             border-radius: 4px;
             transition: background-color 0.3s ease;
-            position: relative;
-            top: -450px;
         }
 
         .buttonlike:hover {
@@ -112,32 +110,97 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            height: 50px;
+            margin-top: 2rem; /* Spazio sopra il bottone */
         }
 
         .actions {
             display: flex;
-            justify-content: space-between; /* Spazio uguale tra gli elementi */
-            align-items: center; /* Allinea verticalmente al centro */
-            padding: 0.5rem; /* Aggiunge un po' di padding */
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
         }
 
         .actions i {
-            font-size: 1.2rem; /* Imposta una dimensione uniforme per le icone */
-            margin: 0 5px; /* Spazio tra le icone */
-            color: #FFFFFF; /* Imposta il colore bianco per le icone */
+            font-size: 1.2rem;
+            margin: 0 5px;
+            color: #FFFFFF;
+        }
+
+        .add-quantity {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin-left: 10px;
+        }
+
+        .add-quantity:hover {
+            background-color: #16A085;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: var(--secondary-color);
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 300px;
+            text-align: center;
+            border-radius: 4px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover {
+            color: #fff;
+        }
+
+        #quantityInput {
+            margin: 10px 0;
+            padding: 5px;
+            width: 80%;
+        }
+
+        #confirmAdd {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        #confirmAdd:hover {
+            background-color: #16A085;
         }
     </style>
 </head>
 
-
-
-
-
 <body>
 <div class="page-wrapper">
     <nav>
-        <a th:href="@{/}" >BetaCommerce</a>
+        <a th:href="@{/}">BetaCommerce</a>
         <div>
             <span th:text="${username}"></span>
             <span th:text="${role}"></span>
@@ -165,8 +228,11 @@
                 <td th:text="${product.model}"></td>
                 <td th:text="${product.colour}"></td>
                 <td th:text="${product.price}"></td>
-                <td th:text="${product.quantity}"></td>
-                <td class="actions"> <!-- Applica la classe actions -->
+                <td>
+                    <span th:text="${product.quantity}"></span>
+                    <button class="add-quantity" th:data-product-id="${product.idProduct}" onclick="event.stopPropagation()">+</button>
+                </td>
+                <td class="actions">
                     <a th:href="@{/admin/product/updateProduct(id=${product.idProduct},item=${item})}">
                         <i class="fas fa-pencil-alt"></i>
                     </a>
@@ -177,19 +243,84 @@
             </tr>
             </tbody>
         </table>
-        <br><br>
-        <div style="height: 50px;"></div>
-    </div>
-    <div class="button-container">
-        <a th:href="@{/admin/product/create(item=${item})}" class="buttonlike" align="center">Crea prodotto</a>
+        <div class="button-container">
+            <a th:href="@{/admin/product/create(item=${item})}" class="buttonlike">Crea prodotto</a>
+        </div>
     </div>
 </div>
 
-<script>
-    document.querySelectorAll('.clickable-row').forEach(row => {
-        row.addEventListener('click', () => {
-            window.location.href = row.getAttribute('href');
+<div id="addQuantityModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Aggiungi quantità</h2>
+        <input type="number" id="quantityInput" min="1" value="1">
+        <button id="confirmAdd">Aggiungi</button>
+    </div>
+</div>
+
+<script th:inline="javascript">
+    document.addEventListener('DOMContentLoaded', function() {
+        const addButtons = document.querySelectorAll('.add-quantity');
+        const modal = document.getElementById('addQuantityModal');
+        const closeBtn = document.querySelector('.close');
+        const confirmBtn = document.getElementById('confirmAdd');
+        let currentProductId;
+
+        // Gestione dei click sui pulsanti '+'
+        addButtons.forEach(button => {
+            button.addEventListener('click', function(event) {
+                event.stopPropagation(); // Ferma la propagazione dell'evento
+                currentProductId = this.getAttribute('data-product-id');
+                modal.style.display = 'block'; // Mostra il popup
+            });
         });
+
+        // Chiusura del modale
+        closeBtn.onclick = function() {
+            modal.style.display = 'none';
+        };
+
+        // Gestione del pulsante di conferma
+        confirmBtn.onclick = function() {
+            const quantity = document.getElementById('quantityInput').value; // Ottieni il valore dell'input
+            if (quantity > 0) { // Controlla che la quantità sia maggiore di zero
+                addProduct(currentProductId, parseInt(quantity)); // Chiama la funzione per aggiungere la quantità
+            } else {
+                alert('La quantità deve essere maggiore di zero.');
+            }
+        };
+
+    function addProduct(productId, quantity) {
+
+    const url = `/admin/product/addProduct?id=${productId}&value=${quantity}`;
+
+    fetch(url, {
+        method: 'GET',
+    })
+    .then(response => {
+        console.log('Risposta ricevuta:', response); // Aggiunto per il debug
+        if (response.ok) {
+            modal.style.display = 'none'; // Chiudi il modale solo dopo una risposta positiva
+            window.location.reload(); // Ricarica la pagina
+        } else {
+            return response.text().then(text => {
+                console.error('Errore nel server:', text);
+                throw new Error(text);
+            });
+        }
+    })
+    .catch((error) => {
+        console.error('Errore durante l\'aggiunta della quantità:', error);
+        alert('Si è verificato un errore durante l\'aggiunta della quantità. Per favore, riprova.');
+    });
+}
+
+        // Chiusura del modale se si clicca al di fuori di esso
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        };
     });
 </script>
 </body>

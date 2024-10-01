@@ -19,8 +19,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.util.HashMap;
-import java.util.Map;
 
 import static com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils.convertInObject;
 
@@ -50,7 +48,7 @@ public class AdminController {
 
     @GetMapping ("/listUser")
     public  ModelAndView list(@RequestParam String req) {
-        ModelAndView mav = new ModelAndView("list-user");
+        ModelAndView mav = new ModelAndView("listAdmin/list-user");
         URI uri;
         if(req.equalsIgnoreCase("ADMIN"))
             uri = UriComponentsBuilder
@@ -61,8 +59,7 @@ public class AdminController {
                 .fromHttpUrl(backend + "user/listUser")
                 .buildAndExpand().toUri();
 
-        Response<?> resp = rest.getForEntity(uri, Response.class).getBody();
-        mav.addObject("listUser", resp);
+        mav.addObject("listUser", rest.getForEntity(uri, Response.class).getBody());
         return mav;
     }
 

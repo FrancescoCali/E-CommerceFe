@@ -9,6 +9,8 @@ import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.security.MyUserDetailsS
 import com.eCommerce.FrontEnd.eCommerce_FrontEnd.classes.utilities.WebUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
@@ -79,38 +81,6 @@ public class ProductAdminController {
         return "redirect:/admin/product/list?item="+item;
     }
 
-/*
-    @GetMapping("/removeItem")
-    public Object removeItem(@RequestParam Integer idProduct ,@RequestParam (required = true ) String item){
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/remove")
-                .queryParam("id",idProduct)
-                .queryParam("item",item)
-                .buildAndExpand()
-                .toUri();
-        rest.postForEntity(uri,idProduct, ResponseBase.class).getBody();
-        return "redirect:/admin/product/list";
-    }
-
-    @GetMapping("/updateProduct")
-    public ModelAndView updateProduct(@RequestParam (required = true )  Integer id ,@RequestParam (required = true )String item  ) {
-        ModelAndView mav = new ModelAndView("create-update/create-update-product");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/getById")
-                .queryParam("id", id)
-                .buildAndExpand()
-                .toUri();
-        mav.addObject("username",user.getUsername());
-        mav.addObject("role", user.getRole());
-        mav.addObject("item",item);
-
-        ProductRequest view = (ProductRequest) WebUtils.convertInObject( Objects.requireNonNull(rest.getForEntity(uri, ResponseObject.class).getBody()).getDati() ,ProductRequest.class) ;
-        mav.addObject("product", rest.getForEntity(uri, ResponseObject.class).getBody());
-
-        return mav;
-    }
-*/
-
     @GetMapping("/updateProduct")
     public ModelAndView updateProduct(@RequestParam(required = true) Integer id, @RequestParam(required = true) String item) {
         ModelAndView mav = new ModelAndView("create-update/create-update-product");
@@ -128,19 +98,7 @@ public class ProductAdminController {
         mav.addObject("product", WebUtils.convertInObject( rest.getForEntity(uri, ResponseObject.class).getBody().getDati(), ProductRequest.class));
         return mav;
     }
-/*
-    @GetMapping("/updateItem")
-    public ModelAndView updateItem(@RequestParam Integer id , @RequestParam (required = true ) String item) {
-        ModelAndView mav = new ModelAndView("create-update/create-update-product");
-        URI uri = UriComponentsBuilder
-                .fromHttpUrl(backend + "product/getById")
-                .queryParam("id", id)
-                .buildAndExpand()
-                .toUri();
-        mav.addObject("product", rest.getForEntity(uri, ResponseObject.class).getBody());
-        return mav;
-    }
-*/
+
     @GetMapping("/list")
     public ModelAndView listProductModels(@RequestParam (required = true ) String item){
         ModelAndView mav=new ModelAndView("listAdmin/list-product");
@@ -152,5 +110,19 @@ public class ProductAdminController {
         mav.addObject("list", resp );
         mav.addObject("item",item);
         return mav;
+    }
+    @GetMapping("/addProduct")
+    @ResponseBody
+    public ResponseEntity<?> addProduct(@RequestParam Integer id, @RequestParam Integer value) {
+            URI uri = UriComponentsBuilder
+                    .fromHttpUrl(backend + "product/addProduct") // Controlla se questo è l'endpoint corretto
+                    .queryParam("id", id)
+                    .queryParam("value", value)
+                    .buildAndExpand().toUri();
+            ResponseEntity<ResponseBase> responseEntity = rest.getForEntity(uri, ResponseBase.class);
+            ResponseBase resp = responseEntity.getBody();
+            if (resp == null || !resp.getRc())
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Unable to add quantity");
+            return ResponseEntity.ok("Quantity added successfully");
     }
 }
